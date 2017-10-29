@@ -3,8 +3,8 @@ get_header();
 
 ?><div class="container">
 	
-	<div class="row">
-		<div id="mainContent" class="col-lg-8"><?php
+	<div class="row" id="mainContent">
+		<div class="col-lg-8"><?php
 
 			if (have_posts()) :
 			   while (have_posts()) :
@@ -18,9 +18,6 @@ get_header();
 			get_sidebar();
 		?></div><?php
 	?></div><?php
-
-
 ?></div><?php
-
 	get_footer(); 
 ?>

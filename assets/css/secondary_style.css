@@ -3,7 +3,7 @@
 }
 #header ul li {
 	display: inline-block;
-	padding: 10px;
+	padding: 0 10px;
 	line-height: 1.5em;
 }
 #header ul {
@@ -18,14 +18,24 @@
 }
 	#header a {
 		color: #FFF!important;
-		display: block;
+		display: block!important;
+		padding: 10px;
+		transition: background-color .3s ease-in-out;
 	}
 	#header a:hover {
 		text-decoration: none;
 		background-color: #FFF;
-		color: #17ACAF;
+		color: #17ACAF!important;
 	}
 
-#mainContent {
+li a:hover {
+	text-decoration: none;
+}
+
+#footer {
+	padding: 25px 0;
+}
+
+.content-panel {
 	padding: 50px 0;
 }
