@@ -1,0 +1,102 @@
+body {
+  font-family: $body-font;
+  font-weight: $body-weight;
+  font-size: $default-font-size;
+  @include relative-line-height(1);
+}
+
+p { @extend %paragraph-margin; }
+
+h1, h2, h3, h4, h5, h6 {
+  @include relative-line-height(1);
+  a &, a {
+    color: $black;
+    @extend %underlined; padding-bottom: 1px;
+  }
+  a:hover &, a:active &, a:hover, a:active {
+    color: $accent-color;
+    @extend %underlined-hover;
+  }
+}
+h1 {
+  @extend %paragraph-margin;
+}
+h3, h4, h5, h6 { margin: 0; }
+
+h2, h4 {
+  color: $accent-dark;
+  font-style: $em-style;
+  font-family: $display-font;
+  font-weight: $display-weight;
+}
+h1, h3, h5, h6 {
+  font-family: $body-font;
+  font-weight: $body-weight;
+}
+
+h1 {
+  font-size: 140%; text-transform: uppercase; color: $accent-color;
+  @media only screen and (min-width : $sm-width)  {
+    font-size: 160%;
+  }
+  @media only screen and (min-width : $tablet-width)  {
+    font-size: 180%;
+  }
+  @media only screen and (min-width : $med-width)  {
+    font-size: 200%;
+  }
+  @media only screen and (min-width : $lrg-width)  {
+    font-size: 220%;
+  }
+  @media only screen and (min-width : $max-width)  {
+    font-size: 240%;
+  }
+}
+h2 {
+  font-size: 140%;
+  @media only screen and (min-width : $sm-width)  {
+    font-size: 180%;
+  }
+  @media only screen and (min-width : $tablet-width)  {
+    font-size: 200%;
+  }
+}
+h3 {
+  font-weight: $strong-weight; font-size: 130%; text-transform: uppercase; color: $accent-color;
+  @media only screen and (min-width : $sm-width)  {
+    font-size: 140%;
+  }
+  @media only screen and (min-width : $tablet-width)  {
+    font-size: 160%;
+  }
+}
+h4 {
+  font-size: 120%;
+  margin-bottom: 0!important;
+  @media only screen and (min-width : $sm-width)  {
+    font-size: 130%;
+  }
+  @media only screen and (min-width : $tablet-width)  {
+    font-size: 140%;
+  }
+}
+h5 { color: $accent-dark; font-size: 100%; font-weight: $strong-weight; }
+h6 { font-size: 100%; text-transform: uppercase; }
+
+em { font-style: $em-style; }
+strong { font-weight:$strong-weight; }
+small { font-size: $small-size; }
+
+a {
+  @extend %link;
+  #menu & {
+    color: $white;
+    padding: 0.5px 3px; display: inline-block; letter-spacing: 0.03em;
+  }
+}
+
+.screen-reader {
+  position: fixed;
+  left: -3000px;
+  width: 0;
+}

@@ -1,0 +1,246 @@
+/**
+* Elements
+**/
+
+/* images */
+img {
+  &.aligncenter {
+    @media only screen and (min-width : $tablet-width)  {
+      display: block; margin: 0 auto;
+    }
+  }
+  &.alignright {
+    @media only screen and (min-width : $tablet-width)  {
+      float: right; margin: 12px 0 12px 24px;
+    }
+  }
+  &.alignleft {
+    @media only screen and (min-width : $tablet-width)  {
+      float: left; margin: 12px 24px 12px 0;
+    }
+  }
+}
+
+/* tables */
+table {
+  tr, thead, tbody, tfoot {
+    border-bottom: 1px solid $accent-color;
+    width: 100%;
+    th, td {
+      text-align: left;
+      line-height: 1.8em;
+      padding: 0.38em 1.32em 0.38em 0.62em;
+    }
+  }
+  thead { font-weight: $strong-weight; }
+  tfoot { font-size: $small-size; }
+}
+
+
+/* lists */
+ul, ol, dl {
+  @extend %paragraph-margin;
+  nav & { margin: 0; }
+  li & { margin-bottom: 0; }
+}
+li {
+  list-style-position: inside;
+  ul & {
+    list-style-type: none;
+    &::before {
+      content: '• ';
+      font-size: 150%;
+      line-height: 80%;
+      color: $accent-color;
+      vertical-align: middle;
+      font-weight: $strong-weight;
+    }
+    nav &:before, footer &:before { content: ''; }
+  }
+  ol > & {
+    text-indent: 0.2em;
+    list-style-type: decimal;
+    li { list-style-type: lower-roman; }
+  }
+  nav & {
+    list-style-type: none;
+    &::before { content: ''; }
+  }
+  li {
+    text-indent: 0.7em;
+    footer & { text-indent: 0; }
+  }
+}
+
+dl {
+  overflow: hidden;
+  dt {
+    clear: both;
+    float: left;
+    display: block;
+    font-size: 130%;
+    line-height: 100%;
+    margin-right: 0.3em;
+    font-style: $em-style;
+    font-family: $display-font;
+    font-weight: $display-weight;
+    &::after { content: ': '; }
+    p { margin: 0; }
+  }
+  dd {
+    float: left;
+    p { margin: 0; }
+  }
+}
+
+
+/* form elements */
+textarea, input[type="text"], input[type="password"], input[type="tel"], input[type="email"], input[type="number"], input[type="url"], input[type="button"], input[type="submit"] {
+  border-radius: 0;
+  @include appearance(none);
+}
+textarea, input[type="text"], input[type="password"], input[type="tel"], input[type="number"], input[type="email"], input[type="url"] {
+  font-family: $body-font;
+  font-size: $default-font-size;
+  border: 1px solid $accent-color;
+  line-height: 1.8em;
+  padding: 0.38em 0.62em;
+  margin-bottom: 0.6em;
+}
+input[type="text"], input[type="email"], input[type="password"], input[type="tel"], input[type="url"] {
+    text-indent: 4px;
+    box-sizing: border-box;
+    width: 100%;
+    box-shadow: none!important;
+}
+textarea {
+  display: block;
+  padding: 0.3em 0;
+  margin-top: 0.3em;
+  height: 9em;
+  box-sizing: border-box;
+  width: 100%; padding: 0 1%;
+}
+input[type='submit'], input[type='button'] {
+  @extend %button;
+}
+.select {
+  font-size: 100%;
+  position: relative;
+  margin: 1em 0 1.6em;
+  display: inline-block;
+  select {
+    outline: none;
+    -webkit-appearance: none;
+    display: block;
+    transition: border-color 0.2s;
+    font-family: $body-font;
+    font-size: $default-font-size;
+    border: 1px solid $accent-color;
+    border-radius: 0;
+    line-height: 1.8em;
+    background: #fff;
+    padding: 0.38em 3em 0.3em 0.62em;
+  }
+  .arr {
+    top: 2px;
+    right: 7px;
+    bottom: 2px;
+    width: 26px;
+    background: #fff;
+    position: absolute;
+    pointer-events: none;
+    &:before {
+      top: 50%;
+      content: '';
+      right: 0.38em;
+      margin-top: -5px;
+      position: absolute;
+      pointer-events: none;
+      border-top: 7px solid $accent-color;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+    }
+    &:after {
+      top: 50%;
+      right: 20px;
+      content: '';
+      margin-top: -5px;
+      position: absolute;
+      pointer-events: none;
+      border-top: 3px solid #fff;
+      border-left: 3px solid transparent;
+      border-right: 3px solid transparent;
+    }
+  }
+}
+
+
+/* figures */
+blockquote {
+  margin-left: 1em;
+  padding-left: 1.6em;
+  position: relative;
+  border-left: solid 3px $accent-color;
+  &::before {
+    content : ' ';
+    top: 0;
+    left: -1em;
+    width: 1.6em;
+    height: 1.8em;
+    display: block;
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-color: $white;
+    background-image: url(images/quote.svg);
+  }
+
+  figure & { display: block; }
+}
+
+q {
+  font-size: 130%;
+  font-style: $em-style;
+  font-family: $display-font;
+  font-weight: $display-weight;
+}
+
+figure {
+  position: relative;
+  display: inline-block;
+  margin: $baseline 0;
+  figcaption {
+    top: 0.26em;
+    left: 3.5em;
+    position: relative;
+    font-size: $small-size;
+  }
+}
+
+mark { background: $accent-light; }
+
+article {
+  @extend %body-of-text;
+  padding: 0 $gutter;
+  header {
+    margin-bottom: $baseline;
+  }
+  footer {
+    margin-top: $baseline;
+  }
+}
+sup {
+  font-size: 60%;
+  vertical-align: super;
+}
+sub {
+  font-size: 60%;
+  vertical-align: sub;
+}
+
+hr {
+  border-top: 1px solid $accent-color;
+  margin: $baseline 0;
+}

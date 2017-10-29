@@ -1,0 +1,211 @@
+/* mixins */
+@mixin appearance ($value: none) {
+    -webkit-appearance:     $value;
+    -moz-appearance:        $value;
+    -ms-appearance:         $value;
+    -o-appearance:          $value;
+    appearance:             $value;
+}
+
+@mixin fluid-width($cols) {
+    width: percentage(1/12*$cols);
+}
+
+@mixin fluid-width($cols) {
+    width: percentage(1/12*$cols);
+}
+
+@mixin fluid-offset($cols) {
+    padding-left: percentage(1/12*$cols);
+    overflow:hidden;
+    width: 100%;
+    position: relative;
+}
+
+@mixin relative-line-height($rel-height) {
+  line-height: percentage($line-height * $rel-height);
+}
+
+@mixin fluid-offset-right($cols) {
+    padding-right: percentage(1/12*$cols);
+    overflow:hidden;
+    width: 100%;
+    position: relative;
+    right: percentage(1/12*$cols);
+}
+
+@mixin transition($args) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin border-box {
+    box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+   -ms-box-sizing: border-box;
+}
+
+@mixin image-height($width, $bottom) {
+  height: $width / 12 * 8 + $bottom;
+}
+
+@mixin image-height-sq($width, $bottom) {
+  height: ($width * 0.5) + $bottom;
+}
+
+%wrapper-full { overflow:hidden; max-width:100%; position: relative; padding-left: $gutter * 2; padding-right: $gutter * 2; }
+%wrapper-fixed { max-width:$max-width; margin-left: auto; margin-right: auto; padding-left: $gutter; padding-right: $gutter; }
+
+%main-background { background-color: $white; color:$black; }
+
+%alt-color {
+  a {
+    color: $secondary-color;
+    &:hover, &:active {
+      border-color: $secondary-color;
+    }
+  }
+  h1, h3, li:before { color: $secondary-color; }
+  .divider {
+    &::before { background: $secondary-color; }
+    svg path { fill: $secondary-color; }
+  }
+}
+
+%alt-color-2 {
+  a {
+    color: $secondary-color-2;
+    &:hover, &:active {
+      border-color: $secondary-color-2;
+    }
+  }
+  h1, h3, li:before { color: $secondary-color-2; }
+  blockquote {
+    border-color: $secondary-color-2;
+    &:before { background-image: url(images/quote-orange.svg); }
+  }
+}
+
+%alt-background {
+  background-color: $secondary-color; color: #fff;
+  a {
+    color: $white;
+    svg path { fill: $white; }
+    &:hover, &:active {
+      color:#fff;
+      border-color:$white;
+      svg path { fill: #fff; }
+    }
+  }
+  h1, h3 { color:$white; }
+  h2, h4, li:before { color: $white; }
+  hr { border-top: none; }
+  blockquote {
+    border-color: $white;
+    &:before { background-color: $accent-color; background-image: url(images/quote-alt.svg); }
+  }
+}
+
+%alt-background-2 {
+  @extend %alt-background;
+  background-color: $secondary-color-2;
+}
+%bright-background {
+  @extend %alt-background;
+  background-color: $accent-color;
+}
+
+%dark-background {
+  @extend %alt-background;
+  background-color: $accent-dark;
+}
+
+%article-padding {
+  @media only screen and (min-height: $tablet-width) and (min-width: $tablet-width )  {
+    padding: $vertical-spacing 0;
+  }
+  @media only screen and (min-height: $tablet-width) and (min-width: $lrg-width )  {
+      padding: 2*$vertical-spacing 0;
+  }
+}
+%paragraph-margin {
+  margin: 0 0 9px;
+  @media only screen and (min-width : $tablet-width)  { margin: 0 0 13px; }
+}
+%underlined  {
+  display: inline-block;
+  padding-bottom: 0.2px;
+  border-bottom-width: 1px;
+  border-color: transparent;
+  border-bottom-style: solid;
+  @include transition(border-color 0.5s);
+}
+%underlined-hover { border-color: $accent-color; }
+
+%underlined-alt  { @extend %underlined; border-color: $accent-color; }
+%underlined-alt-hover { border-color: $black; }
+
+%nested-content { margin-left: $gutter; margin-right:$gutter; }
+%double-nested { margin: 0 $gutter-adj * -1; }
+
+%empty {
+  margin: 0;
+  content: "";
+}
+
+%em-head {
+  content: ".";  font-size:150%;
+  position:relative; top: -0.15em;
+  margin: 0 0.1em;
+  letter-spacing: 0.1em;
+}
+
+%em-head-top {
+  top: 11px;
+  content: "•";
+  display: block;
+  font-size:24px;
+  position:relative;
+  text-align: center;
+  font-family: $body-font;
+}
+
+%em-head-strong {
+  @extend %em-head;
+  content: "...";
+  font-size:120%;
+  top: -0.26em;
+}
+
+%link {
+  cursor: pointer;
+  @extend %underlined;
+  padding-bottom: 1px;
+  color: $accent-color;
+  text-decoration: none;
+  &:hover, a:active { color: $accent-color; @extend %underlined-hover; }
+}
+%button {
+  @extend %link;
+  font-size: 120%;
+  background-color: transparent;
+  margin-top: $baseline / 2;
+  text-transform: uppercase;
+  padding: 0.5em 0.7em;
+  font-weight: $strong-weight;
+  border: 2px solid $accent-color;
+  @include transition(all 0.1s);
+}
+
+%body-of-text {
+  max-width: 39em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+%bigger { font-size: 105%;  }
+%white-out { color: $white; }

@@ -1,0 +1,414 @@
+body {
+  background: $white;
+
+  & > header {
+    @extend %wrapper-full;
+    nav {
+      height: 3em;
+      font-size: 100%;
+      overflow: hidden;
+      @include transition(height 0.3s);
+      a {
+        border-width: 0.3em;
+        &:hover, &:active {
+          color: $accent-high;
+          svg path { fill: $accent-high; }
+        }
+        &.home-link {
+          width: 40px;
+          float: left;
+          height: 2.5em;
+          padding-top: 0.2em;
+          display: inline-block;
+          svg {
+            float: left;
+            height: 100%;
+          }
+          &:hover { border-color: transparent;}
+        }
+        &.mobile-nav {
+          float: right;
+          border: 1px solid;
+          margin-top: 0.6em;
+          padding: 0.2em 0.6em;
+
+        }
+      }
+      ul {
+        display: block;
+        clear: left;
+        li {
+          overflow: hidden;
+          text-align: right;
+          vertical-align: top;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          a {
+            float: right;
+            height: 2em;
+            padding-top: 0.7em;
+          }
+        }
+      }
+      &.open { height: 20em; }
+      @media only screen and (min-width : $med-width) {
+        a.home-link { width: 36px; }
+        a.mobile-nav { display: none; }
+        ul {
+          clear: none;
+          display: inline-block;
+          li {
+            display: inline-block;
+            margin-left: 1.38em;
+          }
+        }
+      }
+    }
+  }
+
+  & > footer {
+    @extend %wrapper-full;
+    padding: $vertical-spacing 0 $vertical-spacing*2;
+    ul {
+      li {
+        margin-top: $gutter;
+        h6 { margin: 0 $gutter; line-height: 2em; }
+        li { margin: 0 $gutter; }
+      }
+      @media only screen and (min-width : $sm-width)  {
+        li {
+          width: 50%;
+          float: left;
+          display: block;
+          li { width: 100%; }
+        }
+      }
+      @media only screen and (min-width : $tablet-width)  {
+        li { width: 33%; }
+      }
+      @media only screen and (min-width : $med-width)  {
+        li { width: 25%; }
+      }
+      @media only screen and (min-width : $lrg-width)  {
+        li { width: 20%; }
+      }
+      @media only screen and (min-width : $max-width)  {
+        li { width: 16.667%; }
+      }
+      @media only screen and (min-width : $ultra-width)  {
+        margin: 0 10%;
+        ul { margin:0; }
+      }
+    }
+  }
+
+  & > main {
+    width: 100%;
+    section {
+      @extend %wrapper-full;
+      padding: $vertical-spacing 0;
+      article, aside { @extend %article-padding; }
+      &.has-sidebar {
+        aside {  @extend %body-of-text;  padding-left: $gutter; padding-right: $gutter; }
+        @media only screen and (min-width : $tablet-width)  {
+          article {
+            width: 70%;
+            float: right;
+            margin-right: 5%;
+          }
+          aside {
+            float: left;
+            margin-left: 5%;
+          }
+        }
+        @media only screen and (min-width : $med-width)  {
+          article { width: auto; margin-right: 8%; }
+          aside { margin-left: 8%; }
+        }
+        @media only screen and (min-width : $max-width)  {
+          article { margin-right: 15%; }
+          aside { margin-left: 15%; }
+        }
+        @media only screen and (min-width : $ultra-width)  {
+          article { margin-right: 20%; max-width: 46%; }
+          aside { margin-left: 20%; width: 12%; }
+        }
+      }
+    }
+  }
+
+  .hero {
+    width: 100%;
+    height:80vh;
+    z-index: 100;
+    overflow: hidden;
+    min-height: 400px;
+    position: relative;
+    text-align: center;
+    background: url(images/intro-background.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment:scroll;
+    &::before {
+      content: ' ';
+      position: absolute;
+      top:0; left:0; bottom: -1px; right: 0;
+      background: $accent-dark;
+      opacity: 0.85;
+      z-index: 102;
+      border-bottom: 6vh solid $accent-light;
+    }
+    .intro {
+      height: 85%;
+      z-index: 103;
+      margin-top: 5%;
+      position: relative;
+      .branding {
+        height: 50%;
+        width: 100%;
+        color:$white;
+        svg {
+          width: 100%;
+          height: 80%;
+          opacity: 0.9;
+          path { fill: $accent-light; }
+          &#sscy {
+            height: 30%;
+            position: relative;
+            top: -1em;
+          }
+        }
+      }
+      h2 {
+        color:$white;
+        //color: $black;
+        @media only screen and (min-width : $tablet-width)  {
+          font-size: 180%;
+        }
+        @media only screen and (min-width : $lrg-width)  {
+          font-size: 240%;
+        }
+      }
+      .button {
+        color:$white;
+        border-color:$white;
+        &:hover { border-color: $accent-light; background-color:  $accent-light; color: $accent-dark; }
+        @media only screen and (min-width : $tablet-width)  {
+          border-width: 3px;
+          margin-top: $baseline;
+        }
+        @media only screen and (min-width : $max-width)  {
+          margin-top: 3*$baseline;
+        }
+        @media only screen and (min-width : $max-width)  {
+          margin-top: 3*$baseline;
+        }
+      }
+    }
+  }
+
+  .alt-color {
+    @extend %alt-color;
+  }
+  .alt-color-2 {
+    @extend %alt-color-2;
+  }
+  .bright-background {
+    @extend %bright-background;
+  }
+  .alt-background {
+    @extend %alt-background;
+  }
+  .alt-background-2 {
+    @extend %alt-background-2;
+  }
+  .dark-background {
+    @extend %dark-background;
+  }
+
+  .alt-background, .dark-background, .bright-background, .alt-background-2 {
+    .branding {
+      color: $white;
+      svg path { fill: $white; }
+    }
+  }
+
+  .alt-color {
+    .branding {
+      color: $secondary-color;
+      svg path { fill: $secondary-color; }
+    }
+  }
+  .alt-color-2 {
+    .branding {
+      color: $secondary-color-2;
+      svg path { fill: $secondary-color-2; }
+    }
+  }
+
+  .logo-bar {
+    height: 10vw;
+    margin-top: 2vw;
+    max-height: 4em;
+    .branding {
+      height: 100%;
+      svg#sscy { margin-left: 1vw; }
+    }
+  }
+  .logo-box {
+    width: 100%;
+    font-size: 100%;
+    margin: 0 auto $vertical-spacing;
+    .branding {
+      height: 0;
+      width: 100%;
+      margin: 0 auto;
+      max-width: 26em;
+      position: relative;
+      text-align: center;
+      padding-bottom: 36%;
+      svg#lotus {
+        top: 6%;
+        left:0;
+        width: 100%;
+        height: 62%;
+        position: absolute;
+      }
+      svg#sscy {
+        width: 100%;
+        height: 30%;
+        position: relative;
+        top:60%;
+      }
+    }
+    @media only screen and (min-width : 420px)  {
+      font-size: 120%;
+    }
+    @media only screen and (min-width : 500px)  {
+      font-size: 160%;
+    }
+    @media only screen and (min-width : 620px)  {
+      font-size: 180%;
+    }
+    @media only screen and (min-width : 768px)  {
+      font-size: 200%;
+    }
+  }
+
+  .branding {
+    display: block;
+    overflow: hidden;
+    color: $accent-color;
+    svg {
+      float: left;
+      width: auto;
+      height: 100%;
+      display: block;
+      path { fill: $accent-color; }
+    }
+  }
+
+  a.branding  {
+    border: none;
+    @include transition(color 0.3s);
+    background: $white;
+    svg path { @include transition(fill 0.3s); }
+    &:hover, &:active {
+      color: $accent-high;
+      svg path { fill: $accent-high; }
+    }
+  }
+}
+
+.divider {
+  @extend %body-of-text;
+  @extend %article-padding;
+  height: $baseline;
+  position: relative;
+  &::before {
+    left: 0;
+    right: 0;
+    top: 49%;
+    width: 100%;
+    height: 3px;
+    content: ' ';
+    z-index: 333;
+    position: absolute;
+    background-color: $accent-color;
+  }
+  svg {
+    width: 100%;
+    height: 100%;
+    z-index: 334;
+    position: relative;
+    rect { fill: $white; }
+    path { fill: $accent-color; }
+  }
+}
+
+.blog {
+  article {
+    padding-top:0;
+    overflow: hidden;
+    .post-thumbnail {
+      width: 30%;
+      float: left;
+      display: block;
+      margin-right: 1.4em;
+      border: none;
+      padding: 0;
+      position: relative;
+      img {
+        height: auto;
+        width: 100%;
+        display: inline-block;
+      }
+      &::after {
+        content: ' ';
+        position: absolute;
+        left:0; bottom: 0; right: 0;
+        background: rgba(255,255,255,0.1);
+        opacity: 0.85;
+        z-index: 100;
+        border-bottom: 3vh solid $accent-light;
+        @include transition(all 0.1s);
+      }
+      &:hover {
+        /*&::after {
+          content: 'Click to read the article';
+          border-width: 100px;
+          background: transparent;
+        }*/
+      }
+      .video-wrapper {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        height: 0;
+        z-index: 101;
+        padding-bottom: 74.2%;
+        iframe {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top:0;
+          left:0;
+        }
+      }
+    }
+    header {
+      margin-bottom: 0;
+    }
+    footer {
+      margin-top: 0;
+      font-size: $small-size;
+      text-transform: uppercase;
+    }
+  }
+}
+
+a.button, input[type=submit], input[type=button] {
+  @extend %button;
+  &:hover, a:active { color: $white; background-color:  $accent-color; }
+}

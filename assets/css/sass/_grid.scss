@@ -1,0 +1,120 @@
+/**
+* CONTAINERS
+**/
+body { width: 100%; height: 100%; }
+
+/**
+* GENERIC LAYOUT CLASSES
+**/
+.left { float: left; }
+.right { float: right; }
+.center { text-align: center; }
+.large-left, .large-right { text-align: center; }
+.small-hide { display: none; }
+.clear-right { clear: right; }
+
+.mb-row { @extend %wrapper-full; }
+
+.mb-col-1, .mb-col-2, .mb-col-3, .mb-col-4, .mb-col-5, .mb-col-6, .mb-col-7, .mb-col-8, .mb-col-9, .mb-col-10, .mb-col-11, .mb-col-12 {
+    float: left;
+    overflow:hidden;
+    width: 100%;
+    .col-content {
+        @extend %nested-content;
+        position:relative;
+        width: auto!important;
+        display: inline-block;
+        img { max-width: 100%; height: auto; }
+        &.right { float: right; }
+        &.center { display: block; }
+    }
+    &.right { float: right; }
+}
+
+/**
+* Responsive widths
+**/
+@media screen and (min-width: $xs-width) {
+  .mb-col-1, .mb-col-2 {
+    @include fluid-width(6);  /* behaves like .mb-col-6 */
+  }
+}
+
+@media screen and (min-width: $sm-width) {}
+
+/* ipad portrait  */
+@media screen and (min-width: $tablet-width) {
+
+    .mb-col-1, .mb-col-2 {
+      @include fluid-width(3);  /* behaves like .mb-col-3 */
+    }
+
+    .mb-col-3, .mb-col-4 {
+      @include fluid-width(4);  /* behaves like .mb-col-4 */
+      &.large-right { float: right; }
+    }
+
+    .mb-col-5, .mb-col-6, .mb-col-7 {
+      @include fluid-width(6);
+      &.large-right { float: right; }
+    }
+
+    .mb-col-8, .mb-col-9, .mb-col-10, .mb-col-11 {
+      @include fluid-width(8); /* behaves like .mb-col-8 */
+      &.large-right { float: right; }
+    }
+
+    .mb-offset-2, .mb-offset-1 {
+      .mb-col-8 { @include fluid-width(12); }
+      .mb-col-5 { @include fluid-width(6); }
+      &.large-right { float: right; }
+    }
+
+    .mb-offset-3 {
+        @include fluid-offset(1);
+        .mb-col-7 { @include fluid-width(10); }
+    }
+
+    .large-left, .large-right { text-align: left; }
+    .col-content.large-right { text-align: right; display: block; }
+
+}
+
+@media screen and (min-width: $med-width) {
+	.mb-col-1 { @include fluid-width(1); }
+	.mb-col-2 { @include fluid-width(2); }
+	.mb-col-3 { @include fluid-width(3); }
+  .mb-col-5 { @include fluid-width(5); }
+  .mb-col-7 { @include fluid-width(7); }
+  .mb-col-9 { @include fluid-width(9); }
+  .mb-col-10 { @include fluid-width(10); }
+  .mb-col-11 { @include fluid-width(11); }
+  .small-hide { display: block; }
+  .mb-offset-2 {
+      @include fluid-offset(1);
+      .mb-col-8, .mb-col-7 { @include fluid-width(10); }
+  }
+  .mb-offset-3 {
+      @include fluid-offset(2);
+      .mb-col-8, .mb-col-7 { @include fluid-width(8); }
+  }
+}
+
+@media screen and (min-width: $lrg-width) {
+    .mb-offset-1 {
+        @include fluid-offset(1);
+        .mb-col-10 { @include fluid-width(10); }
+    }
+    .mb-offset-2 {
+        @include fluid-offset(2);
+        .mb-col-8, .mb-col-7 { @include fluid-width(8); }
+    }
+    .mb-offset-3 {
+        @include fluid-offset(3);
+        .mb-col-7 { @include fluid-width(7); }
+    }
+}
+
+@media screen and (min-width: $max-width) {
+
+}
