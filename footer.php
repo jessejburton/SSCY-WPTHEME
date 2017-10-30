@@ -1,22 +1,22 @@
 </div>
 
-<footer id="footer" class="alt-background">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-3">
-				<h3>Column 1</h3>
-			</div>
-			<div class="col-md-3">
-				<h3>Column 2</h3>
-			</div>
-			<div class="col-md-3">
-				<h3>Column 3</h3>
-			</div>
-			<div class="col-md-3">
-				<h3>Column 4</h3>
-			</div>
-		</div>
-	</div>
+<footer id="footer" class="dark-background">
+	<ul>
+		<?php
+			if(is_active_sidebar('footer-sidebar-1')){
+				dynamic_sidebar('footer-sidebar-1');
+			}
+			if(is_active_sidebar('footer-sidebar-2')){
+				dynamic_sidebar('footer-sidebar-2');
+			}
+			if(is_active_sidebar('footer-sidebar-3')){
+				dynamic_sidebar('footer-sidebar-3');
+			}
+			if(is_active_sidebar('footer-sidebar-4')){
+				dynamic_sidebar('footer-sidebar-4');
+			}
+		?>
+	</ul>
 </footer>
 
 

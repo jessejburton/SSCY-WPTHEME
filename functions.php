@@ -19,6 +19,44 @@ function sscy_theme_setup(){
 
 	// Add page options to pages
 	add_action( 'add_meta_boxes', 'page_options_meta_box' );
+
+  // Register sidebars and widget areas
+  register_sidebar( array(
+    'name' => 'Footer Sidebar 1',
+    'id' => 'footer-sidebar-1',
+    'description' => 'Appears in the footer area',
+    'before_widget' => '<li class="footer-widget">',
+    'after_widget' => '</li>',
+    'before_title' => '<h6 class="widget-title">',
+    'after_title' => '</h6>',
+    ) );
+  register_sidebar( array(
+    'name' => 'Footer Sidebar 2',
+    'id' => 'footer-sidebar-2',
+    'description' => 'Appears in the footer area',
+    'before_widget' => '<li class="footer-widget">',
+    'after_widget' => '</li>',
+    'before_title' => '<h6 class="widget-title">',
+    'after_title' => '</h6>',
+  ) );
+  register_sidebar( array(
+    'name' => 'Footer Sidebar 3',
+    'id' => 'footer-sidebar-3',
+    'description' => 'Appears in the footer area',
+    'before_widget' => '<li class="footer-widget">',
+    'after_widget' => '</li>',
+    'before_title' => '<h6 class="widget-title">',
+    'after_title' => '</h6>',
+  ) );
+  register_sidebar( array(
+    'name' => 'Footer Sidebar 4',
+    'id' => 'footer-sidebar-4',
+    'description' => 'Appears in the footer area',
+    'before_widget' => '<li class="footer-widget">',
+    'after_widget' => '</li>',
+    'before_title' => '<h6 class="widget-title">',
+    'after_title' => '</h6>',
+  ) );
 }
 add_action( 'after_setup_theme', 'sscy_theme_setup' );
 
@@ -72,9 +110,9 @@ function save_page_options_callback( $post_id ) {
 
   // Save the background color
     if ( isset( $_POST['sscy_background_color'] ) )
-        update_post_meta( $post_id, 'background-color', $_POST['sscy_background_color'] );
+      update_post_meta( $post_id, 'background-color', $_POST['sscy_background_color'] );
     else 
-     	add_post_meta( $post_id, 'background-color', $_POST['sscy_background_color'] );
+     	add_post_meta( $post_id, 'background-color', '' );
 
   // Save the show heading option
     if ( isset( $_POST['sscy_show_heading'] ) )
@@ -88,17 +126,13 @@ add_action( 'save_post', 'save_page_options_callback' );
 *	Register Styles and Scripts
 */
 // Javascript
-function wpt_register_js() {
+function sscy_register_js() {
  	wp_register_script('sscy_javascript', get_template_directory_uri() . '/assets/js/common.js', 'common');
     wp_enqueue_script('sscy_javascript');   
 }
-add_action( 'init', 'wpt_register_js' );
+add_action( 'init', 'sscy_register_js' );
 // CSS
-function wpt_register_css() {
-	// Bootstrap Styles
-    wp_register_style( 'bootstrap_styles', get_template_directory_uri() . '/vendor/bootstrap/css/bootstrap.min.css' );
-    wp_enqueue_style( 'bootstrap_styles' );    	
-
+function sscy_register_css() {
     wp_register_style( 'google_fonts', 'https://fonts.googleapis.com/css?family=Crimson+Text:400i|Roboto:300,400' );
     wp_enqueue_style( 'google_fonts' );   
     
@@ -108,8 +142,7 @@ function wpt_register_css() {
     wp_register_style( 'sscy_secondary_styles', get_template_directory_uri() . '/assets/css/secondary_style.css' );
     wp_enqueue_style( 'sscy_secondary_styles' ); 
 }
-add_action( 'wp_enqueue_scripts', 'wpt_register_css' );
-
+add_action( 'wp_enqueue_scripts', 'sscy_register_css' );
 
 /*
 *	Function to display child pages
