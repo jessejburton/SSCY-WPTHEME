@@ -97,6 +97,39 @@ body .bright-background {
 body .dark-background {
   background-color: #45414c; }
 
+body .soft-background {
+  background: -webkit-linear-gradient(rgba(196, 230, 234, 0.5), rgba(247, 244, 240, 0.9), rgba(138, 131, 159, 0.5));
+  background: -o-linear-gradient(rgba(196, 230, 234, 0.5), rgba(247, 244, 240, 0.9), rgba(138, 131, 159, 0.5));
+  background: -moz-linear-gradient(rgba(196, 230, 234, 0.5), rgba(247, 244, 240, 0.9), rgba(138, 131, 159, 0.5));
+  background: linear-gradient(rgba(196, 230, 234, 0.5), rgba(247, 244, 240, 0.9), rgba(138, 131, 159, 0.5)); }
+
+body .gradient-background {
+  background: -webkit-linear-gradient(left bottom, #8b84a0, #c2edef);
+  background: -o-linear-gradient(top right, #8b84a0, #c2edef);
+  background: -moz-linear-gradient(top right, #8b84a0, #c2edef);
+  background: linear-gradient(to top right, #8b84a0, #c2edef); }
+
+body .hero, body .texture-background {
+  width: 100%;
+  z-index: 100;
+  overflow: hidden;
+  position: relative;
+  background: url(images/textures.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll; }
+  body .hero::before, body .texture-background::before {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: -1px;
+    right: 0;
+    background: #f7f4f0;
+    opacity: 0.95;
+    z-index: 102; }
+
 @media only screen and (min-height: 768px) and (min-width: 768px) {
   body > main section article, body > main section aside, .divider {
     padding: 26px 0; } }
@@ -253,6 +286,10 @@ small {
   padding: 0.5px 3px;
   display: inline-block;
   letter-spacing: 0.03em; }
+aside li a {
+  display: inline; }
+.socialmedia_links a {
+  border: none; }
 
 .screen-reader {
   position: fixed;
@@ -541,7 +578,7 @@ body {
           display: inline-block;
           margin-left: 1.38em; } }
   body > footer {
-    padding: 26px 0 52px; }
+    padding: 26px 15px 104px; }
     body > footer ul li {
       margin-top: 15px; }
       body > footer ul li h6 {
@@ -549,30 +586,50 @@ body {
         line-height: 2em; }
       body > footer ul li li {
         margin: 0 15px; }
-    @media only screen and (min-width: 620px) {
+    @media only screen and (min-width: 768px) {
       body > footer ul li {
         width: 50%;
         float: left;
         display: block; }
         body > footer ul li li {
           width: 100%; } }
-    @media only screen and (min-width: 768px) {
-      body > footer ul li {
-        width: 33%; } }
-    @media only screen and (min-width: 960px) {
-      body > footer ul li {
-        width: 25%; } }
-    @media only screen and (min-width: 1040px) {
-      body > footer ul li {
-        width: 20%; } }
     @media only screen and (min-width: 1200px) {
       body > footer ul li {
-        width: 16.667%; } }
-    @media only screen and (min-width: 1500px) {
-      body > footer ul {
-        margin: 0 10%; }
-        body > footer ul ul {
-          margin: 0; } }
+        width: 25%; } }
+    body > footer .socialmedia_links {
+      padding: 15px;
+      margin-bottom: 26px; }
+      body > footer .socialmedia_links li {
+        width: auto;
+        margin: 0 3px 0 0;
+        display: inline-block; }
+        body > footer .socialmedia_links li::before {
+          content: none; }
+        body > footer .socialmedia_links li a {
+          font-size: 1.6em;
+          height: auto;
+          padding: 3px; }
+    body > footer .home-link {
+      height: 0;
+      width: 420px;
+      left: 15px;
+      bottom: 26px;
+      padding-bottom: 41.6px;
+      position: absolute; }
+      body > footer .home-link a {
+        width: 100%;
+        height: 100%;
+        border: none;
+        left: 15px;
+        top: 0;
+        position: absolute;
+        display: inline-block; }
+        body > footer .home-link a svg {
+          height: 100%;
+          width: auto;
+          margin-right: 1%; }
+      body > footer .home-link:hover {
+        border-color: transparent; }
   body > main {
     width: 100%; }
     body > main section {
@@ -582,54 +639,52 @@ body {
         padding-right: 15px; }
       @media only screen and (min-width: 768px) {
         body > main section.has-sidebar article {
-          width: 70%;
+          width: 64%;
           float: right;
           margin-right: 5%; }
         body > main section.has-sidebar aside {
+          padding-left: 0;
+          padding-right: 0;
           float: left;
-          margin-left: 5%; } }
+          width: 22%;
+          margin-left: 5%; }
+          body > main section.has-sidebar aside li {
+            margin: 0.3em 0; } }
       @media only screen and (min-width: 960px) {
         body > main section.has-sidebar article {
-          width: auto;
-          margin-right: 8%; }
+          margin-right: 8%;
+          width: 61%; }
         body > main section.has-sidebar aside {
-          margin-left: 8%; } }
+          margin-left: 8%;
+          width: 18%; } }
+      @media only screen and (min-width: 1040px) {
+        body > main section.has-sidebar article {
+          margin-right: 10%;
+          width: 59%; }
+        body > main section.has-sidebar aside {
+          margin-left: 10%;
+          width: 16%; } }
       @media only screen and (min-width: 1200px) {
         body > main section.has-sidebar article {
           margin-right: 15%; }
         body > main section.has-sidebar aside {
-          margin-left: 15%; } }
+          margin-left: 10%;
+          width: 16%; } }
       @media only screen and (min-width: 1500px) {
         body > main section.has-sidebar article {
-          margin-right: 20%;
-          max-width: 46%; }
+          margin-right: 15%; }
         body > main section.has-sidebar aside {
-          margin-left: 20%;
-          width: 12%; } }
+          margin-left: 10%;
+          width: 22%; } }
   body .hero {
-    width: 100%;
-    height: 80vh;
-    z-index: 100;
-    overflow: hidden;
+    height: 60vh;
     min-height: 400px;
-    position: relative;
     text-align: center;
-    background: url(images/intro-background.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: scroll; }
+    background-image: url(images/intro-background.jpg); }
     body .hero::before {
-      content: ' ';
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: -1px;
-      right: 0;
       background: #45414c;
       opacity: 0.85;
-      z-index: 102;
-      border-bottom: 6vh solid #c2edef; }
+      border-bottom: 5vh solid #c2edef; }
     body .hero .intro {
       height: 85%;
       z-index: 103;
@@ -674,6 +729,15 @@ body {
         @media only screen and (min-width: 1200px) {
           body .hero .intro .button {
             margin-top: 78px; } }
+  body .gradient-background article {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2em 3em; }
+  body .texture-background article {
+    position: relative;
+    z-index: 103; }
+  body .texture-background aside {
+    position: relative;
+    z-index: 104; }
   body .alt-background .branding, body .dark-background .branding, body .bright-background .branding, body .alt-background-2 .branding {
     color: #f7f4f0; }
     body .alt-background .branding svg path, body .dark-background .branding svg path, body .bright-background .branding svg path, body .alt-background-2 .branding svg path {
@@ -687,13 +751,17 @@ body {
     body .alt-color-2 .branding svg path {
       fill: #db8f5d; }
   body .logo-bar {
-    height: 10vw;
+    height: 9vw;
     margin-top: 2vw;
     max-height: 4em; }
     body .logo-bar .branding {
       height: 100%; }
       body .logo-bar .branding svg#sscy {
-        margin-left: 1vw; }
+        margin-left: 2%; }
+    footer body .logo-bar {
+      max-height: 20px;
+      margin: 0;
+      padding: 0; }
   body .logo-box {
     width: 100%;
     font-size: 100%;
@@ -746,8 +814,7 @@ body {
     -moz-transition: color 0.3s;
     -ms-transition: color 0.3s;
     -o-transition: color 0.3s;
-    transition: color 0.3s;
-    background: #f7f4f0; }
+    transition: color 0.3s; }
     body a.branding svg path {
       -webkit-transition: fill 0.3s;
       -moz-transition: fill 0.3s;
@@ -782,10 +849,16 @@ body {
     .divider svg path {
       fill: #64999F; }
 
-.blog article {
+.blog .loop article {
   padding-top: 0;
-  overflow: hidden; }
-  .blog article .post-thumbnail {
+  overflow: hidden;
+  margin-bottom: 26px;
+  padding-bottom: 26px;
+  border-bottom: 1px solid #64999F; }
+  .blog .loop article:last-child {
+    border-bottom: none;
+    margin-bottom: 0; }
+  .blog .loop article .post-thumbnail {
     width: 30%;
     float: left;
     display: block;
@@ -793,11 +866,11 @@ body {
     border: none;
     padding: 0;
     position: relative; }
-    .blog article .post-thumbnail img {
+    .blog .loop article .post-thumbnail img {
       height: auto;
       width: 100%;
       display: inline-block; }
-    .blog article .post-thumbnail::after {
+    .blog .loop article .post-thumbnail::after {
       content: ' ';
       position: absolute;
       left: 0;
@@ -812,28 +885,28 @@ body {
       -ms-transition: all 0.1s;
       -o-transition: all 0.1s;
       transition: all 0.1s; }
-    .blog article .post-thumbnail:hover {
+    .blog .loop article .post-thumbnail:hover {
       /*&::after {
         content: 'Click to read the article';
         border-width: 100px;
         background: transparent;
       }*/ }
-    .blog article .post-thumbnail .video-wrapper {
+    .blog .loop article .post-thumbnail .video-wrapper {
       overflow: hidden;
       position: relative;
       width: 100%;
       height: 0;
       z-index: 101;
       padding-bottom: 74.2%; }
-      .blog article .post-thumbnail .video-wrapper iframe {
+      .blog .loop article .post-thumbnail .video-wrapper iframe {
         position: absolute;
         width: 100%;
         height: 100%;
         top: 0;
         left: 0; }
-  .blog article header {
+  .blog .loop article header {
     margin-bottom: 0; }
-  .blog article footer {
+  .blog .loop article footer {
     margin-top: 0;
     font-size: 80%;
     text-transform: uppercase; }

@@ -93,6 +93,10 @@ a {
     color: $white;
     padding: 0.5px 3px; display: inline-block; letter-spacing: 0.03em;
   }
+  aside li & {
+    display: inline;
+  }
+  .socialmedia_links & { border: none; }
 }
 
 .screen-reader {

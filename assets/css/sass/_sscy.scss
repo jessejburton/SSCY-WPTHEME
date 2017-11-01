@@ -31,7 +31,6 @@ body {
           border: 1px solid;
           margin-top: 0.6em;
           padding: 0.2em 0.6em;
-
         }
       }
       ul {
@@ -68,14 +67,14 @@ body {
 
   & > footer {
     @extend %wrapper-full;
-    padding: $vertical-spacing 0 $vertical-spacing*2;
+    padding: $vertical-spacing $gutter $vertical-spacing*4;
     ul {
       li {
         margin-top: $gutter;
         h6 { margin: 0 $gutter; line-height: 2em; }
         li { margin: 0 $gutter; }
       }
-      @media only screen and (min-width : $sm-width)  {
+      @media only screen and (min-width : $tablet-width)  {
         li {
           width: 50%;
           float: left;
@@ -83,22 +82,49 @@ body {
           li { width: 100%; }
         }
       }
-      @media only screen and (min-width : $tablet-width)  {
-        li { width: 33%; }
-      }
-      @media only screen and (min-width : $med-width)  {
+      @media only screen and (min-width : $max-width)  {
         li { width: 25%; }
       }
-      @media only screen and (min-width : $lrg-width)  {
-        li { width: 20%; }
+    }
+    .socialmedia_links {
+      padding: $gutter;
+      margin-bottom: $baseline;
+      li {
+        width: auto;
+        margin: 0 3px 0 0;
+        display: inline-block;
+        &::before {
+          content: none;
+        }
+        a {
+          font-size: 1.6em;
+          height: auto;
+          padding: 3px;
+        }
       }
-      @media only screen and (min-width : $max-width)  {
-        li { width: 16.667%; }
+    }
+    .home-link {
+      height:0;
+      width: 420px;
+      left: $gutter;
+      bottom: $baseline;
+      padding-bottom: $baseline*1.6;
+      position: absolute;
+      a {
+        width: 100%;
+        height: 100%;
+        border: none;
+        left:15px;
+        top: 0;
+        position: absolute;
+        display: inline-block;
+        svg {
+          height: 100%;
+          width: auto;
+          margin-right: 1%;
+        }
       }
-      @media only screen and (min-width : $ultra-width)  {
-        margin: 0 10%;
-        ul { margin:0; }
-      }
+      &:hover { border-color: transparent;}
     }
   }
 
@@ -112,52 +138,49 @@ body {
         aside {  @extend %body-of-text;  padding-left: $gutter; padding-right: $gutter; }
         @media only screen and (min-width : $tablet-width)  {
           article {
-            width: 70%;
+            width: 64%;
             float: right;
             margin-right: 5%;
           }
           aside {
+            padding-left: 0;
+            padding-right: 0;
             float: left;
+            width: 22%;
             margin-left: 5%;
+            li { margin: 0.3em 0; }
           }
         }
         @media only screen and (min-width : $med-width)  {
-          article { width: auto; margin-right: 8%; }
-          aside { margin-left: 8%; }
+          article { margin-right: 8%; width: 61%; }
+          aside { margin-left: 8%; width: 18%; }
+        }
+        @media only screen and (min-width : $lrg-width)  {
+          article { margin-right: 10%; width: 59%; }
+          aside { margin-left: 10%; width: 16%; }
         }
         @media only screen and (min-width : $max-width)  {
-          article { margin-right: 15%; }
-          aside { margin-left: 15%; }
+          article { margin-right: 15%;  }
+          aside { margin-left: 10%; width: 16%; }
         }
         @media only screen and (min-width : $ultra-width)  {
-          article { margin-right: 20%; max-width: 46%; }
-          aside { margin-left: 20%; width: 12%; }
+          article { margin-right: 15%; }
+          aside { margin-left: 10%; width: 22%; }
         }
       }
     }
   }
 
   .hero {
-    width: 100%;
-    height:80vh;
-    z-index: 100;
-    overflow: hidden;
+    @extend %texture-background;
+    height:60vh;
     min-height: 400px;
-    position: relative;
     text-align: center;
-    background: url(images/intro-background.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment:scroll;
+    background-image: url(images/intro-background.jpg);
     &::before {
-      content: ' ';
-      position: absolute;
-      top:0; left:0; bottom: -1px; right: 0;
       background: $accent-dark;
       opacity: 0.85;
-      z-index: 102;
-      border-bottom: 6vh solid $accent-light;
+      border-bottom: 5vh solid $accent-light;
     }
     .intro {
       height: 85%;
@@ -217,6 +240,21 @@ body {
   .bright-background {
     @extend %bright-background;
   }
+  .gradient-background {
+    @extend %gradient-background;
+    article {
+      background: rgba(255,255,255,0.9);
+      padding: 2em 3em;
+    }
+  }
+  .soft-background {
+    @extend %soft-background;
+  }
+  .texture-background {
+    @extend %texture-background;
+    article { position: relative; z-index: 103; }
+    aside { position: relative; z-index: 104; }
+  }
   .alt-background {
     @extend %alt-background;
   }
@@ -248,12 +286,17 @@ body {
   }
 
   .logo-bar {
-    height: 10vw;
+    height: 9vw;
     margin-top: 2vw;
     max-height: 4em;
     .branding {
       height: 100%;
-      svg#sscy { margin-left: 1vw; }
+      svg#sscy { margin-left: 2%; }
+    }
+    footer & {
+      max-height: 20px;
+      margin: 0;
+      padding: 0;
     }
   }
   .logo-box {
@@ -312,7 +355,6 @@ body {
   a.branding  {
     border: none;
     @include transition(color 0.3s);
-    background: $white;
     svg path { @include transition(fill 0.3s); }
     &:hover, &:active {
       color: $accent-high;
@@ -348,62 +390,68 @@ body {
 }
 
 .blog {
-  article {
-    padding-top:0;
-    overflow: hidden;
-    .post-thumbnail {
-      width: 30%;
-      float: left;
-      display: block;
-      margin-right: 1.4em;
-      border: none;
-      padding: 0;
-      position: relative;
-      img {
-        height: auto;
-        width: 100%;
-        display: inline-block;
-      }
-      &::after {
-        content: ' ';
-        position: absolute;
-        left:0; bottom: 0; right: 0;
-        background: rgba(255,255,255,0.1);
-        opacity: 0.85;
-        z-index: 100;
-        border-bottom: 3vh solid $accent-light;
-        @include transition(all 0.1s);
-      }
-      &:hover {
-        /*&::after {
-          content: 'Click to read the article';
-          border-width: 100px;
-          background: transparent;
-        }*/
-      }
-      .video-wrapper {
-        overflow: hidden;
+  .loop {
+    article {
+      padding-top:0;
+      overflow: hidden;
+      margin-bottom: $baseline;
+      padding-bottom: $baseline;
+      border-bottom: 1px solid $accent-color;
+      &:last-child { border-bottom: none; margin-bottom: 0; }
+      .post-thumbnail {
+        width: 30%;
+        float: left;
+        display: block;
+        margin-right: 1.4em;
+        border: none;
+        padding: 0;
         position: relative;
-        width: 100%;
-        height: 0;
-        z-index: 101;
-        padding-bottom: 74.2%;
-        iframe {
-          position: absolute;
+        img {
+          height: auto;
           width: 100%;
-          height: 100%;
-          top:0;
-          left:0;
+          display: inline-block;
+        }
+        &::after {
+          content: ' ';
+          position: absolute;
+          left:0; bottom: 0; right: 0;
+          background: rgba(255,255,255,0.1);
+          opacity: 0.85;
+          z-index: 100;
+          border-bottom: 3vh solid $accent-light;
+          @include transition(all 0.1s);
+        }
+        &:hover {
+          /*&::after {
+            content: 'Click to read the article';
+            border-width: 100px;
+            background: transparent;
+          }*/
+        }
+        .video-wrapper {
+          overflow: hidden;
+          position: relative;
+          width: 100%;
+          height: 0;
+          z-index: 101;
+          padding-bottom: 74.2%;
+          iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top:0;
+            left:0;
+          }
         }
       }
-    }
-    header {
-      margin-bottom: 0;
-    }
-    footer {
-      margin-top: 0;
-      font-size: $small-size;
-      text-transform: uppercase;
+      header {
+        margin-bottom: 0;
+      }
+      footer {
+        margin-top: 0;
+        font-size: $small-size;
+        text-transform: uppercase;
+      }
     }
   }
 }

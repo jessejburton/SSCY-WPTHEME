@@ -124,6 +124,40 @@
   background-color: $accent-dark;
 }
 
+%soft-background {
+  background: -webkit-linear-gradient($gradient-color-1, $gradient-color-0, $gradient-color-2);
+  background: -o-linear-gradient($gradient-color-1, $gradient-color-0, $gradient-color-2);
+  background: -moz-linear-gradient($gradient-color-1, $gradient-color-0, $gradient-color-2);
+  background: linear-gradient($gradient-color-1, $gradient-color-0, $gradient-color-2);
+}
+
+%gradient-background {
+  background: -webkit-linear-gradient(left bottom, $secondary-color, $accent-light);
+  background: -o-linear-gradient(top right, $secondary-color, $accent-light);
+  background: -moz-linear-gradient(top right, $secondary-color, $accent-light);
+  background: linear-gradient(to top right, $secondary-color, $accent-light);
+}
+
+%texture-background {
+  width: 100%;
+  z-index: 100;
+  overflow: hidden;
+  position: relative;
+  background: url(images/textures.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment:scroll;
+  &::before {
+    content: ' ';
+    position: absolute;
+    top:0; left:0; bottom: -1px; right: 0;
+    background: $white;
+    opacity: 0.95;
+    z-index: 102;
+  }
+}
+
 %article-padding {
   @media only screen and (min-height: $tablet-width) and (min-width: $tablet-width )  {
     padding: $vertical-spacing 0;
