@@ -1,30 +1,27 @@
 <?php
 get_header();
 
-?><div class="container">
+?><main>
 	
-	<div class="row" id="mainContent">
-		<div class="col-lg-8"><?php
-
-			if (have_posts()) :
-			   while (have_posts()) :
-			      the_post();
-			         the_content();
-			   endwhile;
-			endif;
-
-		?></div>
-		<div class="col-lg-4"><h2>Latests Posts</h2><ul><?php
-			$recent_posts = wp_get_recent_posts();
-			foreach( $recent_posts as $recent ){
-				echo '<li><a href="' . get_permalink($recent["ID"]) . '">' .   $recent["post_title"].'</a> </li> ';
+	<section class="has-sidebar blog"><?php
+			$recent_posts = wp_get_recent_posts(array('numberposts' => 1,'orderby' => 'post_date','order' => 'DESC'));
+			foreach( $recent_posts as $recent ){ ?>
+		      	 <article><header><h1><a href="<?php echo get_permalink($recent["ID"]) ?>"><?php echo $recent["post_title"] ?></a></h1></header></article>
+		      	 <article><?php echo $recent["post_content"] ?></article><?php
 			}
 			wp_reset_query();
-		?></ul></div><?php
-	?></div><?php
+
+		?><aside><h4>Latests Posts</h4><ul><?php
+			$recent_posts = wp_get_recent_posts();
+			foreach( $recent_posts as $recent ){
+				echo '<li><a href="' . get_permalink($recent["ID"]) . '">' . $recent["post_title"].'</a></li> ';
+			}
+			wp_reset_query();
+		?></ul></aside><?php
+	?></section><?php
 
 
-?></div><?php
+?></main><?php
 
 	get_footer(); 
 ?>
