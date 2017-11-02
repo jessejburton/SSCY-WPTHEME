@@ -83,8 +83,8 @@ function page_options_meta_box_callback( $post ){
 		    <label for="sscy_background_color">Background color for content</label>
 		    <select name="sscy_background_color" id="sscy_background_color">
 		        <option value="">Default</option>
-		        <option value="bright-background" <?php selected($bgColor, 'bright-background'); ?>>Primary Color</option>
-		        <option value="alt-background" <?php selected($bgColor, 'alt-background'); ?>>Secondary Color</option>
+		        <option value="bright-background" <?php selected($bgColor, 'bright-background'); ?> >Primary Color</option>
+		        <option value="alt-background" <?php selected($bgColor, 'alt-background'); ?> >Secondary Color</option>
 		    </select>
 		</p>
     <?php
@@ -93,35 +93,23 @@ function page_options_meta_box_callback( $post ){
     ?>
     	<p>
 	    	<label for="sscy_show_heading">Show the page heading</label><br />
-	    	<label for="sscy_show_heading_yes">Yes <input type="radio" name="sscy_show_heading" id="sscy_show_heading_yes" value="yes" <?php selected($showHeading, 'yes'); ?>/></label>
-	    	<label for="sscy_show_heading_np">No <input type="radio" name="sscy_show_heading" id="sscy_show_heading_no" value="no" <?php selected($showHeading, 'no'); ?> /></label>
+	    	<label for="sscy_show_heading_yes">Yes <input type="radio" name="sscy_show_heading" id="sscy_show_heading_yes" value="yes" <?php checked($showHeading, 'yes'); ?>/></label>
+	    	<label for="sscy_show_heading_np">No <input type="radio" name="sscy_show_heading" id="sscy_show_heading_no" value="no" <?php checked($showHeading, 'no'); ?> /></label>
 	    </p>
     <?php
 }
 
 function save_page_options_callback( $post_id ) {
-  // Checks save status
-  $is_autosave  = wp_is_post_autosave( $post_id );
-  $is_revision  = wp_is_post_revision( $post_id );
-  $is_valid_nonce = ( isset( $_POST['sscy_nonce'] ) && wp_verify_nonce( $_POST['sscy_nonce'], basename(__FILE__) ) ) ? 'true' : 'false';  
-  $sscy_stored_meta = get_post_meta( $post_id );  // Get the data to know if a file already exists for this post 
 
-  if ( $is_autosave || $is_revision || !$is_valid_nonce ) {
-    die();
-    return; 
-  }   
+// Save the background color
+  if (array_key_exists('sscy_background_color', $_POST)) {
+    update_post_meta( $post_id, 'background-color', $_POST['sscy_background_color'] );
+  }
 
-  // Save the background color
-    if ( isset( $_POST['sscy_background_color'] ) )
-      update_post_meta( $post_id, 'background-color', $_POST['sscy_background_color'] );
-    else 
-     	add_post_meta( $post_id, 'background-color', '' );
-
-  // Save the show heading option
-    if ( isset( $_POST['sscy_show_heading'] ) )
-        update_post_meta( $post_id, 'show-heading', $_POST['sscy_show_heading'] );
-    else 
-     	add_post_meta( $post_id, 'show-heading', 'yes' );     
+// Save the show heading option
+  if (array_key_exists('sscy_show_heading', $_POST)) {
+      update_post_meta( $post_id, 'show-heading', $_POST['sscy_show_heading'] );
+  }
 }
 add_action( 'save_post', 'save_page_options_callback' );
 
