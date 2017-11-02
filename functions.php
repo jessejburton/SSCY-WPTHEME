@@ -11,6 +11,9 @@
 *	Main setup function 
 */
 function sscy_theme_setup(){
+  // Add Featured Image Support
+  add_theme_support( 'post-thumbnails' ); 
+
 	// This theme uses wp_nav_menu() in one location.
 	// Add another menu to the array in order to add more menus to this theme
 	register_nav_menus( array(
@@ -281,3 +284,9 @@ function sscy_socialmedia_shortcode(){
 }
 add_shortcode( 'sscy_socialmedia', 'sscy_socialmedia_shortcode' );
 
+// Replaces the excerpt "Read More" text by a link
+function new_excerpt_more($more) {
+  global $post;
+  return '&nbsp;<a class="moretag" href="'. get_permalink($post->ID) . '"> Read more >>></a>';
+}
+add_filter('excerpt_more', 'new_excerpt_more');

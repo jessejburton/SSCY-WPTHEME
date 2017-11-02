@@ -1,7 +1,7 @@
 <?php
 get_header();
 
-?><main><?php
+?><main><div class="loop"><?php
 
 	if (have_posts()) :
 	   while (have_posts()) :
@@ -22,7 +22,7 @@ get_header();
 	   endwhile;
 	endif;
 
-?></main><?php
+?></div></main><?php
 
 get_footer(); 
 ?>

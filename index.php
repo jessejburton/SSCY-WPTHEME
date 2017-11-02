@@ -3,7 +3,7 @@ get_header();
 
 ?><main>
 	
-	<section class="blog"><?php
+	<section class="has-sidebar blog"><div class="loop"><?php
 		if (have_posts()) :
 		   while (have_posts()) :
 		      the_post();
@@ -13,7 +13,15 @@ get_header();
 		      	 <?php
 		   endwhile;
 		endif;
-	?></section><?php
+		?><aside><h4>Latests Posts</h4><ul><?php
+			$recent_posts = wp_get_recent_posts();
+			foreach( $recent_posts as $recent ){
+				echo '<li><a href="' . get_permalink($recent["ID"]) . '">' . $recent["post_title"].'</a></li> ';
+			}
+			wp_reset_query();
+		?></ul></aside><?php
+	?></div></section><?php
+
 
 ?></main><?php
 
