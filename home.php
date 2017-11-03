@@ -3,7 +3,14 @@ get_header();
 
 ?><main>
 	
-	<section class="blog"><div class="loop"><?php
+	<section class="blog">
+		<article>
+			<header>
+				<h1>Latest Posts</h1>
+				<h2>Blog, News, etc</h2>
+			</header>
+		</article>
+		<div class="loop"><?php
 		if (have_posts()) :
 		   while (have_posts()) :
 		      the_post();
