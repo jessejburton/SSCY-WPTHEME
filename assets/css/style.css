@@ -233,7 +233,7 @@ h1 {
       font-size: 240%; } }
 
 h2 {
-  font-size: 140%; }
+  font-size: 160%; }
   @media only screen and (min-width: 620px) {
     h2 {
       font-size: 180%; } }
@@ -242,16 +242,15 @@ h2 {
       font-size: 200%; } }
 
 h3 {
-  font-weight: 400;
-  font-size: 130%;
+  font-size: 120%;
   text-transform: uppercase;
   color: #64999F; }
   @media only screen and (min-width: 620px) {
     h3 {
-      font-size: 140%; } }
+      font-size: 130%; } }
   @media only screen and (min-width: 768px) {
     h3 {
-      font-size: 160%; } }
+      font-size: 140%; } }
 
 h4 {
   font-size: 120%;
@@ -264,13 +263,12 @@ h4 {
       font-size: 140%; } }
 
 h5 {
-  color: #45414c;
-  font-size: 100%;
-  font-weight: 400; }
-
-h6 {
   font-size: 100%;
   text-transform: uppercase; }
+
+h6 {
+  color: #45414c;
+  font-size: 100%; }
 
 em {
   font-style: italic; }
@@ -596,19 +594,6 @@ body {
     @media only screen and (min-width: 1200px) {
       body > footer ul li {
         width: 25%; } }
-    body > footer .socialmedia_links {
-      padding: 15px;
-      margin-bottom: 26px; }
-      body > footer .socialmedia_links li {
-        width: auto;
-        margin: 0 3px 0 0;
-        display: inline-block; }
-        body > footer .socialmedia_links li::before {
-          content: none; }
-        body > footer .socialmedia_links li a {
-          font-size: 1.6em;
-          height: auto;
-          padding: 3px; }
     body > footer .home-link {
       height: 0;
       width: 420px;
@@ -910,6 +895,26 @@ body {
     margin-top: 0;
     font-size: 80%;
     text-transform: uppercase; }
+
+.socialmedia_links {
+  padding: 15px;
+  margin-bottom: 26px; }
+  .socialmedia_links li {
+    width: auto;
+    margin: 0 3px 0 0;
+    display: inline-block; }
+    .socialmedia_links li::before {
+      content: none; }
+    .socialmedia_links li a {
+      font-size: 1.6em;
+      height: auto;
+      padding: 3px; }
+  article .socialmedia_links {
+    padding-top: 1em;
+    padding-left: 0; }
+    article .socialmedia_links li a {
+      font-size: 2.6em;
+      margin-right: 9px; }
 
 a.button:hover, a.button a:active, input[type=submit]:hover, input[type=submit] a:active, input[type=button]:hover, input[type=button] a:active {
   color: #f7f4f0;

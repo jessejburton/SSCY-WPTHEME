@@ -86,23 +86,6 @@ body {
         li { width: 25%; }
       }
     }
-    .socialmedia_links {
-      padding: $gutter;
-      margin-bottom: $baseline;
-      li {
-        width: auto;
-        margin: 0 3px 0 0;
-        display: inline-block;
-        &::before {
-          content: none;
-        }
-        a {
-          font-size: 1.6em;
-          height: auto;
-          padding: 3px;
-        }
-      }
-    }
     .home-link {
       height:0;
       width: 420px;
@@ -453,6 +436,31 @@ body {
         text-transform: uppercase;
       }
     }
+  }
+}
+
+.socialmedia_links {
+  padding: $gutter;
+  margin-bottom: $baseline;
+  li {
+    width: auto;
+    margin: 0 3px 0 0;
+    display: inline-block;
+    &::before {
+      content: none;
+    }
+    a {
+      font-size: 1.6em;
+      height: auto;
+      padding: 3px;
+    }
+  }
+  article & {
+    padding-top: 1em;
+    padding-left: 0;
+    //@media only screen and (min-width : $lrg-width)  {
+      li a { font-size: 2.6em; margin-right: 9px }
+    //}
   }
 }
 

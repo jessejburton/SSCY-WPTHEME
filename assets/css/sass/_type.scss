@@ -53,7 +53,7 @@ h1 {
   }
 }
 h2 {
-  font-size: 140%;
+  font-size: 160%;
   @media only screen and (min-width : $sm-width)  {
     font-size: 180%;
   }
@@ -62,12 +62,12 @@ h2 {
   }
 }
 h3 {
-  font-weight: $strong-weight; font-size: 130%; text-transform: uppercase; color: $accent-color;
+  font-size: 120%; text-transform: uppercase; color: $accent-color;
   @media only screen and (min-width : $sm-width)  {
-    font-size: 140%;
+    font-size: 130%;
   }
   @media only screen and (min-width : $tablet-width)  {
-    font-size: 160%;
+    font-size: 140%;
   }
 }
 h4 {
@@ -80,8 +80,8 @@ h4 {
     font-size: 140%;
   }
 }
-h5 { color: $accent-dark; font-size: 100%; font-weight: $strong-weight; }
-h6 { font-size: 100%; text-transform: uppercase; }
+h5 { font-size: 100%; text-transform: uppercase; }
+h6 { color: $accent-dark; font-size: 100%; }
 
 em { font-style: $em-style; }
 strong { font-weight:$strong-weight; }
