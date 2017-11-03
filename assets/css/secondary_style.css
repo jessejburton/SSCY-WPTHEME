@@ -1,7 +1,11 @@
-.content-panel {
-	padding: 50px 0;
-}
-
+/* Changed this to display: inline; in order to handle long post titles */
 .blog header h3 a {
 	display: inline!important;
+}
+
+/* Added this to stop the text from wrapping on long excerpts, not sure if it is the best solution 
+since it doesn't work if there is not a featured images, although it seems that all of our posts 
+have featured images -- Thoughts? */
+.blog article p {
+	padding-left: 222px;
 }
