@@ -9,3 +9,17 @@ have featured images -- Thoughts? */
 .blog article p {
 	padding-left: 222px;
 }
+
+
+/* Let me know what you think, the paragraphs seemed a little close together so I thought a little 
+more space may help - totally open to suggestions, thoughts or removing this altogether if you think
+it is better the way it is without the extra space :) */
+.loop p {
+	margin: 0 0 28px;
+}
+
+/* Text seemed to butt right up against the table when a paragraph was after it. See here:
+http://www.burtonmediainc.com/SITES/saltspringcentre/our-facilities/ */
+table {
+    margin-bottom: 25px;
+}
