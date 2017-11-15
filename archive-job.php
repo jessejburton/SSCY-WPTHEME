@@ -8,7 +8,7 @@ get_header();
 	   ?>
 	   	<section>
 			<article>
-				<h1>Community Opportunities</h1>
+				<h1>Current Opportunities</h1>
 			</article>
 		</section>
 	<?php
