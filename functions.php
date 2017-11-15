@@ -290,3 +290,49 @@ function new_excerpt_more($more) {
   return '&nbsp;<a class="moretag" href="'. get_permalink($post->ID) . '"> Read more >>></a>';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
+
+
+/*
+  =======================================================
+  Custom Post Types
+*/
+  function job_custom_post_type(){
+    $singular = "Job Posting";
+    $plural = "Job Postings";
+    
+    $labels = array(
+      'name'        => $plural,
+      'singular_name'   => $singular,
+      'add_name'      => 'Add New',
+      'add_new_item'    => 'Add New ' . $singular,
+      'edit'        => 'Edit',
+      'edit_item'     => 'Edit ' . $singular,
+      'new_item'      => 'New ' . $singular,
+      'view'        => 'View ' . $singular,
+      'view_item'     => 'View ' . $singular,
+      'search_term'   => 'Search ' . $plural,
+      'parent'      => 'Parent ' . $singular,
+      'not_found'     => 'No ' . $plural . ' found',
+      'not_found_in_trash'=> 'No ' . $plural . ' found in trash'
+    );
+    
+    $args = array( 
+      'labels'            => $labels,
+      'public'            => true,
+      'has_archive'       => true,
+      'publicly_queyable' => true,
+      'query_var'         => true,
+      'rewrite'           => true,
+      'capability_type'   => 'post',
+      'hierarchical'      => true,
+      'supports'           => array (
+        'title',
+        'editor'
+      ),
+      'taxonimies'        => array('category', 'post_tag'),
+      'menu_position'     => 5,
+      'exlude_from_search'=> false
+    );
+    register_post_type( 'job', $args );
+  }
+add_action( 'init', 'job_custom_post_type' );
