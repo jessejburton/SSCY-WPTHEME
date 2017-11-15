@@ -566,7 +566,6 @@
 				</svg>
 		</a>
 	</div>
-	<br /><br />
 </footer>
 
 
