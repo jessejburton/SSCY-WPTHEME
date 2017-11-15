@@ -295,6 +295,7 @@ add_filter('excerpt_more', 'new_excerpt_more');
 /*
   =======================================================
   Custom Post Types
+  =======================================================
 */
   function job_custom_post_type(){
     $singular = "Job Posting";
@@ -336,3 +337,62 @@ add_filter('excerpt_more', 'new_excerpt_more');
     register_post_type( 'job', $args );
   }
 add_action( 'init', 'job_custom_post_type' );
+
+
+/*
+  =======================================================
+  Custom Post Type Meta Boxes
+  =======================================================
+*/
+
+  function job_custom_meta_boxes(){
+    require_once( 'inc/sscy-job-fields.php' );    
+
+    // Define the custom attachment for pages
+    add_meta_box(
+        'sscy_jobs_responsibilities_and_qualifications',   // Unique ID
+        'Responsibilities & Qualifications',               // Box Title
+        'sscy_jobs_responsibilities_and_qualifications',   // Content Callback
+        'job'                                              // Post Type
+    );
+
+    // Define the custom attachment for pages
+    add_meta_box(
+        'sscy_jobs_working_conditions',
+        'Working Conditions',
+        'sscy_jobs_working_conditions',
+        'job'
+    );    
+
+    // Define the custom attachment for pages
+    add_meta_box(
+        'sscy_jobs_options',
+        'Options',
+        'sscy_jobs_options',
+        'job'
+    );
+  }
+add_action( 'add_meta_boxes', 'job_custom_meta_boxes' );
+
+/*
+  =======================================================
+  Save Custom Post Type Meta Data
+  =======================================================
+*/
+  function job_save_meta_data( $post_id ) {
+    // Checks save status
+    $is_autosave  = wp_is_post_autosave( $post_id );
+    $is_revision  = wp_is_post_revision( $post_id );
+    $is_valid_nonce = ( isset( $_POST['sscy_jobs_nonce'] ) && wp_verify_nonce( $_POST['sscy_jobs_nonce'], basename(__FILE__) ) ) ? 'true' : 'false';  
+      
+    if ( $is_autosave || $is_revision || !$is_valid_nonce ) {
+      die();
+      return; 
+    }   
+
+      update_post_meta( $post_id, 'responsibilities', $_POST['custom_editor_1'] );
+      update_post_meta( $post_id, 'conditions', $_POST['custom_editor_2'] );    
+      update_post_meta( $post_id, 'active', isset( $_POST['active'] ) );
+
+  }
+add_action( 'save_post', 'job_save_meta_data' );  

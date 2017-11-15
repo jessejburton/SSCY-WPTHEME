@@ -1,7 +1,7 @@
 <?php
 get_header();
 
-?><main><div class="loop"><h1>index</h1><?php
+?><main><div class="loop"><?php
 
 	if (have_posts()) :
 	   while (have_posts()) :
