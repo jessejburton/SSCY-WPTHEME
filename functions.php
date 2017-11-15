@@ -390,9 +390,15 @@ add_action( 'add_meta_boxes', 'job_custom_meta_boxes' );
       return; 
     }   
 
+    if( isset($_POST['custom_editor_1']) ){
       update_post_meta( $post_id, 'responsibilities', $_POST['custom_editor_1'] );
-      update_post_meta( $post_id, 'conditions', $_POST['custom_editor_2'] );    
+    }
+    if( isset($_POST['custom_editor_2']) ){
+      update_post_meta( $post_id, 'conditions', $_POST['custom_editor_2'] );  
+    }
+    if( isset($_POST['active']) ){  
       update_post_meta( $post_id, 'active', isset( $_POST['active'] ) );
+    }
 
   }
 add_action( 'save_post', 'job_save_meta_data' );  
