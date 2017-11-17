@@ -18,7 +18,7 @@ get_header();
 	      	?>
 			<section>
 				<article>
-					<h2><?php the_title(); ?></h2>
+					<h2><a href="<?php echo the_permalink(); ?>"><?php the_title(); ?></a></h2>
 			    	<?php the_excerpt(); ?>
 				</article>
 			</section>

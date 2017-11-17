@@ -15,19 +15,23 @@ get_header();
 				</article>
 			</section>
 
-			<section class="bright-background">
-				<article>
-					<h2>Responsibilities & Qualifications</h2>
-					<?php echo get_post_meta(get_the_ID(), 'responsibilities', true); ?>
-				</article>
-			</section>
+			<?php if( !empty( get_post_meta(get_the_ID(), 'responsibilities', true) ) ) { ?>
+				<section class="bright-background">
+					<article>
+						<h2>Responsibilities & Qualifications</h2>
+						<?php echo get_post_meta(get_the_ID(), 'responsibilities', true); ?>
+					</article>
+				</section>
+			<?php } ?>
 
-			<section>
-				<article>
-					<h2>Working Conditions</h2>
-					<?php echo get_post_meta(get_the_ID(), 'conditions', true); ?>
-				</article>
-			</section>
+			<?php if( !empty( get_post_meta(get_the_ID(), 'conditions', true) ) ) { ?>
+				<section>
+					<article>
+						<h2>Working Conditions</h2>
+						<?php echo get_post_meta(get_the_ID(), 'conditions', true); ?>
+					</article>
+				</section>
+			<?php } ?>
 
 			<section>
 				<article>
