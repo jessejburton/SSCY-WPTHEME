@@ -296,3 +296,6 @@ function custom_excerpt_length( $length ) {
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
+
+/* ADD SSCY JOB POSTINGS - Want to change this to just use the plugin */
+require_once( 'inc/sscy-job.php' );
