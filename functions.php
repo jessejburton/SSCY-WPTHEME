@@ -299,3 +299,11 @@ add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
 /* ADD SSCY JOB POSTINGS - Want to change this to just use the plugin */
 require_once( 'inc/sscy-job.php' );
+
+function sscy_section_shortcode($atts = [], $content = null)
+{
+    $content = '<div class="sscy-spaced">' . do_shortcode($content) . '</div>';
+
+    return $content;
+}
+add_shortcode('sscy_section', 'sscy_section_shortcode');
