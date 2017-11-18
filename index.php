@@ -3,6 +3,18 @@ get_header();
 
 ?><main><div class="loop"><?php
 
+	// Bread Crumb Navigation
+	?>
+	<section><article>
+		<div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
+		    <?php if(function_exists('bcn_display'))
+		    {
+		        bcn_display();
+		    }?>
+		</div>
+	</article></section>
+	<?php
+
 	if (have_posts()) :
 	   while (have_posts()) :
 	      the_post();
