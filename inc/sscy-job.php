@@ -109,4 +109,4 @@ add_action( 'add_meta_boxes', 'job_custom_meta_boxes' );
     }
 
   }
-add_action( 'save_post', 'job_save_meta_data' );  
+add_action( 'save_post', 'job_save_meta_data' );
