@@ -54,7 +54,7 @@ add_action( 'init', 'job_custom_post_type' );
 */
 
   function job_custom_meta_boxes(){
-    require_once( 'inc/sscy-job-fields.php' );    
+    require_once( 'sscy-job-fields.php' );    
 
     // Define the custom attachment for pages
     add_meta_box(
