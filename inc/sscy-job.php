@@ -107,6 +107,9 @@ add_action( 'add_meta_boxes', 'job_custom_meta_boxes' );
     if( isset($_POST['active']) ){  
       update_post_meta( $post_id, 'active', isset( $_POST['active'] ) );
     }
+    if( isset($_POST['gravity_form_id']) ){  
+      update_post_meta( $post_id, 'gravity_form_id', $_POST['gravity_form_id'] );
+    }
 
   }
 add_action( 'save_post', 'job_save_meta_data' );

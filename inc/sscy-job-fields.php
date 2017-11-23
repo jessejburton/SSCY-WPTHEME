@@ -37,8 +37,8 @@ function sscy_jobs_working_conditions( $post ) {
 function sscy_jobs_options( $post ) {
     wp_nonce_field( basename(__FILE__), 'sscy_jobs_nonce' );
     $sscy_jobs_stored_meta = get_post_meta( $post->ID );
-    if ( isset( $sscy_jobs_stored_meta['apply_url'] ) ){
-        $applyURL = $sscy_jobs_stored_meta['apply_url'];
+    if ( isset( $sscy_jobs_stored_meta['gravity_form_id'] ) ){
+        $gravityFormID = $sscy_jobs_stored_meta['gravity_form_id'][0];
     } else {
         $applyURL = '';
     }
@@ -52,8 +52,8 @@ function sscy_jobs_options( $post ) {
         </p>
 
         <p>
-            <label for="apply_url">Application Form URL</label><br />
-            <input type="text" name="applu_url" id="apply_url" style="width: 100%;" value="<?php echo $applyURL; ?>" placeholder="http://www.saltspringcentre.com" />          
+            <label for="gravity_form_id">Gravity Form ID</label><br />
+            <input type="text" name="gravity_form_id" id="gravity_form_id" style="width: 100%;" value="<?php echo $gravityFormID; ?>" placeholder="Enter the ID for the gravity form to use to apply for this posting." />          
         </p>        
     <?php
 }
