@@ -40,7 +40,7 @@ function sscy_jobs_options( $post ) {
     if ( isset( $sscy_jobs_stored_meta['gravity_form_id'] ) ){
         $gravityFormID = $sscy_jobs_stored_meta['gravity_form_id'][0];
     } else {
-        $applyURL = '';
+        $gravityFormID = '';
     }
 
     ?>
