@@ -103,7 +103,7 @@ function page_options_meta_box_callback( $post ){
     ?>
     	<p>
 	    	<label for="sscy_show_heading">Show the page heading</label><br />
-	    	<label for="sscy_show_heading_yes">Yes <input type="radio" name="sscy_show_heading" id="sscy_show_heading_yes" value="yes" <?php checked($showHeading, 'yes'); ?>/></label>
+	    	<label for="sscy_show_heading_yes">Yes <input type="radio" name="sscy_show_heading" id="sscy_show_heading_yes" value="yes" checked="checked" <?php checked($showHeading, 'yes'); ?>/></label>
 	    	<label for="sscy_show_heading_np">No <input type="radio" name="sscy_show_heading" id="sscy_show_heading_no" value="no" <?php checked($showHeading, 'no'); ?> /></label>
 	    </p>
     <?php

@@ -12,8 +12,16 @@ get_header();
 	if (have_posts()) :
 	   while (have_posts()) :
 	      the_post();
-			set_query_var( 'current_post', $post );
-            echo get_template_part( 'templates/panel' );
+			?>
+			<section class="<?php echo get_post_meta($post->ID, 'background-color')[0]; ?>">
+				<article>
+					<?php if ( get_post_meta($post->ID, 'show-heading')[0] == 'yes' ){ ?>
+						<h1><?php the_title(); ?></h1>
+					<?php } ?>
+			    	<?php the_content(); ?>
+				</article>
+			</section>
+			<?php
 
 	        $childArgs = array(
 	            'sort_order' => 'ASC',
@@ -22,8 +30,16 @@ get_header();
 	        );
 	        $childList = get_pages($childArgs);
 	        foreach ($childList as $child) { 
-	        	set_query_var( 'current_post', $child );
-	            echo get_template_part( 'templates/panel' );
+	        	?>
+	        	<section class="<?php echo get_post_meta($child->ID, 'background-color')[0]; ?>">
+					<article>
+						<?php if ( get_post_meta($child->ID, 'show-heading')[0] == 'yes' ){ ?>
+							<h1><?php the_title(); ?></h1>
+						<?php } ?>
+				    	<?php echo $child->post_content; ?>
+					</article>
+				</section>
+				<?php
 	        }
 	   endwhile;
 	endif;
