@@ -21,7 +21,7 @@ get_header();
 	      	?>
 			<section class="<?php echo get_post_meta($post->ID, 'background-color')[0]; ?>">
 				<article>
-					<?php if ( get_post_meta($post->ID, 'show-heading')[0] == 'yes' ){ ?>
+					<?php if ( !isset( get_post_meta($post->ID, 'show-heading')[0] ) || get_post_meta($post->ID, 'show-heading')[0] == 'yes' ){ ?>
 						<h1><?php the_title(); ?></h1>
 					<?php } ?>
 			    	<?php the_content(); ?>
