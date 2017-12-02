@@ -20,6 +20,13 @@ function sscy_theme_setup(){
 		'primary-menu' => __( 'Primary Menu' )
 	) );
 
+  // Add custom variables
+  function add_query_vars_filter( $vars ){
+    $vars[] = "fid";
+    return $vars;
+  }
+  add_filter( 'query_vars', 'add_query_vars_filter' );  
+
 	// Add page options to pages
 	add_action( 'add_meta_boxes', 'page_options_meta_box' );
 

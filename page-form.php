@@ -21,8 +21,13 @@ get_header();
 	      	?>
 			<section class="<?php echo get_post_meta($post->ID, 'background-color')[0]; ?>">
 				<article>
-					<h1>FORM TEMPLATE <?php the_title(); ?></h1>
-			    	<?php the_content(); ?>
+					<?php 
+						if( is_numeric( get_query_var( 'fid' ) )){
+							gravity_form( 1, true, true, false, '', false );
+						} else {
+							echo 'No form specified';
+						};
+					?>
 				</article>
 			</section>
 			<?php

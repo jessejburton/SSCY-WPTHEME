@@ -21,7 +21,6 @@ get_header();
 	      	?>
 			<section class="<?php echo get_post_meta($post->ID, 'background-color')[0]; ?>">
 				<article>
-					<h3>HERE</h3>
 					<h1><?php the_title(); echo get_post_meta($post->ID, 'show-heading')[0]; ?> ?></h1>
 			    	<?php the_content(); ?>
 				</article>
