@@ -36,3 +36,8 @@ footer h6 {
 .sscy-spaced {
 	clear: both;
 }
+
+.breadcrumb {
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
