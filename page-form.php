@@ -23,7 +23,7 @@ get_header();
 				<article>
 					<?php 
 						if( is_numeric( get_query_var( 'fid' ) )){
-							gravity_form( 1, true, true, false, '', false );
+							gravity_form( get_query_var( 'fid' ), true, true, false, '', false );
 						} else {
 							echo 'No form specified';
 						};
