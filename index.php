@@ -4,17 +4,14 @@ get_header();
 
 // Bread Crumb Navigation
 ?>
-<section><article class="breadcrumb">
-	<div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
-	    <?php if(function_exists('bcn_display'))
-	    {
-	        bcn_display();
-	   	}?>
-	</div>
-</article></section>
-<?php
+<div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
+		<?php if(function_exists('bcn_display'))
+		{
+				bcn_display();
+		}?>
+</div>
 
-?><main><div class="loop"><?php
+<main><div class="loop"><?php
 
 	if (have_posts()) :
 	   while (have_posts()) :
@@ -34,5 +31,5 @@ get_header();
 
 ?></div></main><?php
 
-get_footer(); 
+get_footer();
 ?>
