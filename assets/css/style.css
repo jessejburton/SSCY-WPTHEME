@@ -563,8 +563,8 @@ body {
           height: 2em;
           padding-top: 0.7em; }
     body > header nav.open {
-      height: 20em; }
-    @media only screen and (min-width: 960px) {
+      height: 32em; }
+    @media only screen and (min-width: 1420px) {
       body > header nav a.home-link {
         width: 36px; }
       body > header nav a.mobile-nav {

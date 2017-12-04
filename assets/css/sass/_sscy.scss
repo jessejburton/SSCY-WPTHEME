@@ -49,8 +49,8 @@ body {
           }
         }
       }
-      &.open { height: 20em; }
-      @media only screen and (min-width : $med-width) {
+      &.open { height: 32em; }
+      @media only screen and (min-width : 1420px) {
         a.home-link { width: 36px; }
         a.mobile-nav { display: none; }
         ul {
