@@ -1,3 +1,7 @@
+/* Changed this to display: inline; in order to handle long post titles */
+.blog header h3 a {
+	display: inline!important;
+}
 
 /* Added this to stop the text from wrapping on long excerpts, not sure if it is the best solution
 since it doesn't work if there is not a featured images, although it seems that all of our posts
@@ -12,4 +16,27 @@ more space may help - totally open to suggestions, thoughts or removing this alt
 it is better the way it is without the extra space :) */
 .loop p {
 	margin: 0 0 28px;
+}
+
+/* Text seemed to butt right up against the table when a paragraph was after it. See here:
+http://www.burtonmediainc.com/SITES/saltspringcentre/our-facilities/ */
+table {
+    margin-bottom: 25px;
+}
+
+footer h6 {
+	color: #fff!important;
+	margin-bottom: 15px!important;
+}
+
+.home-link {
+	margin: 0;
+}
+
+.sscy-spaced {
+	clear: both;
+}
+
+.breadcrumb {
+	padding: 25px 0 0 0;
 }
