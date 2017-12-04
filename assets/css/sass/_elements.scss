@@ -23,6 +23,7 @@ img {
 
 /* tables */
 table {
+  margin-bottom: $vertical-spacing;
   tr, thead, tbody, tfoot {
     border-bottom: 1px solid $accent-color;
     width: 100%;
