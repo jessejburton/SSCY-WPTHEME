@@ -400,7 +400,7 @@ body {
         width: 30%;
         float: left;
         display: block;
-        margin-right: 1.4em;
+        margin-right: 4%;
         border: none;
         padding: 0;
         position: relative;
@@ -441,6 +441,10 @@ body {
             left:0;
           }
         }
+      }
+      p {
+        margin: 0 0 $baseline;
+        padding-left: 34%;
       }
       header {
         margin-bottom: 0;

@@ -861,7 +861,7 @@ body {
     width: 30%;
     float: left;
     display: block;
-    margin-right: 1.4em;
+    margin-right: 4%;
     border: none;
     padding: 0;
     position: relative; }
@@ -903,6 +903,9 @@ body {
         height: 100%;
         top: 0;
         left: 0; }
+  .blog .loop article p {
+    margin: 0 0 26px;
+    padding-left: 34%; }
   .blog .loop article header {
     margin-bottom: 0; }
   .blog .loop article footer {
