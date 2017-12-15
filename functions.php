@@ -141,7 +141,7 @@ function sscy_register_css() {
     wp_register_style( 'google_fonts', 'https://fonts.googleapis.com/css?family=Crimson+Text:400i|Roboto:300,400' );
     wp_enqueue_style( 'google_fonts' );   
     
-    wp_register_style( 'sscy_styles', get_template_directory_uri() . '/assets/css/style.css' );
+    wp_register_style( 'sscy_styles', get_template_directory_uri() . '/assets/css/style.min.css' );
     wp_enqueue_style( 'sscy_styles' );    
 
     wp_register_style( 'sscy_secondary_styles', get_template_directory_uri() . '/assets/css/secondary_style.css' );

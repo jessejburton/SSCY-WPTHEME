@@ -51,15 +51,32 @@ body {
         }
       }
       &.open { height: 32em; }
-      @media only screen and (min-width : 1420px) {
+      @media only screen and (min-width : 1160px) {
         a.home-link { width: 36px; }
         a.mobile-nav { display: none; }
         ul {
+          font-size: 80%;
+          margin-left: 10px;
           clear: none;
           display: inline-block;
           li {
             display: inline-block;
             margin-left: 1.38em;
+            padding: 5px;
+            a {
+              height: 2.2em;
+            }
+          }
+        }
+      }      
+      @media only screen and (min-width : 1420px) {
+        ul {
+          font-size: 100%;
+          li {
+            padding: 0;
+            a {
+              height: 2em;
+            }
           }
         }
       }
