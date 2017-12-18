@@ -100,7 +100,7 @@ textarea, input[type="text"], input[type="password"], input[type="tel"], input[t
   border-radius: 0;
   @include appearance(none);
 }
-textarea, input[type="text"], input[type="password"], input[type="tel"], input[type="number"], input[type="email"], input[type="url"] {
+textarea, input[type="text"], input[type="password"], input[type="tel"], input[type="number"], input[type="email"], input[type="url"], select {
   font-family: $body-font;
   font-size: $default-font-size;
   border: 1px solid $accent-color;
