@@ -1,18 +1,6 @@
 <?php
 get_header();
 
-// Bread Crumb Navigation
-?>
-<section><article class="breadcrumb">
-	<div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
-	    <?php if(function_exists('bcn_display'))
-	    {
-	        bcn_display();
-	   	}?>
-	</div>
-</article></section>
-<?php
-
 ?><main><div class="loop"><?php
 
 	if (have_posts()) :
