@@ -596,6 +596,7 @@ body {
   body > footer {
     padding: 26px 15px 104px; }
     body > footer h6 {
+      font-weight: bold;
       margin-bottom: 15px; }
     body > footer ul li {
       margin-top: 15px; }
