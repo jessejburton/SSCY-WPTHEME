@@ -314,3 +314,37 @@ function sscy_section_shortcode($atts = [], $content = null)
     return $content;
 }
 add_shortcode('sscy_section', 'sscy_section_shortcode');
+
+// For Registration Software
+add_action("gform_after_submission", "save_form_to_file", 10, 2);
+date_default_timezone_set('America/Los_Angeles');
+function save_form_to_file($entry, $form) {
+  $filename = $form['id'] . '.';
+  $filename .= time();
+  $filename .= rand(1,100000);
+  $myFile = "/home/jessejburton/public_html/SITES/saltspringcentre/new_registrations/{$filename}.csv";
+  $fh = fopen($myFile, 'w');
+  fputcsv($fh, array($form['title']), ',', '"');
+  fputcsv($fh, array($entry['date_created'].' UTC'), ',', '"');
+  fputcsv($fh, array('field_id', 'name', 'value'), ',', '"');
+  foreach($form['fields'] as $field) {
+    if ($field['inputs']) {
+      foreach($field['inputs'] as $input) {
+        $name = $field['label'].' - '.$input['label'];
+        $field_id   = $input['id'];
+        if ($name && $field_id) {
+          $value      = $entry["$field_id"];
+          fputcsv($fh, array($field_id, $name, $value), ',', '"');
+        }
+      }
+    } else {
+      $name = $field['label'];
+      $field_id   = $field['id'];
+      if ($name && $field_id) {
+        $value      = $entry[$field_id];
+        fputcsv($fh, array($field_id, $name, $value), ',', '"');
+      }
+    }
+  }
+  fclose($fh);
+}

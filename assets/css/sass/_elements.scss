@@ -47,10 +47,12 @@ ul, ol, dl {
 li {
   list-style-position: inside;
   ul & {
-    list-style-type: disc;
+    list-style-type: none;
     &::before {
-      //content: "• ";;
-      font-size: 150%;
+      font-family: "FontAwesome";
+      content: "\f111 ";
+      font-size: 50%;
+      padding-right: $gutter;
       line-height: 80%;
       color: $accent-color;
       vertical-align: middle;
