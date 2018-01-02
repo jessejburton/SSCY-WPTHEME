@@ -33,11 +33,13 @@ get_header();
 				</section>
 			<?php } ?>
 
-			<section>
-				<article>
-					<p><input type="button" value="Apply"></p>
-				</article>
-			</section>
+			<?php if( !empty( get_post_meta(get_the_ID(), 'gravity_form_id', true) ) ) { ?>
+				<section>
+					<article>
+						<p><a class="button" href="http://www.burtonmediainc.com/SITES/saltspringcentre/form/?fid=<?php echo get_post_meta(get_the_ID(), 'gravity_form_id', true); ?>">APPLY</a></p>
+					</article>
+				</section>
+			<?php } ?>
 	   <?php
 	   endwhile;
 	endif;
