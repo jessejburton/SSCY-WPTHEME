@@ -43,7 +43,7 @@ h1 + ul, h2 + ul, h3 + ul, h4 + ul {
   padding-top: 18px;  // For when a list shows up under a heading
 }
 
-ul, ol, dl {
+main ul, ol, dl {
   @extend %paragraph-margin;
   position: relative;
   padding-left: $gutter * 3;
