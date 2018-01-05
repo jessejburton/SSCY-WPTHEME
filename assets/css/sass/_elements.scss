@@ -39,6 +39,10 @@ table {
 
 
 /* lists */
+h1 + ul, h2 + ul, h3 + ul, h4 + ul {
+  padding-top: 18px;  // For when a list shows up under a heading
+}
+
 ul, ol, dl {
   @extend %paragraph-margin;
   position: relative;
@@ -47,6 +51,7 @@ ul, ol, dl {
   li & { margin-bottom: 0; }
 }
 li {
+  padding-bottom: 5px;
   ul & {
     &::before {
       position: absolute;
@@ -56,7 +61,6 @@ li {
       left: $gutter * 1.75;
       color: $accent-color;
       vertical-align: middle;
-      //font-weight: $strong-weight;
     }
     nav &:before, footer &:before { content: ''; }
   }
