@@ -348,3 +348,16 @@ function save_form_to_file($entry, $form) {
   }
   fclose($fh);
 }
+
+// Short code for Gravity Form Button
+function sscy_gform_button_shortcode( $atts = [] ){
+  $text = $atts['text'];
+  $FID = get_post_meta($atts['fid'], 'gravity_form_id', true);
+
+  ob_start();
+  ?> 
+    <a class="button" href="http://www.burtonmediainc.com/SITES/saltspringcentre/form/?fid=<?php echo $FID; ?>"><?php echo $text; ?></a>
+  <?php
+  return ob_get_clean();
+}
+add_shortcode( 'sscy_form_button', 'sscy_gform_button_shortcode' );

@@ -41,22 +41,22 @@ table {
 /* lists */
 ul, ol, dl {
   @extend %paragraph-margin;
+  position: relative;
+  padding-left: $gutter * 3;
   nav & { margin: 0; }
   li & { margin-bottom: 0; }
 }
 li {
-  list-style-position: inside;
   ul & {
-    list-style-type: none;
     &::before {
+      position: absolute;
       font-family: "FontAwesome";
       content: "\f111 ";
       font-size: 50%;
-      padding-right: $gutter;
-      line-height: 80%;
+      left: $gutter * 1.75;
       color: $accent-color;
       vertical-align: middle;
-      font-weight: $strong-weight;
+      //font-weight: $strong-weight;
     }
     nav &:before, footer &:before { content: ''; }
   }
