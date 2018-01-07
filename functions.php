@@ -128,8 +128,9 @@ add_action( 'save_post', 'save_page_options_callback' );
 */
 // Javascript
 function sscy_register_js() {
- 	wp_register_script('sscy_javascript', get_template_directory_uri() . '/assets/js/common.js', 'common');
-    wp_enqueue_script('sscy_javascript');   
+  wp_register_script('sscy_javascript', get_template_directory_uri() . '/assets/js/common.js', array( 'jquery' ));
+  wp_enqueue_script('jquery');
+  wp_enqueue_script('sscy_javascript');   
 }
 add_action( 'init', 'sscy_register_js' );
 // CSS
