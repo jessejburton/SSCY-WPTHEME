@@ -101,7 +101,7 @@ dl {
 }
 
 // remove styling from the simple calendar lists
-.simcal-calendar ul li:before {
+.simcal-calendar ul li:before, .qtip ul li:before {
   content: "";
 }
 
