@@ -8,15 +8,30 @@ img {
     @media only screen and (min-width : $tablet-width)  {
       display: block; margin: 0 auto;
     }
+    @media only screen and (max-width : $sm-width) {
+      display: block; 
+      width: 100%;
+      margin: $gutter;
+    }
   }
   &.alignright {
     @media only screen and (min-width : $tablet-width)  {
       float: right; margin: 12px 0 12px 24px;
     }
+    @media only screen and (max-width : $sm-width) {
+      display: block; 
+      width: 100%;
+      margin: $gutter;
+    }    
   }
   &.alignleft {
     @media only screen and (min-width : $tablet-width)  {
       float: left; margin: 12px 24px 12px 0;
+    }
+    @media only screen and (max-width : $sm-width) {
+      display: block; 
+      width: 100%;
+      margin: $gutter;
     }
   }
 }
