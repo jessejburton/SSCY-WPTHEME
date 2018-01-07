@@ -100,6 +100,11 @@ dl {
   }
 }
 
+// remove styling from the simple calendar lists
+.simcal-calendar ul li:before {
+  content: "";
+}
+
 
 /* form elements */
 textarea, input[type="text"], input[type="password"], input[type="tel"], input[type="email"], input[type="number"], input[type="url"], input[type="button"], input[type="submit"] {
