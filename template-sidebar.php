@@ -31,21 +31,12 @@ get_header();
 			    	<?php the_content(); ?>
 				</article>
 
-                <!-- Child Page Links -->
-                <aside><ul>
-                    <?php 
-                        $childArgs = array(
-                            'sort_order' => 'ASC',
-                            'sort_column' => 'menu_order',
-                            'child_of' => get_the_ID()
-                        );
-                        $childList = get_pages($childArgs);
-                        foreach ($childList as $child) { 
-                            ?>
-                                <li><a href="<?php echo $child->guid; ?>"><?php echo $child->post_title; ?></a></li>
-                            <?php
-                        }
-                    ?>
+                <!-- Sidebar -->
+                <aside>
+                    <!-- If the page has children show the links -->
+                    <?php echo sscy_list_child_pages(); ?>
+                    <!-- Display the sidebar widgets -->
+                    <?php dynamic_sidebar( 'sscy-side-bar' ); ?>
                 </aside>
 			</section>
 			<?php

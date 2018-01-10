@@ -169,12 +169,27 @@ function sscy_list_child_pages() {
 	    $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0' );
 
 	if ( $childpages ) 
-	    $string = '<ul class="list-group" id="child-pages">' . $childpages . '</ul>';
+	    $string = '<h4>Links</h4><ul class="list-group" id="child-pages">' . $childpages . '</ul>';
 	else 
 		$string = '';
 	 
 	return $string;
 }
+
+function sscy_custom_sidebar() {
+  register_sidebar(
+      array (
+          'name' => __( 'Sidebar', 'SSCY' ),
+          'id' => 'sscy-side-bar',
+          'description' => __( 'Custom Sidebar', 'SSCY' ),
+          'before_widget' => '<div class="widget-content">',
+          'after_widget' => "</div>",
+          'before_title' => '<h4 class="widget-title">',
+          'after_title' => '</h4>',
+      )
+  );
+}
+add_action( 'widgets_init', 'sscy_custom_sidebar' );
 
 
  // ------------------------------------------------------------------
