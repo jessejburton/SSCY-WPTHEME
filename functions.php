@@ -161,18 +161,23 @@ add_action( 'admin_enqueue_scripts', 'sscy_register_admin_css' );
 *	Function to display child pages
 */
 function sscy_list_child_pages() { 
-	global $post; 
+  global $post; 
+  
+  $has_children = get_pages('child_of=' . $post->ID);
 	 
-	if ( is_page() && $post->post_parent )
-      $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0' );
-  else
+	if ( is_page() && $has_children ){
       $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0' );
+      $parent_url = '<li class="page_item page-item-' . $post->ID . '"><a href="' . get_page_link($post) . '">' . get_the_title($post) . '</a>';
+  } else {
+      $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0' );
+      $parent_url = '<li class="page_item page-item-' . $post->post_parent->ID . '"><a href="' . get_page_link($post->post_parent) . '">' . get_the_title($post->post_parent) . '</a>';      
+  }
 
 	if ( $childpages ) 
-	    $string = '<h4>Links</h4><ul class="list-group" id="child-pages">' . $childpages . '</ul>';
+	    $string = '<h4>Links</h4><ul class="list-group" id="child-pages">' . $parent_url . $childpages . '</ul>';
 	else 
-		$string = '';
-
+    $string = '';
+  
   return $string;
 }
 
