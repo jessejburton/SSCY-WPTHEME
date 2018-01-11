@@ -163,17 +163,17 @@ add_action( 'admin_enqueue_scripts', 'sscy_register_admin_css' );
 function sscy_list_child_pages() { 
 	global $post; 
 	 
-	if ( is_page() && $post->post_parent )	 
-	    $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0' );
-	else
-	    $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0' );
+	if ( is_page() && $post->post_parent )
+      $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0' );
+  else
+      $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0' );
 
 	if ( $childpages ) 
 	    $string = '<h4>Links</h4><ul class="list-group" id="child-pages">' . $childpages . '</ul>';
 	else 
 		$string = '';
-	 
-	return $string;
+
+  return $string;
 }
 
 function sscy_custom_sidebar() {
