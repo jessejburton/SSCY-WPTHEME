@@ -170,7 +170,7 @@ function sscy_list_child_pages() {
       $parent_url = '<li class="page_item page-item-' . $post->ID . '"><a href="' . get_page_link($post) . '">' . get_the_title($post) . '</a>';
   } else {
       $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0' );
-      $parent_url = '<li class="page_item page-item-' . $post->post_parent->ID . '"><a href="' . get_page_link($post->post_parent) . '">' . get_the_title($post->post_parent) . '</a>';      
+      $parent_url = '<li class="page_item page-item-' . $post->post_parent . '"><a href="' . get_page_link($post->post_parent) . '">' . get_the_title($post->post_parent) . '</a>';      
   }
 
 	if ( $childpages ) 
