@@ -36,7 +36,7 @@ get_header();
 			<?php if( !empty( get_post_meta(get_the_ID(), 'gravity_form_id', true) ) ) { ?>
 				<section>
 					<article>
-						<p><a class="button" href="http://www.burtonmediainc.com/SITES/saltspringcentre/form/?fid=<?php echo get_post_meta(get_the_ID(), 'gravity_form_id', true); ?>">APPLY</a></p>
+						<p><a class="button" href="http://www.saltspringcentre.com/form/?fid=<?php echo get_post_meta(get_the_ID(), 'gravity_form_id', true); ?>">APPLY</a></p>
 					</article>
 				</section>
 			<?php } ?>
