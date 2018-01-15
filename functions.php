@@ -343,7 +343,7 @@ function save_form_to_file($entry, $form) {
   $filename = $form['id'] . '.';
   $filename .= time();
   $filename .= rand(1,100000);
-  $myFile = "/home/jessejburton/public_html/SITES/saltspringcentre/new_registrations/{$filename}.csv";
+  $myFile = "/home/saltspringcentre/public_html/new_registrations/{$filename}.csv";
   $fh = fopen($myFile, 'w');
   fputcsv($fh, array($form['title']), ',', '"');
   fputcsv($fh, array($entry['date_created'].' UTC'), ',', '"');
@@ -377,7 +377,7 @@ function sscy_gform_button_shortcode( $atts = [] ){
 
   ob_start();
   ?> 
-    <a class="button" href="http://www.burtonmediainc.com/SITES/saltspringcentre/form/?fid=<?php echo $FID; ?>"><?php echo $text; ?></a>
+    <a class="button" href="http://www.saltspringcentre.com/form/?fid=<?php echo $FID; ?>"><?php echo $text; ?></a>
   <?php
   return ob_get_clean();
 }
