@@ -14,15 +14,17 @@ get_header();
 	<?php
 
 	   while (have_posts()) :
-	      the_post();
-	      	?>
-			<section>
-				<article>
-					<h2><a href="<?php echo the_permalink(); ?>"><?php the_title(); ?></a></h2>
-			    	<?php the_excerpt(); ?>
-				</article>
-			</section>
-			<?php
+		  the_post();
+		  	if( get_post_meta(get_the_ID(), 'active', true) == 1 ){
+				?>
+				<section>
+					<article>
+						<h2><a href="<?php echo the_permalink(); ?>"><?php the_title(); ?></a></h2>
+						<?php the_excerpt(); ?>
+					</article>
+				</section>
+				<?php
+			  }
 	   endwhile;
 	endif;
 

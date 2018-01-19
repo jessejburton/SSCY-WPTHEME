@@ -110,7 +110,9 @@ function job_save_meta_data( $post_id ) {
       update_post_meta( $post_id, 'conditions', $_POST['custom_editor_2'] );  
     }
     if( isset($_POST['active']) ){  
-      update_post_meta( $post_id, 'active', isset( $_POST['active'] ) );
+      update_post_meta( $post_id, 'active', 1 );
+    } else {
+      update_post_meta( $post_id, 'active', 0 );
     }
     if( isset($_POST['gravity_form_id']) ){  
       update_post_meta( $post_id, 'gravity_form_id', $_POST['gravity_form_id'] );
