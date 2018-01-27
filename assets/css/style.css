@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*
-BlankSlate WordPress Theme © 2011-2014 TidyThemes
+BlankSlate WordPress Theme ┬⌐ 2011-2014 TidyThemes
 BlankSlate is distributed under the terms of the GNU GPL
 */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
@@ -92,7 +92,8 @@ body .alt-background-2 {
   background-color: #db8f5d; }
 
 body .bright-background {
-  background-color: #64999F; }
+  background-color: #64999F;
+  background-image: url(images/yantra.png); }
 
 body .dark-background {
   background-color: #45414c; }
@@ -137,10 +138,10 @@ body .hero, body .texture-background {
   body > main section article, body > main section aside, .divider {
     padding: 52px 0; } }
 
-p, h1, ul, ol, dl {
+p, h1, main ul, ol, dl {
   margin: 0 0 9px; }
   @media only screen and (min-width: 768px) {
-    p, h1, ul, ol, dl {
+    p, h1, main ul, ol, dl {
       margin: 0 0 13px; } }
 
 input[type='submit'], input[type='button'], a.button, input[type=submit], input[type=button], a, a h1, h1 a, a h2, h2 a, a h3, h3 a, a h4, h4 a, a h5, h5 a, a h6, h6 a {
@@ -302,14 +303,29 @@ aside li a {
   img.aligncenter {
     display: block;
     margin: 0 auto; } }
+@media only screen and (max-width: 620px) {
+  img.aligncenter {
+    display: block;
+    max-width: 100%;
+    margin: 15px auto; } }
 @media only screen and (min-width: 768px) {
   img.alignright {
     float: right;
     margin: 12px 0 12px 24px; } }
+@media only screen and (max-width: 620px) {
+  img.alignright {
+    display: block;
+    max-width: 100%;
+    margin: 15px auto; } }
 @media only screen and (min-width: 768px) {
   img.alignleft {
     float: left;
     margin: 12px 24px 12px 0; } }
+@media only screen and (max-width: 620px) {
+  img.alignleft {
+    display: block;
+    max-width: 100%;
+    margin: 15px auto; } }
 
 /* tables */
 table {
@@ -327,24 +343,29 @@ table {
     font-size: 80%; }
 
 /* lists */
-nav ul, nav ol, nav dl {
-  margin: 0; }
-li ul, li ol, li dl {
-  margin-bottom: 0; }
+h1 + ul, h2 + ul, h3 + ul, h4 + ul {
+  padding-top: 18px; }
+
+main ul, ol, dl {
+  position: relative;
+  padding-left: 45px; }
+  nav main ul, nav ol, nav dl {
+    margin: 0; }
+  li main ul, li ol, li dl {
+    margin-bottom: 0; }
 
 li {
-  list-style-position: inside; }
-  ul li {
-    list-style-type: none; }
-    ul li::before {
-      content: '• ';
-      font-size: 150%;
-      line-height: 80%;
-      color: #64999F;
-      vertical-align: middle;
-      font-weight: 400; }
-    nav ul li:before, footer ul li:before {
-      content: ''; }
+  padding-bottom: 5px; }
+  ul li::before {
+    position: absolute;
+    font-family: "FontAwesome";
+    content: "\f111 ";
+    font-size: 50%;
+    left: 26.25px;
+    color: #64999F;
+    vertical-align: middle; }
+  nav ul li:before, footer ul li:before {
+    content: ''; }
   ol > li {
     text-indent: 0.2em;
     list-style-type: decimal; }
@@ -380,6 +401,9 @@ dl {
     dl dd p {
       margin: 0; }
 
+.simcal-calendar ul li:before, .qtip ul li:before {
+  content: ""; }
+
 /* form elements */
 textarea, input[type="text"], input[type="password"], input[type="tel"], input[type="email"], input[type="number"], input[type="url"], input[type="button"], input[type="submit"] {
   border-radius: 0;
@@ -389,7 +413,7 @@ textarea, input[type="text"], input[type="password"], input[type="tel"], input[t
   -o-appearance: none;
   appearance: none; }
 
-textarea, input[type="text"], input[type="password"], input[type="tel"], input[type="number"], input[type="email"], input[type="url"] {
+textarea, input[type="text"], input[type="password"], input[type="tel"], input[type="number"], input[type="email"], input[type="url"], select {
   font-family: "Roboto", sans-serif;
   font-size: 17px;
   border: 1px solid #64999F;
@@ -518,6 +542,9 @@ hr {
   border-top: 1px solid #64999F;
   margin: 26px 0; }
 
+.breadcrumbs {
+  padding: 10px; }
+
 body {
   background: #f7f4f0; }
   body > header nav {
@@ -567,20 +594,33 @@ body {
           padding-top: 0.7em; }
     body > header nav.open {
       height: 32em; }
-    @media only screen and (min-width: 1420px) {
+    @media only screen and (min-width: 1160px) {
       body > header nav a.home-link {
         width: 36px; }
       body > header nav a.mobile-nav {
         display: none; }
       body > header nav ul {
+        font-size: 80%;
+        margin-left: 10px;
         clear: none;
         display: inline-block; }
         body > header nav ul li {
           display: inline-block;
-          margin-left: 1.38em; } }
+          margin-left: 1.38em;
+          padding: 5px; }
+          body > header nav ul li a {
+            height: 2.2em; } }
+    @media only screen and (min-width: 1420px) {
+      body > header nav ul {
+        font-size: 100%; }
+        body > header nav ul li {
+          padding: 0; }
+          body > header nav ul li a {
+            height: 2em; } }
   body > footer {
     padding: 26px 15px 104px; }
     body > footer h6 {
+      font-weight: bold;
       margin-bottom: 15px; }
     body > footer ul li {
       margin-top: 15px; }

@@ -121,9 +121,12 @@
 
 %dark-background {
   @extend %alt-background;
-  background-color: $accent-dark;
+  
+  background-image: linear-gradient(to right bottom, rgba($black, .8), rgba($accent-dark, .8)), url(images/Lotus_background.jpg); 
+  background-position: 0 -50px;
+  background-size: cover;
 }
-
+ 
 %soft-background {
   background: -webkit-linear-gradient($gradient-color-1, $gradient-color-0, $gradient-color-2);
   background: -o-linear-gradient($gradient-color-1, $gradient-color-0, $gradient-color-2);
