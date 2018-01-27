@@ -95,7 +95,7 @@ body .bright-background {
   background-color: #64999F; }
 
 body .dark-background {
-  background-image: linear-gradient(to right bottom, rgba(55, 51, 61, 0.8), rgba(69, 65, 76, 0.8)), url(images/Lotus_background.jpg);
+  background-image: linear-gradient(to right bottom, rgba(55, 51, 61, 0.8), rgba(69, 65, 76, 0.8)), url(images/Lotus_Background.jpg);
   background-position: 0 -50px;
   background-size: cover; }
 

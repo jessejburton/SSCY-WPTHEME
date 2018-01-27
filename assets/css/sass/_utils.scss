@@ -122,7 +122,7 @@
 %dark-background {
   @extend %alt-background;
   
-  background-image: linear-gradient(to right bottom, rgba($black, .8), rgba($accent-dark, .8)), url(images/Lotus_background.jpg); 
+  background-image: linear-gradient(to right bottom, rgba($black, .8), rgba($accent-dark, .8)), url(images/Lotus_Background.jpg); 
   background-position: 0 -50px;
   background-size: cover;
 }
