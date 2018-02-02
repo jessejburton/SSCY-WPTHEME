@@ -12,6 +12,7 @@ get_header();
 </div>
 
 <main><div class="loop"><?php
+	$first_loop = true;
 
 	if (have_posts()) :
 	   while (have_posts()) :
@@ -27,19 +28,27 @@ get_header();
 
 				<!-- If this is a single blog post show the recent posts -->
 				<?php 
-					if( get_post_type() == 'post'){
+					if( get_post_type() == 'post' && $first_loop ){
+						$args = array(
+							'numberposts' => 30,
+							'category' => get_the_category()[0]->cat_ID
+						);
+
 						?>
 							<aside>	
-								<h4>Recent Posts</h4>
+								<h4>Recent <?php echo get_the_category()[0]->name; ?> Posts</h4>
+
 								<?php
-									$recent_posts = wp_get_recent_posts();
+									$recent_posts = wp_get_recent_posts( $args );
 									foreach( $recent_posts as $recent ){
 										echo '<li><a href="' . get_permalink($recent["ID"]) . '">' .   $recent["post_title"].'</a> </li> ';
 									}
 									wp_reset_query();
 								?>
 							</aside>
-						<?php						
+						<?php	
+						
+						$first_loop = false;
 					};
 				?>
 			</section>

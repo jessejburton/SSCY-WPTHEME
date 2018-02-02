@@ -140,10 +140,13 @@ body {
       &.has-sidebar {
         aside {  @extend %body-of-text;  padding-left: $gutter; padding-right: $gutter; }
         @media only screen and (min-width : $tablet-width)  {
-          article {
+          article { 
             width: 64%;
             float: right;
             margin-right: 5%;
+          }
+          article.post-preview {
+            width: auto;
           }
           aside {
             padding-left: 0;
