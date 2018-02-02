@@ -382,3 +382,16 @@ function sscy_gform_button_shortcode( $atts = [] ){
   return ob_get_clean();
 }
 add_shortcode( 'sscy_form_button', 'sscy_gform_button_shortcode' );
+
+// Gravity Forms Error Logging
+add_filter( 'gform_validation', 'log_validation_errors', 50 );
+function log_validation_errors( $validation_result ) {
+    $form = $validation_result['form'];
+    foreach ( $form['fields'] as $field ) {
+        if ( $field->failed_validation ) {
+            GFCommon::log_error( "form #{$form['id']}: validate() - failed: {$field->label}({$field->id} - {$field->type}) - message: {$field->validation_message}" );
+        }
+    }
+ 
+    return $validation_result;
+}
