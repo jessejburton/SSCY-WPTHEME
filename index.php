@@ -1,7 +1,6 @@
 <?php
 get_header();
 
-
 // Bread Crumb Navigation
 ?>
 <div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
@@ -12,8 +11,6 @@ get_header();
 </div>
 
 <main><div class="loop"><?php
-	$first_loop = true;
-
 	if (have_posts()) :
 	   while (have_posts()) :
 	      the_post();
@@ -28,27 +25,40 @@ get_header();
 
 				<!-- If this is a single blog post show the recent posts -->
 				<?php 
-					if( get_post_type() == 'post' && $first_loop ){
-						$args = array(
-							'numberposts' => 30,
-							'category' => get_the_category()[0]->cat_ID
-						);
+					if( get_post_type() == 'post'){
+						if( is_category() ){
+							$category_name = single_cat_title( '', false );
+							$category_id = get_cat_id( $category_name );
 
-						?>
+							$args = array(
+								'numberposts' => 30,
+								'category' => $category_id
+							);
+
+							?>
+								<aside>	
+									<h4>Recent <?php echo single_cat_title(); ?> Posts</h4>
+
+									<?php
+										$recent_posts = wp_get_recent_posts( $args );
+										foreach( $recent_posts as $recent ){
+											echo '<li><a href="' . get_permalink($recent["ID"]) . '">' .   $recent["post_title"].'</a> </li> ';
+										}
+										wp_reset_query();
+									?>
+								</aside>
+						<?php } else { ?>
 							<aside>	
-								<h4>Recent <?php echo get_the_category()[0]->name; ?> Posts</h4>
-
+								<h4>Categories</h4>
 								<?php
-									$recent_posts = wp_get_recent_posts( $args );
-									foreach( $recent_posts as $recent ){
-										echo '<li><a href="' . get_permalink($recent["ID"]) . '">' .   $recent["post_title"].'</a> </li> ';
-									}
-									wp_reset_query();
+									$args = array(
+										'title_li' => '' 
+									);
+									wp_list_categories( $args );
 								?>
 							</aside>
 						<?php	
-						
-						$first_loop = false;
+						}
 					};
 				?>
 			</section>
