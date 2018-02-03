@@ -15,6 +15,8 @@ get_header();
 			<header>
 				<h1>Latest Posts</h1>
 				<h2>Blog, News, etc</h2>
+
+				<?php get_search_form(); ?>
 			</header>
 		<div class="loop"><?php
 		if (have_posts()) :

@@ -275,3 +275,14 @@ hr {
 .breadcrumbs {
   padding: 10px;
 }
+
+.page-header {
+  padding: 30px 0;
+
+  .page-title {
+    span {
+      color: $accent-dark;
+      font-style: italic;
+    }
+  }
+}
