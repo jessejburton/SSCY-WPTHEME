@@ -54,7 +54,7 @@ get_header();
         </article>
     </section>
 
-?></div></main><?php
+</div></main><?php
 
 get_footer(); 
 ?>
