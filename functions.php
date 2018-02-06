@@ -328,6 +328,9 @@ add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 /* ADD SSCY JOB POSTINGS - Want to change this to just use the plugin */
 require_once( 'inc/sscy-job.php' );
 
+/* Add Testimonials 
+require_once( 'inc/bm-testimonials.php' );*/
+
 function sscy_section_shortcode($atts = [], $content = null)
 {
     $content = '<div class="sscy-spaced">' . do_shortcode($content) . '</div>';
@@ -383,15 +386,5 @@ function sscy_gform_button_shortcode( $atts = [] ){
 }
 add_shortcode( 'sscy_form_button', 'sscy_gform_button_shortcode' );
 
-// Gravity Forms Error Logging
-add_filter( 'gform_validation', 'log_validation_errors', 50 );
-function log_validation_errors( $validation_result ) {
-    $form = $validation_result['form'];
-    foreach ( $form['fields'] as $field ) {
-        if ( $field->failed_validation ) {
-            GFCommon::log_error( "form #{$form['id']}: validate() - failed: {$field->label}({$field->id} - {$field->type}) - message: {$field->validation_message}" );
-        }
-    }
- 
-    return $validation_result;
-}
+// This file will log gravity form errors if uncommented
+require_once( 'inc/gravity-forms.php' );
