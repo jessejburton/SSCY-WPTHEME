@@ -104,3 +104,34 @@ a {
   left: -3000px;
   width: 0;
 }
+
+.branding {
+  text-shadow: 3px 3px 5px rgba($black, 1);
+
+  .branding__title {
+    color: $white;
+    font-style: italic;
+    font-family: "Crimson Text",serif;
+  }
+
+  .branding__text {
+    padding: 15px 0 20px 0;
+  }
+
+  a.branding__button, 
+  a.branding__button:visited, 
+  a.branding__button:link {
+    text-shadow: none;
+    color: $white;
+    display: inline-block;
+    border: 1px solid $white;
+    padding: 7px 12px;
+    font-size: 1em;
+    transition: all .2s;
+  }
+
+  a.branding__button:hover {
+    background-color: $white;
+    color: $black;
+  }
+}

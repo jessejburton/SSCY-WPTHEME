@@ -328,8 +328,8 @@ add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 /* ADD SSCY JOB POSTINGS - Want to change this to just use the plugin */
 require_once( 'inc/sscy-job.php' );
 
-/* Add Testimonials 
-require_once( 'inc/bm-testimonials.php' );*/
+/* ADD SSCY HEADER BANNERS */
+require_once( 'inc/sscy-banner.php' );
 
 function sscy_section_shortcode($atts = [], $content = null)
 {

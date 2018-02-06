@@ -183,13 +183,37 @@ body {
     min-height: 400px;
     text-align: center;
     background-image: url(images/intro-background.jpg);
+
+    .hero__navigation {
+      opacity: 0;
+      position: absolute;
+      bottom: 4em;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 200;
+      font-size: .7em;
+
+      a, a:link {
+        border: none;
+        transition: all .2s;
+
+        &:not(last-child){
+          margin-right: 15px;
+        }
+
+      }
+
+      a:hover, a.active {
+        color: $white;
+      }
+    }
+
     &::before {
       background: $accent-dark;
       opacity: 0.85;
       border-bottom: 5vh solid $accent-light;
     }
     .intro {
-      height: 85%;
       z-index: 103;
       margin-top: 5%;
       position: relative;
@@ -350,9 +374,29 @@ body {
   }
 
   .branding {
+    opacity: 0;
+    transition: all 2s;
     display: block;
-    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*overflow: hidden;*/
     color: $accent-color;
+
+    &__logo {
+      height: 200px;
+    }
+
+    @media only screen and (max-width : 768px)  {
+      &__logo {
+        height: 140px;
+      }
+    }
+
+    &.active {
+      opacity: 1;
+    }
+
     svg {
       float: left;
       width: auto;

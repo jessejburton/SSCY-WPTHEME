@@ -38,7 +38,7 @@ function job_custom_post_type(){
       'title',
       'editor'
     ),
-    'taxonimies'        => array('category', 'post_tag'),
+    'taxonomies'        => array('category', 'post_tag'),
     'menu_position'     => 5,
     'exlude_from_search'=> false
   );
