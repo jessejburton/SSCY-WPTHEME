@@ -382,6 +382,7 @@ body {
     left: 0;
     /*overflow: hidden;*/
     color: $accent-color;
+    z-index: 100;
 
     &__logo {
       height: 200px;
@@ -395,6 +396,7 @@ body {
 
     &.active {
       opacity: 1;
+      z-index: 300;
     }
 
     svg {
