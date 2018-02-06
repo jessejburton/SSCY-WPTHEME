@@ -33,7 +33,7 @@ function toggleMenu(index) {
 
   function showNextBanner(){
     // Make sure the mouse isn't on the banner
-    if($('.hero:hover').length == 0) {
+    if($('.branding:hover').length == 0) {
       // find out which is the next banner to show
       var nextBanner = $(".branding.active").next();
       if(nextBanner.length == 0) {
