@@ -387,4 +387,4 @@ function sscy_gform_button_shortcode( $atts = [] ){
 add_shortcode( 'sscy_form_button', 'sscy_gform_button_shortcode' );
 
 // This file will log gravity form errors if uncommented
-//require_once( 'inc/gravity-forms.php' );
+require_once( 'inc/gravity-forms.php' );
