@@ -252,6 +252,14 @@ add_action( 'widgets_init', 'sscy_custom_sidebar' );
   register_setting( 'general', 'instagram_setting_name' );  
 
  } // sscy_setting_api_init()
+ add_settings_field(
+  'pinterest_setting_name',
+  'Pinterest URL',
+  'sscy_pinterest_setting_callback_function',
+  'general',
+  'sscy_social_media_setting_section'
+);
+register_setting( 'general', 'pinterest_setting_name' );
  
  add_action( 'admin_init', 'sscy_setting_api_init' );
  
@@ -287,6 +295,9 @@ add_action( 'widgets_init', 'sscy_custom_sidebar' );
   function sscy_instagram_setting_callback_function() {
   echo '<input name="instagram_setting_name" id="instagram_setting_name" type="text" class="regular-text" value="' . get_option( 'instagram_setting_name' ) . '" /> <i class="fa fa-instagram"></i>';
  }
+ function sscy_pinterest_setting_callback_function() {
+  echo '<input name="pinterest_setting_name" id="pinterest_setting_name" type="text" class="regular-text" value="' . get_option( 'pinterest_setting_name' ) . '" /> <i class="fa fa-pinterest"></i>';
+ }
 
 
 // Short code for Social Media
@@ -305,6 +316,9 @@ function sscy_socialmedia_shortcode(){
       <?php } ?>
       <?php if( get_option( 'instagram_setting_name' ) != '' ) { ?>
         <li><a href="<?php echo get_option( 'instagram_setting_name' ) ?>" class="sscy-socialmedia-link" title="Find us on Instagram" target="_blank"><i class="fa fa-instagram"></i></a></li>
+      <?php } ?>
+      <?php if( get_option( 'pinterest_setting_name' ) != '' ) { ?>
+        <li><a href="<?php echo get_option( 'pinterest_setting_name' ) ?>" class="sscy-socialmedia-link" title="Find us on Pinterest" target="_blank"><i class="fa fa-pinterest"></i></a></li>
       <?php } ?>
     </ul>
   <?php
