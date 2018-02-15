@@ -250,16 +250,18 @@ add_action( 'widgets_init', 'sscy_custom_sidebar' );
     'sscy_social_media_setting_section'
   );
   register_setting( 'general', 'instagram_setting_name' );  
+  // PINTEREST
+  add_settings_field(
+    'pinterest_setting_name',
+    'Pinterest URL',
+    'sscy_pinterest_setting_callback_function',
+    'general',
+    'sscy_social_media_setting_section'
+  );
+  register_setting( 'general', 'pinterest_setting_name' );
 
  } // sscy_setting_api_init()
- add_settings_field(
-  'pinterest_setting_name',
-  'Pinterest URL',
-  'sscy_pinterest_setting_callback_function',
-  'general',
-  'sscy_social_media_setting_section'
-);
-register_setting( 'general', 'pinterest_setting_name' );
+
  
  add_action( 'admin_init', 'sscy_setting_api_init' );
  
