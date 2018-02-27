@@ -21,6 +21,7 @@ get_header();
 						<h1><?php the_title(); ?></h1>
 					<?php } ?>
 			    	<?php the_content(); ?>
+			 		<?php comments_template(); ?>
 				</article>
 
 				<!-- If this is a single blog post show the recent posts -->

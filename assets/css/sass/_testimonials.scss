@@ -1,0 +1,23 @@
+.bm-testimonials {
+    .bm-testimonial {
+        padding: 20px;
+
+        &:not(last-child){
+            margin-bottom: 20px;
+        }
+
+        &__author {
+            text-align: right;
+        }
+
+        &__author-name {
+            font-style: italic;
+        }
+
+        &::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    }
+}
