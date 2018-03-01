@@ -29,14 +29,16 @@ get_header(); ?>
 	<section class="<?php if ( ! is_single() ) echo 'blog'; ?> has-sidebar">
 	<div class="loop">
 
-		<article>
-			<header>
-				<h1>Latest Posts</h1>
-				<h2>Blog, News, etc</h2>
+		<?php if ( ! is_single() ) : ?>
+			<article>
+				<header>
+					<h1>Latest Posts</h1>
+					<h2>Blog, News, etc</h2>
 
-				<?php get_search_form(); ?>
-			</header>
-		</article>
+					<?php get_search_form(); ?>
+				</header>
+			</article>
+		<?php endif; ?>
 
 		<?php
 			if ( have_posts() ) :
