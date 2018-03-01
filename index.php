@@ -1,73 +1,79 @@
 <?php
-get_header();
+/**
+ * The main template file
+ *
+ * This is the most generic template file in a WordPress theme
+ * and one of the two required files for a theme (the other being style.css).
+ * It is used to display a page when nothing more specific matches a query.
+ * E.g., it puts together the home page when no home.php file exists.
+ *
+ * @link https://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package WordPress
+ * @subpackage Twenty_Seventeen
+ * @since 1.0
+ * @version 1.0
+ */
 
-// Bread Crumb Navigation
-?>
-<div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
-		<?php if(function_exists('bcn_display'))
-		{
-				bcn_display();
-		}?>
-</div>
+get_header(); ?>
 
-<main><div class="loop"><?php
-	if (have_posts()) :
-	   while (have_posts()) :
-	      the_post();
-	      	?>
-			<section class="<?php echo get_post_meta($post->ID, 'background-color')[0]; ?> <?php echo ( get_post_type() == 'post' ? 'has-sidebar' : '')?>">
-				<article>
-					<?php if ( !isset( get_post_meta($post->ID, 'show-heading')[0] ) || get_post_meta($post->ID, 'show-heading')[0] == 'yes' ){ ?>
-						<h1><?php the_title(); ?></h1>
-					<?php } ?>
-			    	<?php the_content(); ?>
-			 		<?php comments_template(); ?>
-				</article>
+	<!-- BREADCRUMB NAVIGATION -->
+	<?php if( function_exists('bcn_display') ) : ?>
+		<div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
+			<?php bcn_display(); ?>
+		</div>
+	<?php endif; ?>
 
-				<!-- If this is a single blog post show the recent posts -->
-				<?php 
-					if( get_post_type() == 'post'){
-						if( is_category() ){
-							$category_name = single_cat_title( '', false );
-							$category_id = get_cat_id( $category_name );
+	<!-- MAIN CONTENT --> 
+	<main id="main" class="site-main" role="main">
+	<section class="<?php if ( ! is_single() ) echo 'blog'; ?> has-sidebar">
+	<div class="loop">
 
-							$args = array(
-								'numberposts' => 30,
-								'category' => $category_id
-							);
+		<article>
+			<header>
+				<h1>Latest Posts</h1>
+				<h2>Blog, News, etc</h2>
 
-							?>
-								<aside>	
-									<h4>Recent <?php echo single_cat_title(); ?> Posts</h4>
+				<?php get_search_form(); ?>
+			</header>
+		</article>
 
-									<?php
-										$recent_posts = wp_get_recent_posts( $args );
-										foreach( $recent_posts as $recent ){
-											echo '<li><a href="' . get_permalink($recent["ID"]) . '">' .   $recent["post_title"].'</a> </li> ';
-										}
-										wp_reset_query();
-									?>
-								</aside>
-						<?php } else { ?>
-							<aside>	
-								<h4>Categories</h4>
-								<?php
-									$args = array(
-										'title_li' => '' 
-									);
-									wp_list_categories( $args );
-								?>
-							</aside>
-						<?php	
-						}
-					};
-				?>
-			</section>
+		<?php
+			if ( have_posts() ) :
+
+				/* Start the Loop */
+				while ( have_posts() ) : the_post();
+
+					/*
+					* Include the Post-Format-specific template for the content.
+					* If you want to override this in a child theme, then include a file
+					* called content-___.php (where ___ is the Post Format name) and that will be used instead.
+					*/
+					get_template_part( 'template-parts/post/content', get_post_format() );
+
+				endwhile;
+
+			else :
+
+				get_template_part( 'template-parts/post/content', 'none' );
+
+			endif;
+		?>
+
+		
+		<aside id="sidebar-categories">	
+			<h4>Categories</h4>
 			<?php
-	   endwhile;
-	endif;
+				$args = array(
+					'title_li' => '' 
+				);
+				wp_list_categories( $args );
+			?>
+		</aside>
 
-?></div></main><?php
+	</div>
+	</section><!-- blog -->
+	</main><!-- #main -->
 
-get_footer();
-?>
+
+<?php get_footer();

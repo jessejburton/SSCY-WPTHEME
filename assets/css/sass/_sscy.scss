@@ -146,7 +146,8 @@ body {
             margin-right: 5%;
           }
           article.post-preview {
-            width: auto;
+            //width: auto;  // Removed temporarily
+            padding: 40px 0;
           }
           aside {
             padding-left: 0;
@@ -555,4 +556,12 @@ body {
 a.button, input[type=submit], input[type=button] {
   @extend %button;
   &:hover, a:active { color: $white; background-color:  $accent-color; }
+}
+
+
+
+/**** ADDED BY JESSE BURTON (BURTON MEDIA) ****/
+
+aside#sidebar-categories {
+  float: none;
 }
