@@ -567,8 +567,8 @@
 		</a>
 	</div>
 	
-	<div style="position: absolute; right: 20px; bottom: 20px;">
-		<strong>Support Us</strong>
+	<div style="position: absolute; right: 40px; bottom: 30px;">
+		<strong>Support</strong>
 		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" id="pp_donate">
 			<input type="hidden" name="cmd" value="_s-xclick">
 			<input type="hidden" name="hosted_button_id" value="DCENY95YPBQHS">
