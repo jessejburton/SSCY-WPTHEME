@@ -128,9 +128,14 @@ add_action( 'save_post', 'save_page_options_callback' );
 */
 // Javascript
 function sscy_register_js() {
+  // Register
   wp_register_script('sscy_javascript', get_template_directory_uri() . '/assets/js/common.js', array( 'jquery' ));
+  wp_register_script('mindbody', 'https://widgets.healcode.com/javascripts/healcode.js');
+
+  // Enqueue
   wp_enqueue_script('jquery');
   wp_enqueue_script('sscy_javascript');   
+  wp_enqueue_script('mindbody');   
 }
 add_action( 'init', 'sscy_register_js' );
 // CSS
@@ -327,6 +332,21 @@ function sscy_socialmedia_shortcode(){
   return ob_get_clean();
 }
 add_shortcode( 'sscy_socialmedia', 'sscy_socialmedia_shortcode' );
+
+// Mind Body Integration, custom shortcode built by BurtonMedia
+function mindbody_shortcode( $atts = [] ){
+  $type = $atts['type'];
+  $partner = $atts['partner'];
+  $id = $atts['id'];
+  $version = $atts['version'];
+
+  ob_start();
+  ?> 
+    <healcode-widget data-type="<?php echo $type; ?>" data-widget-partner="<?php echo $partner; ?>" data-widget-id="<?php echo $id; ?>" data-widget-version="<?php echo $version; ?>"></healcode-widget>
+  <?php
+  return ob_get_clean();
+}
+add_shortcode( 'mindbody_widget', 'mindbody_shortcode' );
 
 // Replaces the excerpt "Read More" text by a link
 function new_excerpt_more($more) {
