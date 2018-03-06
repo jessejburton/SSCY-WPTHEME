@@ -73,7 +73,7 @@ get_header(); ?>
 			?>
 			
 			<div id="sidebar-signup">
-				[gravityform id=15 title=false description=false ajax=true tabindex=49]
+				<?php do_shortcode('[gravityform id=15 title=false description=false ajax=true tabindex=49]'); ?>
 			</div>
 		</aside>
 
