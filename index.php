@@ -71,6 +71,10 @@ get_header(); ?>
 				);
 				wp_list_categories( $args );
 			?>
+			
+			<div id="sidebar-signup">
+				[gravityform id=15 title=false description=false ajax=true tabindex=49]
+			</div>
 		</aside>
 
 	</div>
