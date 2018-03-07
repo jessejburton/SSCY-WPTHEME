@@ -72,8 +72,10 @@ get_header(); ?>
 				wp_list_categories( $args );
 			?>
 			
-			<div id="sidebar-signup">
-				<?php echo do_shortcode('[gravityform id=15 title=true description=false ajax=true tabindex=49]'); ?>
+			<div id="sidebar-signup-container">
+				<div id="sidebar-signup">
+					<?php echo do_shortcode('[gravityform id=15 title=true description=false ajax=true tabindex=49]'); ?>
+				</div>
 			</div>
 		</aside>
 
