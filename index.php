@@ -65,12 +65,14 @@ get_header(); ?>
 		
 		<aside id="sidebar-categories">	
 			<h4>Categories</h4>
+			<ul>
 			<?php
 				$args = array(
 					'title_li' => '' 
 				);
 				wp_list_categories( $args );
 			?>
+			</ul>
 			
 			<div id="sidebar-signup-container">
 				<div id="sidebar-signup">

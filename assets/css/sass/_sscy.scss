@@ -564,7 +564,9 @@ a.button, input[type=submit], input[type=button] {
 
 aside#sidebar-categories {
   float: none;
-  width: auto;
 }
 
+aside#sidebar-signup-container {
+  max-width: 300px;
+}
 
