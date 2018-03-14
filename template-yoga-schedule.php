@@ -34,13 +34,17 @@ get_header();
 			<?php
 	   endwhile;
 	endif;
-	
+
 ?>
 
 	<!-- Mind Body Yoga Schedule Code -->
 	<script src="https://widgets.healcode.com/javascripts/healcode.js" type="text/javascript"></script>
 	
-	<healcode-widget data-type="schedules" data-widget-partner="object" data-widget-id="4961510c0f5" data-widget-version="1"></healcode-widget>
+	<section>
+		<article>
+			<healcode-widget data-type="schedules" data-widget-partner="object" data-widget-id="4961510c0f5" data-widget-version="1"></healcode-widget>
+		</article>
+	</section>
 
 </div></main><?php
 
