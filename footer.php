@@ -19,7 +19,7 @@
 	</ul>
 
 	<div class="home-link">
-		<a href="<?php echo get_home_url(); ?>" title="Home">
+		<a href="http://www.saltspringcentre.com/centre-administration/" title="Administration">
 			<span class="screen-reader">Home</span>
 			<svg version="1.1" id="lotus" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-124.761 131.486 143.38 143.381" enable-background="new -124.761 131.486 143.38 143.381" xml:space="preserve">
 				<path fill="#64999F" d="M-38.09,248.391c-8.116-10.826-9.197-33.68-2.037-42.922c2.897-3.723,5.867-5.708,9.158-6.11
