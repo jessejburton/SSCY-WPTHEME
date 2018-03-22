@@ -226,6 +226,14 @@
   text-decoration: none;
   &:hover, a:active { color: $accent-color; @extend %underlined-hover; }
 }
+%linkImportant {
+  cursor: pointer!important;
+  @extend %underlined;
+  padding-bottom: 1px!important;
+  color: $accent-color!important;
+  text-decoration: none!important;
+  &:hover, a:active { color: $accent-color!important; @extend %underlined-hover; }
+}
 %button {
   @extend %link;
   font-size: 120%;
@@ -236,6 +244,18 @@
   font-weight: $strong-weight;
   border: 2px solid $accent-color;
   @include transition(all 0.1s);
+}
+%buttonImportant {
+  @extend %linkImportant;
+  font-size: 120%!important;
+  background-color: transparent!important;
+  margin-top: $baseline / 2!important;
+  text-transform: uppercase!important;
+  padding: 0.5em 0.7em!important;
+  font-weight: $strong-weight!important;
+  border: 2px solid $accent-color!important;
+  @include transition(all 0.1s);
+  border-radius: 0!important;
 }
 
 %body-of-text {

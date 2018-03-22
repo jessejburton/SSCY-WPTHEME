@@ -122,7 +122,7 @@ dl {
 
 
 /* form elements */
-textarea, input[type="text"], input[type="password"], input[type="tel"], input[type="email"], input[type="number"], input[type="url"], input[type="button"], input[type="submit"] {
+textarea, input[type="text"], input[type="password"], input[type="tel"], input[type="email"], input[type="number"], input[type="url"], input[type="button"], input[type="submit"], .hc-button.signup_now {
   border-radius: 0;
   @include appearance(none);
 }
@@ -148,8 +148,11 @@ textarea {
   box-sizing: border-box;
   width: 100%; padding: 0 1%;
 }
-input[type='submit'], input[type='button'] {
+input[type='submit'], input[type='button']  {
   @extend %button;
+}
+.hc-button.signup_now{
+  @extend %buttonImportant
 }
 .select {
   font-size: 100%;
