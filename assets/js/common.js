@@ -28,7 +28,7 @@ function toggleMenu(index) {
     });
 
     // Banner Scrolling
-    var banner_scroll = setInterval( showNextBanner, 8000 );
+    var banner_scroll = setInterval( showNextBanner, 3000 );
   });
 
   function showNextBanner(){
