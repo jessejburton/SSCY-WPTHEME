@@ -197,11 +197,13 @@ function sscy_register_js() {
   // Register
   wp_register_script('sscy_javascript', get_template_directory_uri() . '/assets/js/common.js', array( 'jquery' ));
   wp_register_script('mindbody', 'https://widgets.healcode.com/javascripts/healcode.js');
+  wp_register_script('fontawesome', get_template_directory_uri() . '/vendor/fontawesome-all.min.js');
 
   // Enqueue
   wp_enqueue_script('jquery');
   wp_enqueue_script('sscy_javascript');   
   wp_enqueue_script('mindbody');   
+  wp_enqueue_script('fontawesome');   
 }
 add_action( 'init', 'sscy_register_js' );
 // CSS

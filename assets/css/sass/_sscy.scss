@@ -577,3 +577,40 @@ aside#sidebar-categories {
   line-height: 1.3em;
 }
 
+.banner__arrow {
+  position: absolute;
+  font-size: 5em;
+  width: 0; 
+  height: 0; 
+  z-index: 3000;
+  opacity: .15;
+  cursor: pointer;
+  transition: all .2s;
+
+  &.banner__arrow--left {
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent; 
+    border-right: 25px solid $white; 
+
+    left: $gutter * 2;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &.banner__arrow--right {
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 25px solid $white;
+
+    right: $gutter * 2;
+    top: 50%;
+    transform: translateY(-50%);    
+  }
+
+  // Need to have this transform AFTER the others.
+  &:hover {
+    opacity: .9;
+    transform: translateY(-50%) scale(1.1);
+  }
+
+}

@@ -28,26 +28,57 @@ function toggleMenu(index) {
     });
 
     // Banner Scrolling
-    var banner_scroll = setInterval( showNextBanner, 5000 );
+    var banner_scroll = setInterval( scrollBanner, 5000 );
+
+    // Banner Arrow Navigating 
+    $(document).on("click", ".banner__arrow--left", function(){
+      clearInterval(banner_scroll); // stop the scrolling
+      showPrevBanner();
+    });
+
+    $(document).on("click", ".banner__arrow--right", function(){
+      clearInterval(banner_scroll); // stop the scrolling      
+      showNextBanner();
+    });
+
   });
 
-  function showNextBanner(){
-    // Make sure the mouse isn't on the banner
+  function scrollBanner(){
     if($('.branding:hover').length == 0) {
-      // find out which is the next banner to show
-      var nextBanner = $(".branding.active").next();
-      if(nextBanner.length == 0) {
-        nextBanner = $(".branding").eq(0);
-      }
-    
-      // Make the next banner active to show it
-      $(".branding.active").removeClass("active");
-      nextBanner.addClass("active");
+      showPrevBanner();
+    };
+  }
 
-      // select the correct navigation link
-      $(".hero__navigation a.active").removeClass("active");
-      $(".hero__navigation a").eq($(".branding.active").index()).addClass("active");
+  function showNextBanner(){
+    // find out which is the next banner to show
+    var nextBanner = $(".branding.active").next();
+    if(nextBanner.length == 0) {
+      nextBanner = $(".branding").eq(0);
     }
+  
+    // Make the next banner active to show it
+    $(".branding.active").removeClass("active");
+    nextBanner.addClass("active");
+
+    // select the correct navigation link
+    $(".hero__navigation a.active").removeClass("active");
+    $(".hero__navigation a").eq($(".branding.active").index()).addClass("active");
+  }
+
+  function showPrevBanner(){
+    // find out which is the next banner to show
+    var prevBanner = $(".branding.active").prev();
+    if(prevBanner.length == 0) {
+      prevBanner = $(".branding").eq($(".branding").length - 1);
+    }
+  
+    // Make the next banner active to show it
+    $(".branding.active").removeClass("active");
+    prevBanner.addClass("active");
+
+    // select the correct navigation link
+    $(".hero__navigation a.active").removeClass("active");
+    $(".hero__navigation a").eq($(".branding.active").index()).addClass("active");
   }
 
 })( jQuery );
