@@ -289,3 +289,14 @@ hr {
     }
   }
 }
+
+caption {
+  font-size: .8em;
+  font-style: italic;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
