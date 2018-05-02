@@ -75,7 +75,7 @@ get_header(); ?>
 			</ul>
 
 			<div id="sidebar-signup-container clearfix">
-				<a class="button" href="http://www.saltspringcentre.com/form?fid=15">SIGN UP FOR OUR NEWSLETTER</a>
+				<a class="button" href="http://www.saltspringcentre.com/form?fid=15">SIGN UP FOR OUR NEWSLETTER!</a>
 			</div>
 		</aside>
 
