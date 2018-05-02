@@ -64,6 +64,10 @@ get_header(); ?>
 
 		
 		<aside id="sidebar-categories">	
+			<div id="sidebar-signup-container">
+				<a class="button" href="http://www.saltspringcentre.com/form?fid=15">NEWSLETTER SIGNUP!</a>
+			</div>
+
 			<h4>Categories</h4>
 			<ul>
 			<?php
@@ -73,10 +77,6 @@ get_header(); ?>
 				wp_list_categories( $args );
 			?>
 			</ul>
-			
-			<div id="sidebar-signup-container">
-				<a class="button" href="http://www.saltspringcentre.com/form?fid=15">NEWSLETTER SIGNUP</a>
-			</div>
 		</aside>
 
 	</div>
