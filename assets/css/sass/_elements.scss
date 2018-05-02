@@ -212,6 +212,7 @@ blockquote {
   padding-left: 1.6em;
   position: relative;
   border-left: solid 3px $accent-color;
+  font-style: italic;
   &::before {
     content : ' ';
     top: 0;

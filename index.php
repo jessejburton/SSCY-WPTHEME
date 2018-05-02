@@ -75,9 +75,7 @@ get_header(); ?>
 			</ul>
 			
 			<div id="sidebar-signup-container">
-				<div id="sidebar-signup">
-					<?php echo do_shortcode('[gravityform id=15 title=true description=false ajax=true tabindex=49]'); ?>
-				</div>
+				<a class="button" href="http://www.saltspringcentre.com/form?fid=15">NEWSLETTER SIGNUP</a>
 			</div>
 		</aside>
 
