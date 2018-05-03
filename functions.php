@@ -343,19 +343,19 @@ add_action( 'admin_init', 'sscy_setting_api_init' );
   8. CALLBACK FUNCTIONS FOR THEME SETTINGS
 ********************************************/
  function sscy_facebook_setting_callback_function() {
-  echo '<input name="facebook_setting_name" id="facebook_setting_name" type="text" class="regular-text" value="' . get_option( 'facebook_setting_name' ) . '" /> <i class="fa fa-facebook-square"></i>';
+  echo '<input name="facebook_setting_name" id="facebook_setting_name" type="text" class="regular-text" value="' . get_option( 'facebook_setting_name' ) . '" /> <i class="fab fa-facebook-square"></i>';
  }
   function sscy_twitter_setting_callback_function() {
-  echo '<input name="twitter_setting_name" id="twitter_setting_name" type="text" class="regular-text" value="' . get_option( 'twitter_setting_name' ) . '" /> <i class="fa fa-twitter-square"></i>';
+  echo '<input name="twitter_setting_name" id="twitter_setting_name" type="text" class="regular-text" value="' . get_option( 'twitter_setting_name' ) . '" /> <i class="fab fa-twitter-square"></i>';
  }
   function sscy_youtube_setting_callback_function() {
-  echo '<input name="youtube_setting_name" id="youtube_setting_name" type="text" class="regular-text" value="' . get_option( 'youtube_setting_name' ) . '" /> <i class="fa fa-youtube-square"></i>';
+  echo '<input name="youtube_setting_name" id="youtube_setting_name" type="text" class="regular-text" value="' . get_option( 'youtube_setting_name' ) . '" /> <i class="fab fa-youtube-square"></i>';
  }
   function sscy_instagram_setting_callback_function() {
-  echo '<input name="instagram_setting_name" id="instagram_setting_name" type="text" class="regular-text" value="' . get_option( 'instagram_setting_name' ) . '" /> <i class="fa fa-instagram"></i>';
+  echo '<input name="instagram_setting_name" id="instagram_setting_name" type="text" class="regular-text" value="' . get_option( 'instagram_setting_name' ) . '" /> <i class="fab fa-instagram"></i>';
  }
  function sscy_pinterest_setting_callback_function() {
-  echo '<input name="pinterest_setting_name" id="pinterest_setting_name" type="text" class="regular-text" value="' . get_option( 'pinterest_setting_name' ) . '" /> <i class="fa fa-pinterest"></i>';
+  echo '<input name="pinterest_setting_name" id="pinterest_setting_name" type="text" class="regular-text" value="' . get_option( 'pinterest_setting_name' ) . '" /> <i class="fab fa-pinterest"></i>';
  }
 
 /*******************************************	
@@ -366,19 +366,19 @@ function sscy_socialmedia_shortcode(){
   ?> 
     <ul class="socialmedia_links">
       <?php if( get_option( 'facebook_setting_name' ) != '' ) { ?>
-        <li><a href="<?php echo get_option( 'facebook_setting_name' ) ?>" class="sscy-socialmedia-link" title="Find us on Facebook" target="_blank"><i class="fa fa-facebook-square"></i></a></li>
+        <li><a href="<?php echo get_option( 'facebook_setting_name' ) ?>" class="sscy-socialmedia-link" title="Find us on Facebook" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
       <?php } ?>
       <?php if( get_option( 'twitter_setting_name' ) != '' ) { ?>
-        <li><a href="<?php echo get_option( 'twitter_setting_name' ) ?>" class="sscy-socialmedia-link" title="Find us on Twitter" target="_blank"><i class="fa fa-twitter-square"></i></a></li>
+        <li><a href="<?php echo get_option( 'twitter_setting_name' ) ?>" class="sscy-socialmedia-link" title="Find us on Twitter" target="_blank"><i class="fab fa-twitter-square"></i></a></li>
       <?php } ?>
       <?php if( get_option( 'youtube_setting_name' ) != '' ) { ?>
-        <li><a href="<?php echo get_option( 'youtube_setting_name' ) ?>" class="sscy-socialmedia-link" title="Find us on YoutTube" target="_blank"><i class="fa fa-youtube-square"></i></a></li>
+        <li><a href="<?php echo get_option( 'youtube_setting_name' ) ?>" class="sscy-socialmedia-link" title="Find us on YoutTube" target="_blank"><i class="fab fa-youtube-square"></i></a></li>
       <?php } ?>
       <?php if( get_option( 'instagram_setting_name' ) != '' ) { ?>
-        <li><a href="<?php echo get_option( 'instagram_setting_name' ) ?>" class="sscy-socialmedia-link" title="Find us on Instagram" target="_blank"><i class="fa fa-instagram"></i></a></li>
+        <li><a href="<?php echo get_option( 'instagram_setting_name' ) ?>" class="sscy-socialmedia-link" title="Find us on Instagram" target="_blank"><i class="fab fa-instagram"></i></a></li>
       <?php } ?>
       <?php if( get_option( 'pinterest_setting_name' ) != '' ) { ?>
-        <li><a href="<?php echo get_option( 'pinterest_setting_name' ) ?>" class="sscy-socialmedia-link" title="Find us on Pinterest" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+        <li><a href="<?php echo get_option( 'pinterest_setting_name' ) ?>" class="sscy-socialmedia-link" title="Find us on Pinterest" target="_blank"><i class="fab fa-pinterest"></i></a></li>
       <?php } ?>
     </ul>
   <?php
