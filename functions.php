@@ -15,9 +15,9 @@
  *  7. THEME SETTINGS
  *  8. CALLBACK FUNCTIONS FOR THEME SETTINGS
  *  9. SHORTCODES
- *  10. MINDBODY
- *  11.
- *  12. 
+ *  10. SSCY JOB POSTINGS
+ *  11. GRAVITY FORMS
+ *  12. UTILITIES 
  * 
  */
 
@@ -215,13 +215,11 @@ add_action( 'save_post', 'save_page_options_callback' );
 function sscy_register_js() {
   // Register
   wp_register_script('sscy_javascript', get_template_directory_uri() . '/assets/js/common.js', array( 'jquery' ));
-  wp_register_script('mindbody', 'https://widgets.healcode.com/javascripts/healcode.js');
   wp_register_script('fontawesome', get_template_directory_uri() . '/vendor/fontawesome-all.min.js');
 
   // Enqueue
   wp_enqueue_script('jquery');
-  wp_enqueue_script('sscy_javascript');   
-  wp_enqueue_script('mindbody');   
+  wp_enqueue_script('sscy_javascript');     
   wp_enqueue_script('fontawesome');   
 }
 add_action( 'init', 'sscy_register_js' );
@@ -380,6 +378,8 @@ add_action( 'admin_init', 'sscy_setting_api_init' );
 /*******************************************	
   9. SHORTCODES
 ********************************************/
+
+// Social Media 
 function sscy_socialmedia_shortcode(){
   ob_start();
   ?> 
@@ -405,31 +405,15 @@ function sscy_socialmedia_shortcode(){
 }
 add_shortcode( 'sscy_socialmedia', 'sscy_socialmedia_shortcode' );
 
-/*******************************************************************************************	
-  
-  10. MINDBODY
-
-  // Mind Body Integration, custom shortcode built by BurtonMedia
-  {*** move this in to its own file sometime, all Mind Body stuff ***}
-
-********************************************************************************************/
-function mindbody_shortcode( $atts = [] ){
-  $type = $atts['type'];
-  $partner = $atts['partner'];
-  $id = $atts['id'];
-  $version = $atts['version'];
-
-  ob_start();
-  ?> 
-    <healcode-widget data-type="<?php echo $type; ?>" data-widget-partner="<?php echo $partner; ?>" data-widget-id="<?php echo $id; ?>" data-widget-version="<?php echo $version; ?>"></healcode-widget>
-  <?php
-  return ob_get_clean();
+// SSCY - Yoga Schedule
+function sscy_yoga_schedule( $atts = [] ){
+  require_once( 'sscy/yoga_schedule.php' );
 }
-add_shortcode( 'mindbody_widget', 'mindbody_shortcode' );
+add_shortcode( 'yoga_schedule', 'sscy_yoga_schedule' );
 
 /*******************************************************************************************	
   
-  11. SSCY JOB POSTINGS
+  10. SSCY JOB POSTINGS
 
   // Custom Job Posting management for SSCY
   {*** move this in to its own plugin ***}
@@ -442,7 +426,7 @@ require_once( 'inc/sscy-banner.php' );
 
 /*******************************************************************************************	
   
-  12. GRAVITY FORMS
+  11. GRAVITY FORMS
 
   // Gravity Form Integration - built by BurtonMedia
   {*** move this in to its own plugin sometime, all Gravity Form stuff ***}
@@ -497,4 +481,19 @@ add_shortcode( 'sscy_form_button', 'sscy_gform_button_shortcode' );
 // This file will log gravity form errors if uncommented
 require_once( 'inc/gravity-forms.php' );
 
+/*******************************************************************************************	
+  
+  12. UTILITIES
 
+  // Utility functions
+
+********************************************************************************************/
+function sscyDB(){
+  global $sscy_database;
+  $sscy_database = new wpdb('root','','sscy_internal','localhost');
+}
+add_action('init','sscyDB');
+
+function displayDate($date){
+  return date('l, F j, Y', $date);
+}

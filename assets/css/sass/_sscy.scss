@@ -614,3 +614,52 @@ aside#sidebar-categories {
   }
 
 }
+
+
+// Yoga Schedule
+.table--class {
+  width: 100%;
+  border-collapse: collapse;
+
+    tr {
+      border-bottom: 1px solid $accent-color;
+    }
+    .class__details {
+      font-size:0; 
+      margin:0;
+      border: none;
+      padding: 0;
+
+      td {
+        padding: 0;
+      }
+    }
+    tr td .class__details-content {
+      width: 100%;
+      max-height: 0;
+      padding: 0 20px;
+      box-sizing: border-box;
+      overflow: hidden;
+      transition: max-height 0.3s, padding 0.3s;
+      background-color: $accent-color; 
+      color: $white;
+    }
+    .class__details.show {
+      font-size: inherit;
+    }
+    tr.show td .class__details-content {
+      max-height: 100px;
+      padding: 20px 20px;
+      transition: max-height 0.6s, padding 0.6s;
+    }
+
+    a {
+      display: inline;
+    }
+  
+    tr.class-date {
+      background-color: $row-color!important;
+    }
+
+}
+

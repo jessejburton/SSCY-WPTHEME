@@ -81,4 +81,16 @@ function toggleMenu(index) {
     $(".hero__navigation a").eq($(".branding.active").index()).addClass("active");
   }
 
+  /* YOGA SCHEDULE */
+
+  // Teacher Details
+  $(document).on("click", ".class__teacher_link", function(){
+    $(this).parents(".class").next().next().toggleClass("show");
+  });
+
+  // Class Details
+  $(document).on("click", ".class__description_link", function(){
+    $(this).parents(".class").next().toggleClass("show");
+  });  
+
 })( jQuery );
