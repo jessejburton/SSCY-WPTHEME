@@ -497,3 +497,26 @@ add_action('init','sscyDB');
 function displayDate($date){
   return date('l, F j, Y', $date);
 }
+
+
+/*******************************************************************************************	
+  
+  MINDBODY
+
+  // Mind Body Integration, custom shortcode built by BurtonMedia
+  {*** move this in to its own file sometime, all Mind Body stuff ***}
+
+********************************************************************************************/
+function mindbody_shortcode( $atts = [] ){
+  $type = $atts['type'];
+  $partner = $atts['partner'];
+  $id = $atts['id'];
+  $version = $atts['version'];
+
+  ob_start();
+  ?> 
+    <healcode-widget data-type="<?php echo $type; ?>" data-widget-partner="<?php echo $partner; ?>" data-widget-id="<?php echo $id; ?>" data-widget-version="<?php echo $version; ?>"></healcode-widget>
+  <?php
+  return ob_get_clean();
+}
+add_shortcode( 'mindbody_widget', 'mindbody_shortcode' );
