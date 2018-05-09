@@ -134,6 +134,9 @@ textarea, input[type="text"], input[type="password"], input[type="tel"], input[t
   padding: 0.38em 0.62em;
   margin-bottom: 0.6em;
 }
+select {
+  padding: 10px!important;
+}
 input[type="text"], input[type="email"], input[type="password"], input[type="tel"], input[type="url"] {
     text-indent: 4px;
     box-sizing: border-box;
@@ -171,7 +174,6 @@ input[type='submit'], input[type='button']  {
     line-height: 1.8em;
     background: #fff;
     padding: 0.38em 3em 0.3em 0.62em;
-    padding: 10px!important;
   }
   .arr {
     top: 2px;
