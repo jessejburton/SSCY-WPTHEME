@@ -652,7 +652,7 @@ aside#sidebar-categories {
       font-size: inherit;
     }
     tr.show td .class__details-content {
-      max-height: 100px;
+      max-height: 1000px;
       padding: 20px 20px;
       transition: max-height 0.6s, padding 0.6s;
     }
@@ -665,5 +665,25 @@ aside#sidebar-categories {
       background-color: $row-color!important;
     }
 
+    .table__navigation-link {
+      display: block;
+    }
+
+    .table__navigation-link--prev {
+      float: left;
+    }
+
+    .table__navigation-link--next {
+      float: right;
+    }
+
 }
 
+
+.u-text-right {
+  text-align: right;
+}
+
+.u-right {
+  float: right;
+}
