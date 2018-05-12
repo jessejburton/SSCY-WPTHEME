@@ -250,5 +250,6 @@ new GWDayCount( array(
     'form_id'        => 23,
     'start_field_id' => 17,
     'end_field_id'   => 18,
-    'count_field_id' => 68
+    'count_field_id' => 68,
+    'include_end_date' => false
 ) );
