@@ -246,10 +246,20 @@ class GWDayCount {
 
 # Configuration
 
+// ACYR Registration
 new GWDayCount( array(
     'form_id'        => 23,
     'start_field_id' => 17,
     'end_field_id'   => 18,
     'count_field_id' => 68,
+    'include_end_date' => false
+) );
+
+// KY ACYR Registration
+new GWDayCount( array(
+    'form_id'        => 21,
+    'start_field_id' => 17,
+    'end_field_id'   => 18,
+    'count_field_id' => 66,
     'include_end_date' => false
 ) );
