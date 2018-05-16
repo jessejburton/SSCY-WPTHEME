@@ -687,3 +687,18 @@ aside#sidebar-categories {
 .u-right {
   float: right;
 }
+
+.highlight_menu_item {
+  background-color: $accent-dark;
+  color: $white;
+  transition: all .2s;
+
+    a {
+      padding-left: 7px;
+      padding-right: 7px;
+    }
+
+  &:hover {
+    background-color: $black;
+  }
+}
