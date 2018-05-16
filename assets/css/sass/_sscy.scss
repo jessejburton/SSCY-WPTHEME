@@ -50,7 +50,7 @@ body {
           }
         }
       }
-      &.open { height: 32em; }
+      &.open { height: 100%; }
       @media only screen and (min-width : 1160px) {
         a.home-link { width: 36px; }
         a.mobile-nav { display: none; }
