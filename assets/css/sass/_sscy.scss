@@ -689,7 +689,7 @@ aside#sidebar-categories {
 }
 
 .highlight_menu_item {
-  background-color: $accent-dark;
+  background-color: $secondary-color;
   color: $white;
   transition: all .2s;
 
@@ -698,7 +698,4 @@ aside#sidebar-categories {
       padding-right: 7px;
     }
 
-  &:hover {
-    background-color: $black;
-  }
 }
