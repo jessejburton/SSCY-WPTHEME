@@ -1,3 +1,4 @@
 # Ignore SASS cache files #
 assets/css/.sass-cache
 assets/css/.sass-cache/*
+/sscy/mysqli_connect.php
