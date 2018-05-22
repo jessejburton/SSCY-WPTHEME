@@ -3,9 +3,6 @@
     // Set up the database connection
     require_once('mysqli_connect.php');
 
-    var_dump($sscy_database);
-    die();
-
     // Include the utility functions
     require_once('utilities.php');
 
