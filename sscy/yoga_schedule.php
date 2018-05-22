@@ -3,6 +3,9 @@
     // Set up the database connection
     require_once('mysqli_connect.php');
 
+    var_dump($sscy_database);
+    die();
+
     // Include the utility functions
     require_once('utilities.php');
 
@@ -13,9 +16,6 @@
         LEFT JOIN teacher_tbl t ON c.teacher_id = t.teacher_id 
         LEFT JOIN account_tbl a ON t.account_id = a.account_id    
     " );
-
-    var_dump($qry_classes);
-    die();
 
     $arr_classes = [];
 
