@@ -69,13 +69,11 @@
                         <tr class="class">
                             <td colspan="3"><strong>No Classes</strong></td>
                         </tr>
-                    <?php } ?>
+                    <?php } else { ?>
                     
 
                     <!-- Get the classes for the current day -->
                     <?php foreach ( $arr_classes[$i] as $class) { 
-
-                        echo $i;
                         
                         // Set up the times
                         $start_time = date_create('2000-01-01 ' . $class->start_time)->format('g:iA'); 
@@ -105,7 +103,7 @@
                             </td>
                         </tr>
 
-                    <?php }
+                    <?php }}
 
                     // Add one day to the current date being displayed.
                     $current_date = date(strtotime('+1 days', $current_date));
