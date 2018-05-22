@@ -14,6 +14,9 @@
         LEFT JOIN account_tbl a ON t.account_id = a.account_id    
     " );
 
+    var_dump($qry_classes);
+    die();
+
     $arr_classes = [];
 
     foreach( $qry_classes as $class ){
