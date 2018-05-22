@@ -28,22 +28,29 @@
 
     }
 
-    $today = date('w');
-    $current_date = date(strtotime('-'.$today.' days'));
-    
+    // Check if a date has been passed in
+    if( isset($_GET["datestart"]) && date('w', $_GET["datestart"]) == 0 ){
+        $current_date = date($_GET["datestart"]);
+    } else {
+        $today = date('w');
+        $current_date = date(strtotime('-'.$today.' days'));
+    }
+
     ?>
 
-        <a href="http://localhost/SSCY/print/yoga_schedule.php" target="_blank"><i class="fas fa-print"></i> print schedule</a>
+        <p style="text-align: center;">
+            <a href="http://localhost/SSCY/print/yoga_schedule.php" target="_blank"><i class="fas fa-print"></i> print schedule</a>
+        </p>
     
         <table class="table table--class">
             <thead>
                 <tr>
                     <th colspan="3" class="clearfix">
-                        <a href="#" class="table__navigation-link table__navigation-link--prev">
+                        <a href="<?php echo get_permalink(); ?>?datestart=<?php echo strtotime('-7 days', $current_date); ?>" class="table__navigation-link table__navigation-link--prev">
                             <i class="far fa-arrow-alt-circle-left"></i> previous week
                         </a>
                         <a  class="
-                    table__navigation-link table__navigation-link--next" href="#">
+                    table__navigation-link table__navigation-link--next" href="<?php echo '/sandbox/yoga-schedule/'; ?>?datestart=<?php echo strtotime('+7 days', $current_date); ?>">
                             next week <i class="far fa-arrow-alt-circle-right"></i>
                         </a>
                     </th>
