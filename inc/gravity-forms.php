@@ -225,15 +225,9 @@ class GWDayCount {
             $day_count = $diff / ( 60 * 60 * 24 ); // secs * mins * hours
             $day_count = round( $day_count ) + $this->count_adjust;
 
-            if($day_count < 1){
-                $day_count = 1;
-                echo $day_count;
-                die();
-            }
-
         }
 
-        $_POST["input_{$this->count_field_id}"] = $day_count;
+        $_POST["input_{$this->count_field_id}"] = "hello";//$day_count;
 
     }
 
