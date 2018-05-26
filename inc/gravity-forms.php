@@ -227,7 +227,7 @@ class GWDayCount {
 
         }
 
-        $_POST["input_{$this->count_field_id}"] = "hello";//$day_count;
+        $_POST["input_{$this->count_field_id}"] = $day_count;
 
     }
 
@@ -252,7 +252,7 @@ new GWDayCount( array(
     'start_field_id' => 17,
     'end_field_id'   => 18,
     'count_field_id' => 66,
-    'include_end_date' => false
+    'include_end_date' => true
 ) );
 
 // KY ACYR Registration
@@ -261,5 +261,5 @@ new GWDayCount( array(
     'start_field_id' => 17,
     'end_field_id'   => 18,
     'count_field_id' => 66,
-    'include_end_date' => false
+    'include_end_date' => true
 ) );
