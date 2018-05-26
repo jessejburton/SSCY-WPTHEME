@@ -227,6 +227,12 @@ class GWDayCount {
 
         }
 
+        // Added by Jesse Burton - to set 1 as the minumum date
+        if($day_count == 0){
+            $day_count = 1;
+        }
+        // End addition
+
         $_POST["input_{$this->count_field_id}"] = $day_count;
 
     }
