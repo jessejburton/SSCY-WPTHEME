@@ -215,9 +215,9 @@ class GWDayCount {
 
         }
 
-        if( $start_date > $end_date ) {
+        if( $start_date > $end_date || $start_date == $end_date ) {
 
-            $day_count = 0;
+            $day_count = 1;
 
         } else {
 
@@ -226,12 +226,6 @@ class GWDayCount {
             $day_count = round( $day_count ) + $this->count_adjust;
 
         }
-
-        // Added by Jesse Burton - to set 1 as the minumum date
-        if($day_count == 0){
-            $day_count = 1;
-        }
-        // End addition
 
         $_POST["input_{$this->count_field_id}"] = $day_count;
 
