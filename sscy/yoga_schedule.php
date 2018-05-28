@@ -104,7 +104,7 @@
                                 <div class="class__details-content">
                                     <!-- Add the exception message if needed -->
                                     <?php if( sizeof($qry_results) === 1 ){ ?>
-                                        <p class="<?php echo $qry_results[0]->type; ?>"><?php echo $qry_results[0]->message; ?></p>
+                                        <p class="<?php echo $qry_results[0]->type; ?> u-padded"><?php echo $qry_results[0]->message; ?></p>
                                     <?php } ?>
                                     <strong><?php echo $class->name; ?></strong>
                                     <p><?php echo $class->description; ?></p>
