@@ -7,11 +7,12 @@
     require_once('utilities.php');
 
     $qry_classes = $sscy_database->get_results( "
-        SELECT c.*, cs.*, t.*, a.* 
+        SELECT c.*, cs.*, t.*, a.*, r.name AS room_name, r.photo as room_photo, r.description as room_description
         FROM class_weekly_schedule_tbl cs 
         LEFT JOIN class_tbl c ON c.class_id = cs.class_id
         LEFT JOIN teacher_tbl t ON c.teacher_id = t.teacher_id 
-        LEFT JOIN account_tbl a ON t.account_id = a.account_id    
+        LEFT JOIN account_tbl a ON t.account_id = a.account_id 
+        LEFT JOIN room_tbl r ON r.room_id = c.room_id   
     " );
 
     $arr_classes = [];
@@ -108,6 +109,13 @@
                                     <?php } ?>
                                     <strong><?php echo $class->name; ?></strong>
                                     <p><?php echo $class->description; ?></p>
+                                    <hr>
+                                    <div class="class__details-room">
+                                        <p><strong>This class will be held in</strong></p>
+                                        <img class="class__details-room-photo photo-left-small" src="<?php echo $class->room_photo; ?>" />
+                                        <strong><?php echo $class->room_name; ?></strong>
+                                        <p><?php echo $class->room_description; ?></p>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
