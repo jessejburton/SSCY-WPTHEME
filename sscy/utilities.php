@@ -26,4 +26,14 @@ function excerpt($text, $max_length = 140, $cut_off = '...', $keep_word = false)
         return $text;
     }
 
+
+// Console log function 
+function console_log( $data ){
+    echo "fhjdshfsdkj";
+    die();
+    echo '<script>';
+    echo 'console.log('. json_encode( $data ) .')';
+    echo '</script>';
+}
+
 ?>

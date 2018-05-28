@@ -70,25 +70,42 @@
                             <td colspan="3"><strong>No Classes</strong></td>
                         </tr>
                     <?php } else { ?>
-                    
+                
 
                     <!-- Get the classes for the current day -->
                     <?php foreach ( $arr_classes[$i] as $class) { 
-                        
+
+                        // Get any exceptions for this day
+                        $qry_exceptions = $sscy_database->prepare( "
+                            SELECT exception_id, class_id, exception_date, message, et.type, et.exception_type_id
+                            FROM class_exception_tbl ce
+                            INNER JOIN exception_type_tbl et ON et.exception_type_id = ce.exception_type_id
+                            WHERE   class_id = %d 
+                            AND     exception_date = %s 
+                        ", $class->class_id, date('Y-m-d', $current_date) );
+
+                        $qry_results = $sscy_database->get_results($qry_exceptions);
+
                         // Set up the times
                         $start_time = date_create('2000-01-01 ' . $class->start_time)->format('g:iA'); 
                         $end_time = date_create('2000-01-01 ' . $class->end_time)->format('g:iA'); 
 
                     ?> 
 
-                        <tr class="class class-<?php echo $class->class_id; ?>">
-                            <td><a class="class__description_link" href="javascript:void(0);" title="<?php echo $class->name; ?>"><?php echo excerpt($class->name, 30); ?></a></td>        
+                        <tr class="class class-<?php echo $class->class_id; ?> <?=sizeof($qry_results) === 1 ? $qry_results[0]->type : ''?>">
+                            <td>
+                                <a class="class__description_link" href="javascript:void(0);" title="<?php echo $class->name; ?>"><?php echo excerpt($class->name, 30); echo sizeof($qry_results); ?></a>
+                            </td>        
                             <td><a class="class__teacher_link" href="javascript:void(0);"><?php echo $class->name_first . ' ' . $class->name_last; ?></a></td>
                             <td><?php echo $start_time . ' - ' . $end_time; ?></td>
                         </tr>
                         <tr class="class__details class__details--description">
                             <td colspan="4">
                                 <div class="class__details-content">
+                                    <!-- Add the exception message if needed -->
+                                    <?php if( sizeof($qry_results) === 1 ){ ?>
+                                        <p class="<?php echo $qry_results[0]->type; ?>"><?php echo $qry_results[0]->message; ?></p>
+                                    <?php } ?>
                                     <strong><?php echo $class->name; ?></strong>
                                     <p><?php echo $class->description; ?></p>
                                 </div>
