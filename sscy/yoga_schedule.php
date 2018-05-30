@@ -113,7 +113,9 @@
                                         <hr>
                                         <div class="class__details-room">
                                             <p><strong>This class will be held in</strong></p>
-                                            <img class="class__details-room-photo photo-left-small" src="<?php echo $class->room_photo; ?>" />
+                                            <?php if( strlen($class->room_photo) > 0 ){ ?>
+                                                <img class="class__details-room-photo photo-left-small" src="<?php echo $class->room_photo; ?>" />
+                                            <?php } ?>
                                             <strong><?php echo $class->room_name; ?></strong>
                                             <p><?php echo $class->room_description; ?></p>
                                         </div>
