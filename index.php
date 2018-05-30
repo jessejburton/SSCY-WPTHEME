@@ -62,6 +62,11 @@ get_header(); ?>
 			endif;
 		?>
 
+		<article>
+			<!-- Pagination -->
+			<div class="nav-previous alignleft"><?php next_posts_link( 'Older posts' ); ?></div>
+			<div class="nav-next alignright"><?php previous_posts_link( 'Newer posts' ); ?></div>
+		</article>
 		
 		<aside id="sidebar-categories">	
 			<h4>Categories</h4>
