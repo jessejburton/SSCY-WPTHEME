@@ -109,13 +109,15 @@
                                     <?php } ?>
                                     <strong><?php echo $class->name; ?></strong>
                                     <p><?php echo $class->description; ?></p>
-                                    <hr>
-                                    <div class="class__details-room">
-                                        <p><strong>This class will be held in</strong></p>
-                                        <img class="class__details-room-photo photo-left-small" src="<?php echo $class->room_photo; ?>" />
-                                        <strong><?php echo $class->room_name; ?></strong>
-                                        <p><?php echo $class->room_description; ?></p>
-                                    </div>
+                                    <?php if( $class->room_id != 0 ){ ?>
+                                        <hr>
+                                        <div class="class__details-room">
+                                            <p><strong>This class will be held in</strong></p>
+                                            <img class="class__details-room-photo photo-left-small" src="<?php echo $class->room_photo; ?>" />
+                                            <strong><?php echo $class->room_name; ?></strong>
+                                            <p><?php echo $class->room_description; ?></p>
+                                        </div>
+                                    <?php } ?>
                                 </div>
                             </td>
                         </tr>
