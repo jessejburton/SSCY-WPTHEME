@@ -7,12 +7,18 @@
     require_once('utilities.php');
 
     $qry_classes = $sscy_database->get_results( "
-        SELECT c.*, cs.*, t.*, a.*, r.name AS room_name, r.photo as room_photo, r.description as room_description
-        FROM class_weekly_schedule_tbl cs 
-        LEFT JOIN class_tbl c ON c.class_id = cs.class_id
-        LEFT JOIN teacher_tbl t ON c.teacher_id = t.teacher_id 
-        LEFT JOIN account_tbl a ON t.account_id = a.account_id 
-        LEFT JOIN room_tbl r ON r.room_id = c.room_id   
+            SELECT 
+                c.class_id AS id, c.name, c.description, c.room_id, c.teacher_id, 
+                cs.days_of_week, cs.start_time, cs.end_time, cs.date_until,
+                t.teacher_id, t.account_id, t.default_price, t.waiver, t.bio,
+                a.name_first, a.name_last, 
+                r.name AS room_name, r.photo AS room_photo, r.description AS room_description
+            FROM class_weekly_schedule_tbl cs 
+            INNER JOIN class_tbl c ON c.class_id = cs.class_id
+            LEFT JOIN teacher_tbl t ON c.teacher_id = t.teacher_id 
+            LEFT JOIN account_tbl a ON t.account_id = a.account_id 
+            LEFT JOIN room_tbl r ON r.room_id = c.room_id
+            WHERE cs.date_until IS NULL OR cs.date_until >= CURDATE()
     " );
 
     $arr_classes = [];
@@ -65,13 +71,12 @@
                     <tr class="class-date">
                         <td colspan="3"><strong style="text-transform: uppercase;"><?php echo date('l', $current_date); ?></strong> <em style="font-size: .8em;"><?php echo date('F jS, Y', $current_date) ?></em></td>
                     </tr>
-
-                    <?php if (sizeof($arr_classes[$i]) == 0) { ?>
-                        <tr class="class">
-                            <td colspan="3"><strong>No Classes</strong></td>
-                        </tr>
-                    <?php } else { ?>
                 
+                    <?php
+                        // get a counter for the classes shown, this way I can 
+                        // add the No Classes afterwards if no classes were displayed.
+                        $classes_shown = 0;
+                    ?>
 
                     <!-- Get the classes for the current day -->
                     <?php foreach ( $arr_classes[$i] as $class) { 
@@ -91,9 +96,27 @@
                         $start_time = date_create('2000-01-01 ' . $class->start_time)->format('g:iA'); 
                         $end_time = date_create('2000-01-01 ' . $class->end_time)->format('g:iA'); 
 
+                        // Find out if the weekly schedule is over and hide it if it is
+                        $show_class = true;
+
+                        if(strlen($class->date_until) > 0){ 
+                            $date_until = strtotime($class->date_until);
+                            $dif = round(($date_until - $current_date) / 86400);
+
+                            if($dif < 0){
+                                // Hide the class
+                                $show_class = false;
+                            }
+                        }
+
+                        // Only show this class if it is supposed to be shown.
+                        if($show_class){
+
+                        // Increment the classes shown by 1 for each class
+                        $classes_shown++;
                     ?> 
 
-                        <tr class="class class-<?php echo $class->class_id; ?> <?=sizeof($qry_results) === 1 ? $qry_results[0]->type : ''?>">
+                        <tr class="class class-<?php echo $class->class_id; ?> <?= sizeof($qry_results) === 1 ? $qry_results[0]->type : ''?>">
                             <td>
                                 <a class="class__description_link" href="javascript:void(0);" title="<?php echo $class->name; ?>"><?php echo excerpt($class->name, 30); ?></a>
                             </td>        
@@ -133,6 +156,12 @@
                         </tr>
 
                     <?php }}
+
+                    if ($classes_shown == 0) { ?>
+                        <tr class="class">
+                            <td colspan="3"><strong>No Classes</strong></td>
+                        </tr>
+                    <?php } 
 
                     // Add one day to the current date being displayed.
                     $current_date = date(strtotime('+1 days', $current_date));
