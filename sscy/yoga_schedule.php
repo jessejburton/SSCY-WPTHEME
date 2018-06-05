@@ -22,6 +22,13 @@
     " );
 
     $arr_classes = [];
+    $arr_classes[0] = [];
+    $arr_classes[1] = [];
+    $arr_classes[2] = [];
+    $arr_classes[3] = [];
+    $arr_classes[4] = [];
+    $arr_classes[5] = [];
+    $arr_classes[6] = [];
 
     foreach( $qry_classes as $class ){
         $days = explode(",", $class->days_of_week);
