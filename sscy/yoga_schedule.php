@@ -8,7 +8,7 @@
 
     $qry_classes = $sscy_database->get_results( "
             SELECT 
-                c.class_id AS id, c.name, c.description, c.room_id, c.teacher_id, 
+                c.class_id AS class_id, c.name, c.description, c.room_id, c.teacher_id, 
                 cs.days_of_week, cs.start_time, cs.end_time, cs.date_until,
                 t.teacher_id, t.account_id, t.default_price, t.waiver, t.bio,
                 a.name_first, a.name_last, 
@@ -22,13 +22,6 @@
     " );
 
     $arr_classes = [];
-    $arr_classes[0] = [];
-    $arr_classes[1] = [];
-    $arr_classes[2] = [];
-    $arr_classes[3] = [];
-    $arr_classes[4] = [];
-    $arr_classes[5] = [];
-    $arr_classes[6] = [];
 
     foreach( $qry_classes as $class ){
         $days = explode(",", $class->days_of_week);
