@@ -19,6 +19,7 @@
             LEFT JOIN account_tbl a ON t.account_id = a.account_id 
             LEFT JOIN room_tbl r ON r.room_id = c.room_id
             WHERE cs.date_until IS NULL OR cs.date_until >= CURDATE()
+            ORDER BY cs.start_time
     " );
 
     // When I put this on the server it seems to need to have a fully 
