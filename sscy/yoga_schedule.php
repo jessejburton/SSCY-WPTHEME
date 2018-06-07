@@ -10,7 +10,7 @@
             SELECT 
                 c.class_id AS class_id, c.name, c.description, c.room_id, c.teacher_id, 
                 cs.days_of_week, cs.start_time, cs.end_time, cs.date_until,
-                t.teacher_id, t.account_id, t.default_price, t.waiver, t.bio,
+                t.teacher_id, t.account_id, t.default_price, t.waiver, t.bio, t.photo,
                 a.name_first, a.name_last, 
                 r.name AS room_name, r.photo AS room_photo, r.description AS room_description
             FROM class_weekly_schedule_tbl cs 
@@ -21,6 +21,9 @@
             WHERE cs.date_until IS NULL OR cs.date_until >= CURDATE()
     " );
 
+    // When I put this on the server it seems to need to have a fully 
+    // set up array to work. It errors on any items that don't have 
+    // classes otherwise
     $arr_classes = [];
     $arr_classes[0] = [];
     $arr_classes[1] = [];
@@ -156,6 +159,9 @@
                         <tr class="class__details class__details--teacher">
                             <td colspan="4">
                                 <div class="class__details-content">
+                                    <?php if( strlen($class->photo) > 0 ){ ?>
+                                        <img class="class__details-room-photo photo-left-small" src="<?php echo $class->photo; ?>" />
+                                    <?php } ?>
                                     <strong><?php echo $class->name_first . ' ' . $class->name_last; ?></strong>
                                     <p><?php echo $class->bio; ?></p>
                                 </div>
