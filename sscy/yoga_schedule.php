@@ -57,7 +57,7 @@
     ?>
 
         <p style="text-align: center;">
-            <a href="http://internal.saltspringcentre.com/print/yoga_schedule.php" target="_blank"><i class="fas fa-print"></i> print schedule</a>
+            <a href="http://portal.saltspringcentre.com/print/yoga_schedule.php" target="_blank"><i class="fas fa-print"></i> print schedule</a>
         </p>
     
         <table class="table table--class">
