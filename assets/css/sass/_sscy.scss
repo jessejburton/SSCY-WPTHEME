@@ -732,6 +732,16 @@ aside#sidebar-categories {
   color: $white;
   padding: 15px 20px;
   margin: 20px 0;
+  text-align: center;
+
+  a, a:link {
+    color: $white!important;
+    transition: all .2s;
+  }
+
+  a:hover {
+    border-bottom: 1px solid $white;
+  }
 
   strong {
     font-weight: bold;
