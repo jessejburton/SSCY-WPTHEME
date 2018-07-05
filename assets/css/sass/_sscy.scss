@@ -726,3 +726,14 @@ aside#sidebar-categories {
 .u-padded {
   padding: .3em 2em;
 }
+
+.highlight {
+  background-color: $accent-color;
+  color: $white;
+  padding: 15px 20px;
+  margin: 20px 0;
+
+  strong {
+    font-weight: bold;
+  }
+}     

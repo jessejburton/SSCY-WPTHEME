@@ -15,9 +15,9 @@
                 r.name AS room_name, r.photo AS room_photo, r.description AS room_description
             FROM class_weekly_schedule_tbl cs 
             INNER JOIN class_tbl c ON c.class_id = cs.class_id
-            INNER JOIN teacher_tbl t ON c.teacher_id = t.teacher_id 
-            INNER JOIN account_tbl a ON t.account_id = a.account_id 
-            INNER JOIN room_tbl r ON r.room_id = cs.room_id
+            LEFT JOIN teacher_tbl t ON c.teacher_id = t.teacher_id 
+            LEFT JOIN account_tbl a ON t.account_id = a.account_id 
+            LEFT JOIN room_tbl r ON r.room_id = cs.room_id
             WHERE cs.date_until IS NULL OR cs.date_until >= CURDATE()
             ORDER BY cs.start_time
     " );
@@ -57,7 +57,7 @@
     ?>
 
         <p style="text-align: center;">
-            <a href="http://portal.saltspringcentre.com/print/yoga_schedule.php" target="_blank"><i class="fas fa-print"></i> print schedule</a>
+            <a href="http://internal.saltspringcentre.com/print/yoga_schedule.php" target="_blank"><i class="fas fa-print"></i> print schedule</a>
         </p>
     
         <table class="table table--class">
