@@ -131,7 +131,7 @@ function toggleMenu(index) {
   // Logout
   $(document).on("click", ".logout", function(e){
     $.ajax({
-        url: "/sandbox/wp-content/themes/saltspringcentre/sscy/logout.php",
+        url: "/wp-content/themes/saltspringcentre/sscy/logout.php",
         method: "POST",
         success: function(response){
           // refresh the page
@@ -155,7 +155,7 @@ function toggleMenu(index) {
     }
 
     $.ajax({
-      url: "/sandbox/wp-content/themes/saltspringcentre/sscy/register.php",
+      url: "/wp-content/themes/saltspringcentre/sscy/register.php",
       data: registrant,
       method: "POST",
       success: function(response){
@@ -186,7 +186,7 @@ function toggleMenu(index) {
     }
 
     $.ajax({
-      url: "/sandbox/wp-content/themes/saltspringcentre/sscy/unregister.php",
+      url: "/wp-content/themes/saltspringcentre/sscy/unregister.php",
       data: data,
       method: "POST",
       success: function(response){
