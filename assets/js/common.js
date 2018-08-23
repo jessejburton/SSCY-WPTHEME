@@ -131,7 +131,7 @@ function toggleMenu(index) {
   // Logout
   $(document).on("click", ".logout", function(e){
     $.ajax({
-        url: "/sandbox/logout.php",
+        url: "/logout.php",
         method: "POST",
         success: function(response){
           // refresh the page
@@ -155,7 +155,7 @@ function toggleMenu(index) {
     }
 
     $.ajax({
-      url: "/wp-content/themes/saltspringcentre/sscy/register.php",
+      url: "/register.php",
       data: registrant,
       method: "POST",
       success: function(response){
@@ -186,7 +186,7 @@ function toggleMenu(index) {
     }
 
     $.ajax({
-      url: "/sandbox/unregister.php",
+      url: "/unregister.php",
       data: data,
       method: "POST",
       success: function(response){

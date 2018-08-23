@@ -1,9 +1,9 @@
 <?php
 
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "sscy_internal";
+$username = "saltspri_web";
+$password = "Baba1272*rc";
+$dbname = "saltspri_internal";
 $id = $_POST["registration_id"];
 
 // Create connection

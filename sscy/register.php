@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "saltspri_web";
 $password = "Baba1272*rc";
-$dbname = "sscy_internal";
+$dbname = "saltspri_internal";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
