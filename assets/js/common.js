@@ -155,7 +155,7 @@ function toggleMenu(index) {
     }
 
     $.ajax({
-      url: "/wp-content/themes/saltspringcentre/SSCY/register.php",
+      url: "/wp-content/themes/saltspringcentre/sscy/register.php",
       data: registrant,
       method: "POST",
       success: function(response){
