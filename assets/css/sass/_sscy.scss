@@ -792,3 +792,9 @@ aside#sidebar-categories {
 .cancelled .register-button, .cancelled .un-register-button {
   display: none;
 }
+
+// ADDED TO REMOVE REGISTRATION BUTTON FROM WEBSITE
+.register-button, .un-register-button {
+  display: none!important;
+}
+
