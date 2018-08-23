@@ -266,3 +266,91 @@
 
 %bigger { font-size: 105%;  }
 %white-out { color: $white; }
+
+
+// ADDED BY BURTONMEDIA www.burtonmediainc.com
+
+@mixin clearfix {
+  &::after {
+      content: "";
+      display: table;
+      clear: both;
+  }
+}
+
+/* Absolute Centre Position an element */
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// Drop Shadow
+@mixin dropShadow {
+  box-shadow: 5px 5px 10px rgba($black, .5);
+}
+
+// Modal Dialog
+@mixin modal {
+    // High z-index to cover signin button
+    z-index: 10000;
+
+    z-index: 10000;
+    box-shadow: 5px 5px 10px rgba(55, 51, 61, 0.5);
+    position: fixed;
+    width: 70vw;
+    background-color: #f7f4f0;
+    border-top: 1px solid #c2edef;
+    border-left: 1px solid #c2edef;
+    border-bottom: 1px solid #c2edef;
+    top: 5vh;
+    left: 100%;
+    height: 90vh;
+    transition: left .4s;
+    overflow-y: scroll;
+
+    &.open {
+        left: 15vw;
+    }
+
+    h5 {
+        font-weight: 500;
+        font-family: $display-font;
+    }
+
+    /* width */
+    &::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background-color: $accent-color;
+    }
+}
+
+/* 
+    MEDIA QUERY MANAGER (MOBILE FIRST APPROACH)
+
+    in pixels
+    0 - 600         Phone ($phone)
+    600 - 900       Tablet Portrait ($tablet)
+    900 - 1200      Tablet Landscape ($tablet-wide)
+    [1200 - 1800]   Regular Desktop Styles Apply
+
+    ORDER OF MEDIA QUERIES: 
+        base + typography
+        general layout + grid
+        page layout
+        components
+
+*/
+
+@mixin respond($breakpoint) { 
+    @media only screen and ( min-width: $breakpoint ) { @content; }  
+}

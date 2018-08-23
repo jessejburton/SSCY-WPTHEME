@@ -720,7 +720,19 @@ aside#sidebar-categories {
 }
 
 .cancelled {
-  background-color: rgba(255, 180, 180, 0.658)!important;
+  color: #721c24;
+  background-color: #f8d7da!important;
+  border-color: #f5c6cb!important;
+}
+.room_teacher_change {
+  color: #856404;
+  background-color: #fff3cd!important;
+  border-color: #ffeeba!important;
+}
+.notice {
+  color: #0c5460;
+  background-color: #d1ecf1!important;
+  border-color: #bee5eb!important;
 }
 
 .u-padded {
@@ -748,3 +760,32 @@ aside#sidebar-categories {
     font-weight: bold;
   }
 }     
+
+
+/* BURTON MEDIA */
+.heading {
+
+  &__schedule {
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  &__schedule-name {
+    font-weight: bold;
+  }
+
+  &__schedule-link {
+    font-size: .7em;
+  }
+
+}
+
+
+.u-box {
+  position: relative;
+  display: inline-block;
+  margin-top: 5px;
+  transform: translateY(3px);
+  width: 20px;
+  height: 20px;
+}

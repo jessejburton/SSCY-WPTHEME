@@ -1,3 +1,5 @@
+var currentBackground = 0;
+
 function toggleMenu(index) {
 	var element = document.getElementsByClassName("menu-header")[index];
   element.classList.toggle("open");
@@ -63,6 +65,15 @@ function toggleMenu(index) {
     // select the correct navigation link
     $(".hero__navigation a.active").removeClass("active");
     $(".hero__navigation a").eq($(".branding.active").index()).addClass("active");
+
+    // change the background image
+    currentBackground = !currentBackground;
+
+    if(currentBackground == 0){
+      $("body .hero").css("background-image", "url(images/intro-background.jpg)");
+    } else {
+      $("body .hero").css("background-image", "url(images/Lotus_Background.jpg)");
+    }
   }
 
   function showPrevBanner(){
@@ -79,6 +90,15 @@ function toggleMenu(index) {
     // select the correct navigation link
     $(".hero__navigation a.active").removeClass("active");
     $(".hero__navigation a").eq($(".branding.active").index()).addClass("active");
+
+      // change the background image
+      currentBackground = !currentBackground;
+
+      if(currentBackground == 0){
+        $("body .hero").css("background-image", "url(images/intro-background.jpg)");
+      } else {
+        $("body .hero").css("background-image", "url(images/Lotus_Background.jpg)");
+      }
   }
 
   /* YOGA SCHEDULE */
@@ -93,4 +113,107 @@ function toggleMenu(index) {
     $(this).parents(".class").next().toggleClass("show");
   });  
 
+  // Modal
+  $(document).on("click", ".register-button", function(e){
+
+    // So that it can be updated later when the person finished registration
+    $(this).addClass("active");
+
+    $(".modal .class__name").html($(this).data("class-name"));
+    $(".modal .class__date").html($(this).data("class-date-styled"));
+    $("#class_date").val($(this).data("class-date"));
+    $("#class_id").val($(this).data("class-id"));
+
+    openDialog();
+
+  });
+
+  // Logout
+  $(document).on("click", ".logout", function(e){
+    $.ajax({
+        url: "/sandbox/wp-content/themes/saltspringcentre/sscy/logout.php",
+        method: "POST",
+        success: function(response){
+          // refresh the page
+          window.location = window.location;
+        }	
+		});
+  });
+
+  // Register
+  $(document).on("click", ".class-register", function(e){
+
+    var elm = $(".register-button.active");
+    
+    // Prepare the data
+    var registrant = {
+      "name_first": $("#name_first").val(),
+      "name_last": $("#name_last").val(),
+      "email": $("#email").val(),
+      "class_id": $("#class_id").val(),
+      "class_date": $("#class_date").val()
+    }
+
+    $.ajax({
+      url: "/sandbox/wp-content/themes/saltspringcentre/sscy/register.php",
+      data: registrant,
+      method: "POST",
+      success: function(response){
+        response = JSON.parse(response);
+        if(response.success){
+          elm.addClass("un-register-button");
+          elm.removeClass("register-button");
+          elm.removeClass(".active");
+          elm.html("unregister");
+          elm.data("registration-id", response.registration_id);
+          closeDialog();
+          alert("You have been registered for this class");
+        }
+      }	
+		});
+
+  });
+
+  // Register
+  $(document).on("click", ".un-register-button", function(e){
+    
+    var elm = $(this);
+    var registrationID = elm.data("registration-id");
+
+    // Prepare the data
+    var data = {
+      "registration_id": registrationID
+    }
+
+    $.ajax({
+      url: "/sandbox/wp-content/themes/saltspringcentre/sscy/unregister.php",
+      data: data,
+      method: "POST",
+      success: function(response){
+        response = JSON.parse(response);
+        if(response.success){
+          elm.removeClass("un-register-button");
+          elm.addClass("register-button");
+          elm.html("register");
+          alert("You have been unregistered for this class");
+        }
+      }	
+		});
+
+  });
+
+  $(document).on("click", ".modal__cancel", closeDialog);
+
 })( jQuery );
+
+function openDialog(){
+  // Open the modal dialog
+  document.getElementsByClassName("modal")[0].style.height = "100vh";
+  document.getElementsByClassName("modal__window")[0].style.left = "15vw";
+}
+
+function closeDialog(){
+  // Close the modal dialog
+  document.getElementsByClassName("modal")[0].style.height = "0vh";
+  document.getElementsByClassName("modal__window")[0].style.left = "100%";  
+}

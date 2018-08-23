@@ -304,3 +304,63 @@ hr {
   clear: both;
   display: table;
 }
+
+// ADDED BY BURTON MEDIA www.burtonmediainc.com
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 0;
+  z-index: 3000;
+  background-color: rgba(0,0,0,.6);
+
+  &__window {
+    @include modal;
+  }
+
+  &__header, &__body, &__footer {
+    padding: 50px;
+  }
+
+  &__header {
+    padding-bottom: 20px;
+  }
+
+  &__footer {
+    padding: 0 50px;
+    height: 50px;
+  }
+
+  &__body label {
+    font-size: .8em;
+    font-weight: bold;
+    position: relative;
+    top: -7px;
+    opacity: 1;
+    left: 14px;
+    color: $dark-text;
+    transition: all .2s;
+  }
+
+  &__input:placeholder-shown + &__label {
+      opacity: 0;
+      visibility: hidden;
+      top: -20px;
+  }
+
+  &__footer-button {
+    float: right;
+    transform: translateY(-25px);
+  }
+
+}
+
+.button--small {
+  font-size: .7em!important;
+}
+
+.input__group:not(last-child) {
+  padding-bottom: 10px;
+}

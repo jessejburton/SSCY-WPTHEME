@@ -56,6 +56,35 @@
 
     ?>
 
+    <!-- Set some variables if a cookie exists and add a heading -->
+    <?php 
+
+        if(!isset($_COOKIE["name_first"])) {
+            $name_first = "";
+            $name_last = "";
+            $email = "";
+        } else {
+            $name_first = $_COOKIE["name_first"];
+            $name_last = $_COOKIE["name_last"];
+            $email = $_COOKIE["email"];
+
+            ?> 
+                <h4 class="heading__schedule">
+                    Hi 
+                    <span class="heading__schedule-name"><?php echo $name_first; ?></span>!
+                    | <a href="javascript:void(0);" class="heading__schedule-link logout">logout</a>
+                </h4> 
+            <?php
+        }
+
+    ?>
+
+    <div style="padding: 10px 0; font-size: .8em; text-align: right;">
+        Class cancelled <span class="cancelled u-box"></span><br />
+        Room or Teacher change <span class="room_teacher_change u-box"></span><br />
+        Information notice <span class="notice u-box"></span><br />
+    </div>
+
         <p style="text-align: center;">
             <a href="http://internal.saltspringcentre.com/print/yoga_schedule.php" target="_blank"><i class="fas fa-print"></i> print schedule</a>
         </p>
@@ -63,7 +92,7 @@
         <table class="table table--class">
             <thead>
                 <tr>
-                    <th colspan="3" class="clearfix">
+                    <th colspan="4" class="clearfix">
                         <a href="<?php echo get_permalink(); ?>?datestart=<?php echo strtotime('-7 days', $current_date); ?>" class="table__navigation-link table__navigation-link--prev">
                             <i class="far fa-arrow-alt-circle-left"></i> previous week
                         </a>
@@ -80,7 +109,7 @@
                     
                     <!-- Display the date heading -->
                     <tr class="class-date">
-                        <td colspan="3"><strong style="text-transform: uppercase;"><?php echo date('l', $current_date); ?></strong> <em style="font-size: .8em;"><?php echo date('F jS, Y', $current_date) ?></em></td>
+                        <td colspan="4"><strong style="text-transform: uppercase;"><?php echo date('l', $current_date); ?></strong> <em style="font-size: .8em;"><?php echo date('F jS, Y', $current_date); ?></em></td>
                     </tr>
                 
                     <?php
@@ -125,6 +154,29 @@
 
                         // Increment the classes shown by 1 for each class
                         $classes_shown++;
+
+                        /* FIND OUT IF THE USER IS REGISTERED ALREADY */
+                        if(isset($_COOKIE["email"])){
+                            $qry_registration = $sscy_database->prepare( "
+                                SELECT registration_id
+                                FROM registration_tbl
+                                WHERE   class_id = %d 
+                                AND     email = %s
+                                AND     date_class = %s
+                            ", $class->class_id, $_COOKIE["email"], date('Y-m-d', $current_date) );
+
+                            $qry_reg_results = $sscy_database->get_results($qry_registration);
+
+                            $registered = false;
+                            $registrationID = 0;
+                            if(sizeof($qry_reg_results) == 1){
+                                $registered = true;
+                                $registrationID = $qry_reg_results[0]->registration_id;
+                            }
+
+                        } 
+
+
                     ?> 
 
                         <tr class="class class-<?php echo $class->class_id; ?> <?= sizeof($qry_results) === 1 ? $qry_results[0]->type : ''?>">
@@ -133,6 +185,13 @@
                             </td>        
                             <td><a class="class__teacher_link" href="javascript:void(0);"><?php echo $class->name_first . ' ' . $class->name_last; ?></a></td>
                             <td><?php echo $start_time . ' - ' . $end_time; ?></td>
+                            <td style="text-align: center;">
+                                <?php if(!$registered){ ?>
+                                    <a class="button button--small register-button" href="javascript:void(0);" data-class-name="<?php echo $class->name; ?>" data-class-id="<?php echo $class->class_id; ?>" data-class-date="<?php echo date('Y-m-d', $current_date); ?>" data-class-date-styled="<?php echo date('F jS, Y', $current_date); ?>">register</a>
+                                <?php } else { ?>
+                                    <a class="button button--small un-register-button" href="javascript:void(0);" data-registration-id="<?php echo $registrationID; ?>" data-class-name="<?php echo $class->name; ?>" data-class-id="<?php echo $class->class_id; ?>" data-class-date="<?php echo date('Y-m-d', $current_date); ?>" data-class-date-styled="<?php echo date('F jS, Y', $current_date); ?>">un-register</a>
+                                <?php } ?>
+                            </td>
                         </tr>
                         <tr class="class__details class__details--description">
                             <td colspan="4">
@@ -183,4 +242,36 @@
 
             </tbody>
         </table>
-        
+
+        <div class="modal">
+            <div class="modal__window">
+                <div class="modal__header">
+                    <h1>Class Registration</h1>
+                    <h2><span class="class__name"></span> - <span class="class__date"></span></h2>
+                </div>
+                <div class="modal__body">
+                    <div class="input__group">
+                        <input class="modal__input" type="text" id="name_first" placeholder="First Name" value="<?php echo $name_first; ?>" />
+                        <label class="modal__label" for="name_first">First Name</label>
+                    </div>
+
+                    <div class="input__group">
+                        <input class="modal__input" type="text" id="name_last" placeholder="Last Name" value="<?php echo $name_last; ?>" />
+                        <label class="modal__label" for="name_last">Last Name</label>
+                    </div>
+
+                    <div class="input__group">
+                        <input class="modal__input" type="text" id="email" placeholder="Email" value="<?php echo $email; ?>" />
+                        <label class="modal__label" for="email">Email</label>
+                    </div>
+                </div>
+                <div class="modal__footer">
+                    <a class="modal__footer-link modal__cancel" href="#">cancel</a>
+                    <a class="modal__footer-button button class-register" href="#">Register</a>
+
+                    <!-- Hidden Input -->
+                    <input type="hidden" id="class_date" />
+                    <input type="hidden" id="class_id" />
+                </div>
+            </div>
+        </div>
