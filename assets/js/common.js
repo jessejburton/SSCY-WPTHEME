@@ -135,7 +135,7 @@ function toggleMenu(index) {
         method: "POST",
         success: function(response){
           // refresh the page
-          window.location = window.location;
+          location.reload();
         }	
 		});
   });
@@ -155,7 +155,7 @@ function toggleMenu(index) {
     }
 
     $.ajax({
-      url: "/sandbox/register.php",
+      url: "/wp-content/themes/saltspringcentre/SSCY/register.php",
       data: registrant,
       method: "POST",
       success: function(response){

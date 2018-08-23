@@ -264,6 +264,21 @@
                         <input class="modal__input" type="text" id="email" placeholder="Email" value="<?php echo $email; ?>" />
                         <label class="modal__label" for="email">Email</label>
                     </div>
+
+                    <!-- Sign the waiver if they haven't already. -->
+                    <?php if(!isset($_COOKIE["name_first"])) { ?>
+                        <h4>Acknowledgments</h4>
+                        <div class="input__group">
+                            <p>
+                                <input type="checkbox">
+                                I have read the Salt Spring Centre's <a href="http://www.saltspringcentre.com/legal/cancellation-policy/" target="_blank" class="colored">Waiver</a> and agree to its terms.
+                            </p>
+                            <p>
+                                <input type="checkbox">
+                                I have read the {Teachers Name}'s <a href="http://www.saltspringcentre.com/legal/cancellation-policy/" target="_blank" class="colored">Waiver</a> and agree to its terms.
+                            </p>
+                        </div>
+                    <?php } ?>
                 </div>
                 <div class="modal__footer">
                     <a class="modal__footer-link modal__cancel" href="#">cancel</a>
