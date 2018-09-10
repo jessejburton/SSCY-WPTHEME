@@ -10,22 +10,27 @@ body {
       @include transition(height 0.3s);
       a {
         border-width: 0.3em;
-        &:hover, &:active {
+        &:hover,
+        &:active {
           color: $accent-high;
-          svg path { fill: $accent-high; }
+          svg path {
+            fill: $accent-high;
+          }
         }
         &.home-link {
           width: 40px;
           float: left;
           height: 2.5em;
-          margin-right:0;
+          margin-right: 0;
           padding-top: 0.2em;
           display: inline-block;
           svg {
             float: left;
             height: 100%;
           }
-          &:hover { border-color: transparent;}
+          &:hover {
+            border-color: transparent;
+          }
         }
         &.mobile-nav {
           float: right;
@@ -50,10 +55,16 @@ body {
           }
         }
       }
-      &.open { height: 100%; }
-      @media only screen and (min-width : 1160px) {
-        a.home-link { width: 36px; }
-        a.mobile-nav { display: none; }
+      &.open {
+        height: 100%;
+      }
+      @media only screen and (min-width: 1160px) {
+        a.home-link {
+          width: 36px;
+        }
+        a.mobile-nav {
+          display: none;
+        }
         ul {
           font-size: 80%;
           margin-left: 10px;
@@ -68,8 +79,8 @@ body {
             }
           }
         }
-      }      
-      @media only screen and (min-width : 1420px) {
+      }
+      @media only screen and (min-width: 1420px) {
         ul {
           font-size: 100%;
           li {
@@ -85,39 +96,51 @@ body {
 
   & > footer {
     @extend %wrapper-full;
-    padding: $vertical-spacing $gutter $vertical-spacing*4;
-    h6 { font-weight: bold; margin-bottom: $gutter; }
+    padding: $vertical-spacing $gutter $vertical-spacing * 4;
+    h6 {
+      font-weight: bold;
+      margin-bottom: $gutter;
+    }
     ul {
       li {
         margin-top: $gutter;
-        h6 { margin: 0 $gutter; line-height: 2em; }
-        li { margin: 0 $gutter; }
+        h6 {
+          margin: 0 $gutter;
+          line-height: 2em;
+        }
+        li {
+          margin: 0 $gutter;
+        }
       }
-      @media only screen and (min-width : $tablet-width)  {
+      @media only screen and (min-width: $tablet-width) {
         li {
           width: 50%;
           float: left;
           display: block;
-          li { width: 100%; }
+          li {
+            width: 100%;
+          }
         }
       }
-      @media only screen and (min-width : $max-width)  {
-        li { width: 25%; }
+      @media only screen and (min-width: $max-width) {
+        li {
+          width: 25%;
+        }
       }
     }
     .home-link {
-      height:0;
+      height: 0;
       width: 420px;
       left: $gutter;
       bottom: $baseline;
-      padding-bottom: $baseline*1.6;
+      padding-bottom: $baseline * 1.6;
       position: absolute;
-      margin-right:0;
+      margin-right: 0;
       a {
         width: 100%;
         height: 100%;
         border: none;
-        left:15px;
+        left: 15px;
         top: 0;
         position: absolute;
         display: inline-block;
@@ -127,7 +150,9 @@ body {
           margin-right: 1%;
         }
       }
-      &:hover { border-color: transparent;}
+      &:hover {
+        border-color: transparent;
+      }
     }
   }
 
@@ -136,11 +161,18 @@ body {
     section {
       @extend %wrapper-full;
       padding: $vertical-spacing 0;
-      article, aside { @extend %article-padding; }
+      article,
+      aside {
+        @extend %article-padding;
+      }
       &.has-sidebar {
-        aside {  @extend %body-of-text;  padding-left: $gutter; padding-right: $gutter; }
-        @media only screen and (min-width : $tablet-width)  {
-          article { 
+        aside {
+          @extend %body-of-text;
+          padding-left: $gutter;
+          padding-right: $gutter;
+        }
+        @media only screen and (min-width: $tablet-width) {
+          article {
             width: 64%;
             float: right;
             margin-right: 5%;
@@ -155,24 +187,48 @@ body {
             float: left;
             width: 22%;
             margin-left: 5%;
-            li { margin: 0.3em 0; }
+            li {
+              margin: 0.3em 0;
+            }
           }
         }
-        @media only screen and (min-width : $med-width)  {
-          article { margin-right: 8%; width: 61%; }
-          aside { margin-left: 8%; width: 18%; }
+        @media only screen and (min-width: $med-width) {
+          article {
+            margin-right: 8%;
+            width: 61%;
+          }
+          aside {
+            margin-left: 8%;
+            width: 18%;
+          }
         }
-        @media only screen and (min-width : $lrg-width)  {
-          article { margin-right: 10%; width: 59%; }
-          aside { margin-left: 10%; width: 16%; }
+        @media only screen and (min-width: $lrg-width) {
+          article {
+            margin-right: 10%;
+            width: 59%;
+          }
+          aside {
+            margin-left: 10%;
+            width: 16%;
+          }
         }
-        @media only screen and (min-width : $max-width)  {
-          article { margin-right: 15%;  }
-          aside { margin-left: 10%; width: 16%; }
+        @media only screen and (min-width: $max-width) {
+          article {
+            margin-right: 15%;
+          }
+          aside {
+            margin-left: 10%;
+            width: 16%;
+          }
         }
-        @media only screen and (min-width : $ultra-width)  {
-          article { margin-right: 15%; }
-          aside { margin-left: 10%; width: 22%; }
+        @media only screen and (min-width: $ultra-width) {
+          article {
+            margin-right: 15%;
+          }
+          aside {
+            margin-left: 10%;
+            width: 22%;
+          }
         }
       }
     }
@@ -180,7 +236,7 @@ body {
 
   .hero {
     @extend %texture-background;
-    height:60vh;
+    height: 60vh;
     min-height: 400px;
     text-align: center;
     background-image: url(images/intro-background.jpg);
@@ -192,19 +248,20 @@ body {
       left: 50%;
       transform: translateX(-50%);
       z-index: 200;
-      font-size: .7em;
+      font-size: 0.7em;
 
-      a, a:link {
+      a,
+      a:link {
         border: none;
-        transition: all .2s;
+        transition: all 0.2s;
 
-        &:not(last-child){
+        &:not(last-child) {
           margin-right: 15px;
         }
-
       }
 
-      a:hover, a.active {
+      a:hover,
+      a.active {
         color: $white;
       }
     }
@@ -221,12 +278,14 @@ body {
       .branding {
         height: 50%;
         width: 100%;
-        color:$white;
+        color: $white;
         svg {
           width: 100%;
           height: 80%;
           opacity: 0.9;
-          path { fill: $accent-light; }
+          path {
+            fill: $accent-light;
+          }
           &#sscy {
             height: 30%;
             position: relative;
@@ -235,28 +294,32 @@ body {
         }
       }
       h2 {
-        color:$white;
+        color: $white;
         //color: $black;
-        @media only screen and (min-width : $tablet-width)  {
+        @media only screen and (min-width: $tablet-width) {
           font-size: 180%;
         }
-        @media only screen and (min-width : $lrg-width)  {
+        @media only screen and (min-width: $lrg-width) {
           font-size: 240%;
         }
       }
       .button {
-        color:$white;
-        border-color:$white;
-        &:hover { border-color: $accent-light; background-color:  $accent-light; color: $accent-dark; }
-        @media only screen and (min-width : $tablet-width)  {
+        color: $white;
+        border-color: $white;
+        &:hover {
+          border-color: $accent-light;
+          background-color: $accent-light;
+          color: $accent-dark;
+        }
+        @media only screen and (min-width: $tablet-width) {
           border-width: 3px;
           margin-top: $baseline;
         }
-        @media only screen and (min-width : $max-width)  {
-          margin-top: 3*$baseline;
+        @media only screen and (min-width: $max-width) {
+          margin-top: 3 * $baseline;
         }
-        @media only screen and (min-width : $max-width)  {
-          margin-top: 3*$baseline;
+        @media only screen and (min-width: $max-width) {
+          margin-top: 3 * $baseline;
         }
       }
     }
@@ -274,7 +337,7 @@ body {
   .gradient-background {
     @extend %gradient-background;
     article {
-      background: rgba(255,255,255,0.9);
+      background: rgba(255, 255, 255, 0.9);
       padding: 2em 3em;
     }
   }
@@ -283,8 +346,14 @@ body {
   }
   .texture-background {
     @extend %texture-background;
-    article { position: relative; z-index: 103; }
-    aside { position: relative; z-index: 104; }
+    article {
+      position: relative;
+      z-index: 103;
+    }
+    aside {
+      position: relative;
+      z-index: 104;
+    }
   }
   .alt-background {
     @extend %alt-background;
@@ -297,26 +366,37 @@ body {
   }
 
   .dark-background {
-    h6 { color: $white; }
+    h6 {
+      color: $white;
+    }
   }
 
-  .alt-background, .dark-background, .bright-background, .alt-background-2 {
+  .alt-background,
+  .dark-background,
+  .bright-background,
+  .alt-background-2 {
     .branding {
       color: $white;
-      svg path { fill: $white; }
+      svg path {
+        fill: $white;
+      }
     }
   }
 
   .alt-color {
     .branding {
       color: $secondary-color;
-      svg path { fill: $secondary-color; }
+      svg path {
+        fill: $secondary-color;
+      }
     }
   }
   .alt-color-2 {
     .branding {
       color: $secondary-color-2;
-      svg path { fill: $secondary-color-2; }
+      svg path {
+        fill: $secondary-color-2;
+      }
     }
   }
 
@@ -326,7 +406,9 @@ body {
     max-height: 4em;
     .branding {
       height: 100%;
-      svg#sscy { margin-left: 2%; }
+      svg#sscy {
+        margin-left: 2%;
+      }
     }
     footer & {
       max-height: 20px;
@@ -348,7 +430,7 @@ body {
       padding-bottom: 36%;
       svg#lotus {
         top: 6%;
-        left:0;
+        left: 0;
         width: 100%;
         height: 62%;
         position: absolute;
@@ -357,19 +439,19 @@ body {
         width: 100%;
         height: 30%;
         position: relative;
-        top:60%;
+        top: 60%;
       }
     }
-    @media only screen and (min-width : 420px)  {
+    @media only screen and (min-width: 420px) {
       font-size: 120%;
     }
-    @media only screen and (min-width : 500px)  {
+    @media only screen and (min-width: 500px) {
       font-size: 160%;
     }
-    @media only screen and (min-width : 620px)  {
+    @media only screen and (min-width: 620px) {
       font-size: 180%;
     }
-    @media only screen and (min-width : 768px)  {
+    @media only screen and (min-width: 768px) {
       font-size: 200%;
     }
   }
@@ -389,7 +471,7 @@ body {
       height: 200px;
     }
 
-    @media only screen and (max-width : 768px)  {
+    @media only screen and (max-width: 768px) {
       &__logo {
         height: 140px;
       }
@@ -405,27 +487,34 @@ body {
       width: auto;
       height: 100%;
       display: block;
-      path { fill: $accent-color; }
+      path {
+        fill: $accent-color;
+      }
     }
   }
 
-  a.branding  {
+  a.branding {
     border: none;
     @include transition(color 0.3s);
-    svg path { @include transition(fill 0.3s); }
-    &:hover, &:active {
+    svg path {
+      @include transition(fill 0.3s);
+    }
+    &:hover,
+    &:active {
       color: $accent-high;
-      svg path { fill: $accent-high; }
+      svg path {
+        fill: $accent-high;
+      }
     }
   }
 }
 
 .sscy-spaced {
-	clear: both;
+  clear: both;
 }
 
 .breadcrumb {
-	padding: $gutter;
+  padding: $gutter;
 }
 
 .divider {
@@ -439,7 +528,7 @@ body {
     top: 49%;
     width: 100%;
     height: 3px;
-    content: ' ';
+    content: " ";
     z-index: 333;
     position: absolute;
     background-color: $accent-color;
@@ -449,20 +538,27 @@ body {
     height: 100%;
     z-index: 334;
     position: relative;
-    rect { fill: $white; }
-    path { fill: $accent-color; }
+    rect {
+      fill: $white;
+    }
+    path {
+      fill: $accent-color;
+    }
   }
 }
 
 .blog {
   .loop {
     article {
-      padding-top:0;
+      padding-top: 0;
       overflow: hidden;
       margin-bottom: $baseline;
       padding-bottom: $baseline;
       border-bottom: 1px solid $accent-color;
-      &:last-child { border-bottom: none; margin-bottom: 0; }
+      &:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+      }
       .post-thumbnail {
         width: 30%;
         float: left;
@@ -477,10 +573,12 @@ body {
           display: inline-block;
         }
         &::after {
-          content: ' ';
+          content: " ";
           position: absolute;
-          left:0; bottom: 0; right: 0;
-          background: rgba(255,255,255,0.1);
+          left: 0;
+          bottom: 0;
+          right: 0;
+          background: rgba(255, 255, 255, 0.1);
           opacity: 0.85;
           z-index: 100;
           border-bottom: 3vh solid $accent-light;
@@ -504,8 +602,8 @@ body {
             position: absolute;
             width: 100%;
             height: 100%;
-            top:0;
-            left:0;
+            top: 0;
+            left: 0;
           }
         }
       }
@@ -524,7 +622,9 @@ body {
     }
   }
   header {
-    h3 a { display: inline!important; }
+    h3 a {
+      display: inline !important;
+    }
   }
 }
 
@@ -548,17 +648,24 @@ body {
     padding-top: 1em;
     padding-left: 0;
     //@media only screen and (min-width : $lrg-width)  {
-      li a { font-size: 2.6em; margin-right: 9px }
+    li a {
+      font-size: 2.6em;
+      margin-right: 9px;
+    }
     //}
   }
 }
 
-a.button, input[type=submit], input[type=button] {
+a.button,
+input[type="submit"],
+input[type="button"] {
   @extend %button;
-  &:hover, a:active { color: $white; background-color:  $accent-color; }
+  &:hover,
+  a:active {
+    color: $white;
+    background-color: $accent-color;
+  }
 }
-
-
 
 /**** ADDED BY JESSE BURTON (BURTON MEDIA) ****/
 
@@ -572,7 +679,7 @@ aside#sidebar-categories {
 
 #sidebar-signup-container {
   position: absolute;
-  max-width: 300px!important;
+  max-width: 300px !important;
 }
 
 /**** MIND BODY ****/
@@ -584,17 +691,17 @@ aside#sidebar-categories {
 .banner__arrow {
   position: absolute;
   font-size: 5em;
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   z-index: 3000;
-  opacity: .15;
+  opacity: 0.15;
   cursor: pointer;
-  transition: all .2s;
+  transition: all 0.2s;
 
   &.banner__arrow--left {
     border-top: 25px solid transparent;
-    border-bottom: 25px solid transparent; 
-    border-right: 25px solid $white; 
+    border-bottom: 25px solid transparent;
+    border-right: 25px solid $white;
 
     left: $gutter * 2;
     top: 50%;
@@ -608,77 +715,73 @@ aside#sidebar-categories {
 
     right: $gutter * 2;
     top: 50%;
-    transform: translateY(-50%);    
+    transform: translateY(-50%);
   }
 
   // Need to have this transform AFTER the others.
   &:hover {
-    opacity: .9;
+    opacity: 0.9;
     transform: translateY(-50%) scale(1.1);
   }
-
 }
-
 
 // Yoga Schedule
 .table--class {
   width: 100%;
   border-collapse: collapse;
 
-    tr {
-      border-bottom: 1px solid $accent-color;
-    }
-    .class__details {
-      font-size:0; 
-      margin:0;
-      border: none;
+  tr {
+    border-bottom: 1px solid $accent-color;
+  }
+  .class__details {
+    font-size: 0;
+    margin: 0;
+    border: none;
+    padding: 0;
+
+    td {
       padding: 0;
+    }
+  }
+  tr td .class__details-content {
+    width: 100%;
+    max-height: 0;
+    padding: 0 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: max-height 0.3s, padding 0.3s;
+    background-color: $accent-color;
+    color: $white;
+  }
+  .class__details.show {
+    font-size: inherit;
+  }
+  tr.show td .class__details-content {
+    max-height: 1000px;
+    padding: 20px 20px;
+    transition: max-height 0.6s, padding 0.6s;
+  }
 
-      td {
-        padding: 0;
-      }
-    }
-    tr td .class__details-content {
-      width: 100%;
-      max-height: 0;
-      padding: 0 20px;
-      box-sizing: border-box;
-      overflow: hidden;
-      transition: max-height 0.3s, padding 0.3s;
-      background-color: $accent-color; 
-      color: $white;
-    }
-    .class__details.show {
-      font-size: inherit;
-    }
-    tr.show td .class__details-content {
-      max-height: 1000px;
-      padding: 20px 20px;
-      transition: max-height 0.6s, padding 0.6s;
-    }
+  a {
+    display: inline;
+  }
 
-    a {
-      display: inline;
-    }
-  
-    tr.class-date {
-      background-color: $row-color!important;
-    }
+  tr.class-date {
+    background-color: $row-color !important;
+  }
 
-    .table__navigation-link {
-      display: block;
-    }
+  .table__navigation-link {
+    display: block;
+  }
 
-    .table__navigation-link--prev {
-      float: left;
-    }
+  .table__navigation-link--prev {
+    float: left;
+  }
 
-    .table__navigation-link--next {
-      float: right;
-    }
-
+  .table__navigation-link--next {
+    float: right;
+  }
 }
-
 
 .u-text-right {
   text-align: right;
@@ -691,52 +794,51 @@ aside#sidebar-categories {
 .highlight_menu_item {
   background-color: $secondary-color;
   color: $white;
-  transition: all .2s;
+  transition: all 0.2s;
 
-    a {
-      padding-left: 7px;
-      padding-right: 7px;
-    }
-
+  a {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
 }
 
 .alt-background a.button {
-  border-color: $white!important;
+  border-color: $white !important;
 }
 
 .class__details-content strong {
   font-style: italic;
 }
 
-.class__details-room h4 { 
+.class__details-room h4 {
   color: inherit;
 }
 
 .photo-left-small {
   max-width: 150px;
-  float: left; 
-  margin-right: 1em; 
+  float: left;
+  margin-right: 1em;
   margin-bottom: 1em;
 }
 
 .cancelled {
   color: #721c24;
-  background-color: #f8d7da!important;
-  border-color: #f5c6cb!important;
+  background-color: #f8d7da !important;
+  border-color: #f5c6cb !important;
 }
 .room_teacher_change {
   color: #856404;
-  background-color: #fff3cd!important;
-  border-color: #ffeeba!important;
+  background-color: #fff3cd !important;
+  border-color: #ffeeba !important;
 }
 .notice {
   color: #0c5460;
-  background-color: #d1ecf1!important;
-  border-color: #bee5eb!important;
+  background-color: #d1ecf1 !important;
+  border-color: #bee5eb !important;
 }
 
 .u-padded {
-  padding: .3em 2em;
+  padding: 0.3em 2em;
 }
 
 .highlight {
@@ -746,10 +848,11 @@ aside#sidebar-categories {
   margin: 20px 0;
   text-align: center;
 
-  a, a:link {
+  a,
+  a:link {
     font-weight: 500;
-    color: $white!important;
-    transition: all .2s;
+    color: $white !important;
+    transition: all 0.2s;
   }
 
   a:hover {
@@ -759,12 +862,10 @@ aside#sidebar-categories {
   strong {
     font-weight: bold;
   }
-}     
-
+}
 
 /* BURTON MEDIA */
 .heading {
-
   &__schedule {
     padding: 20px 0;
     text-align: center;
@@ -775,9 +876,8 @@ aside#sidebar-categories {
   }
 
   &__schedule-link {
-    font-size: .7em;
+    font-size: 0.7em;
   }
-
 }
 
 .u-box {
@@ -789,11 +889,12 @@ aside#sidebar-categories {
   height: 20px;
 }
 
-.cancelled .register-button, .cancelled .un-register-button {
+.cancelled .register-button,
+.cancelled .un-register-button {
   display: none;
 }
 
-.register-button, .un-register-button {
-  display: none!important;
+.register-button,
+.un-register-button {
+  display: none !important;
 }
- 
