@@ -38,8 +38,8 @@ function toggleMenu(index) {
     /*
       ** BABAJI PASSING **
       Change setTimeOut to setInterval and time to 5000
-    */
-    var banner_scroll = setTimeout(scrollBanner, 3000);
+    
+    var banner_scroll = setTimeout(scrollBanner, 3000);*/
 
     // Banner Arrow Navigating
     $(document).on("click", ".banner__arrow--left", function() {
