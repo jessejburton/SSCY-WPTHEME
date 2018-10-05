@@ -79,7 +79,7 @@
 
     ?>
 
-    <p style="text-align: center; font-weight: bold;">Please click on the name of a class in the schedule to view a class description and location.</p>
+    <p style="text-align: center; font-weight: bold;">Please click on the name of a class in the schedule to view a class description and location and the name of the teacher to view their bio.</p>
 
     <div style="padding: 10px 0; font-size: .8em; text-align: right;">
         Class cancelled <span class="cancelled u-box"></span><br />
