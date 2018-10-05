@@ -188,10 +188,12 @@
                             <td><a class="class__teacher_link" href="javascript:void(0);"><?php echo $class->name_first . ' ' . $class->name_last; ?></a></td>
                             <td style="width: 150px;"><?php echo $start_time . ' - ' . $end_time; ?></td>
                             <td style="text-align: center; width: 100px;">
-                                <?php if(!$registered){ ?>
-                                    <a class="button button--small register-button" href="javascript:void(0);" data-class-name="<?php echo $class->name; ?>" data-class-id="<?php echo $class->class_id; ?>" data-class-date="<?php echo date('Y-m-d', $current_date); ?>" data-class-date-styled="<?php echo date('F jS, Y', $current_date); ?>">register</a>
-                                <?php } else { ?>
-                                    <a class="button button--small un-register-button" href="javascript:void(0);" data-registration-id="<?php echo $registrationID; ?>" data-class-name="<?php echo $class->name; ?>" data-class-id="<?php echo $class->class_id; ?>" data-class-date="<?php echo date('Y-m-d', $current_date); ?>" data-class-date-styled="<?php echo date('F jS, Y', $current_date); ?>">un-register</a>
+                                <?php if(1 == 2){ ?>
+                                    <?php if(!$registered){ ?>
+                                        <a class="button button--small register-button" href="javascript:void(0);" data-class-name="<?php echo $class->name; ?>" data-class-id="<?php echo $class->class_id; ?>" data-class-date="<?php echo date('Y-m-d', $current_date); ?>" data-class-date-styled="<?php echo date('F jS, Y', $current_date); ?>">register</a>
+                                    <?php } else { ?>
+                                        <a class="button button--small un-register-button" href="javascript:void(0);" data-registration-id="<?php echo $registrationID; ?>" data-class-name="<?php echo $class->name; ?>" data-class-id="<?php echo $class->class_id; ?>" data-class-date="<?php echo date('Y-m-d', $current_date); ?>" data-class-date-styled="<?php echo date('F jS, Y', $current_date); ?>">un-register</a>
+                                    <?php } ?>
                                 <?php } ?>
                             </td>
                         </tr>
