@@ -893,20 +893,3 @@ aside#sidebar-categories {
 .cancelled .un-register-button {
   display: none;
 }
-
-/* BABAJI PASSING */
-.hero::before,
-.branding__logo svg,
-.hero__navigation,
-.banner__arrow {
-  opacity: 0 !important;
-}
-
-.hero::before {
-  transition: all 6s;
-  border-bottom: none !important;
-}
-
-.hero.show::before {
-  opacity: 0.8 !important;
-}
