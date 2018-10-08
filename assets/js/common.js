@@ -35,11 +35,8 @@ function toggleMenu(index) {
     });
 
     // Banner Scrolling
-    /*
-      ** BABAJI PASSING **
-      Change setTimeOut to setInterval and time to 5000
-    
-    var banner_scroll = setTimeout(scrollBanner, 3000);*/
+
+    var banner_scroll = setInterval(scrollBanner, 5000);
 
     // Banner Arrow Navigating
     $(document).on("click", ".banner__arrow--left", function() {
@@ -102,13 +99,6 @@ function toggleMenu(index) {
     // Make the next banner active to show it
     $(".branding.active").removeClass("active");
     prevBanner.addClass("active");
-
-    /*** BABAJI PASSING ***/
-
-    // Show the overlay
-    $(".hero").addClass("show");
-
-    /*** BABAJI PASSING ***/
 
     // select the correct navigation link
     $(".hero__navigation a.active").removeClass("active");
