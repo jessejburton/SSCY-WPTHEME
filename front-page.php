@@ -17,7 +17,6 @@ get_header();
 			</section>
 			<?php
 
-			/* BABAJI PASSED
 	        $childArgs = array(
 	            'sort_order' => 'ASC',
 	            'sort_column' => 'menu_order',
@@ -35,7 +34,7 @@ get_header();
 					</article>
 				</section>
 				<?php
-	        }*/
+	        }
 	   endwhile;
 	endif;
 
