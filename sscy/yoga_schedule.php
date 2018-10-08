@@ -79,7 +79,9 @@
 
     ?>
 
-    <p style="text-align: center; font-weight: bold;">Please click on the name of a class in the schedule to view a class description and location and the name of the teacher to view their bio.</p>
+    <p style="text-align: center;"><strong>*** Online Registration now available ***</strong><br /> Please consider pre-registering for your classes online. It is as simple as clicking register and entering your name and e-mail. Once you have registered once your information will be saved for next time on this device! This will save you from having to write your name out when you get to class and it also helps us save paper.</p>
+
+    <p style="text-align: center;">Please click on the name of a class in the schedule to view a class description and location and the name of the teacher to view their bio.</p>
 
     <div style="padding: 10px 0; font-size: .8em; text-align: right;">
         Class cancelled <span class="cancelled u-box"></span><br />
@@ -188,12 +190,10 @@
                             <td><a class="class__teacher_link" href="javascript:void(0);"><?php echo $class->name_first . ' ' . $class->name_last; ?></a></td>
                             <td style="width: 150px;"><?php echo $start_time . ' - ' . $end_time; ?></td>
                             <td style="text-align: center; width: 100px;">
-                                <?php if(1 == 2){ ?>
-                                    <?php if(!$registered){ ?>
-                                        <a class="button button--small register-button" href="javascript:void(0);" data-class-name="<?php echo $class->name; ?>" data-class-id="<?php echo $class->class_id; ?>" data-class-date="<?php echo date('Y-m-d', $current_date); ?>" data-class-date-styled="<?php echo date('F jS, Y', $current_date); ?>">register</a>
-                                    <?php } else { ?>
-                                        <a class="button button--small un-register-button" href="javascript:void(0);" data-registration-id="<?php echo $registrationID; ?>" data-class-name="<?php echo $class->name; ?>" data-class-id="<?php echo $class->class_id; ?>" data-class-date="<?php echo date('Y-m-d', $current_date); ?>" data-class-date-styled="<?php echo date('F jS, Y', $current_date); ?>">un-register</a>
-                                    <?php } ?>
+                                <?php if(!$registered){ ?>
+                                    <a class="button button--small register-button" href="javascript:void(0);" data-class-name="<?php echo $class->name; ?>" data-class-id="<?php echo $class->class_id; ?>" data-class-date="<?php echo date('Y-m-d', $current_date); ?>" data-class-date-styled="<?php echo date('F jS, Y', $current_date); ?>">register</a>
+                                <?php } else { ?>
+                                    <a class="button button--small un-register-button" href="javascript:void(0);" data-registration-id="<?php echo $registrationID; ?>" data-class-name="<?php echo $class->name; ?>" data-class-id="<?php echo $class->class_id; ?>" data-class-date="<?php echo date('Y-m-d', $current_date); ?>" data-class-date-styled="<?php echo date('F jS, Y', $current_date); ?>">un-register</a>
                                 <?php } ?>
                             </td>
                         </tr>
@@ -273,16 +273,27 @@
                     <?php if(!isset($_COOKIE["name_first"])) { ?>
                         <h4>Acknowledgments</h4>
                         <div class="input__group">
-                            <p>
-                                <input type="checkbox">
-                                I have read the Salt Spring Centre's <a href="http://www.saltspringcentre.com/legal/cancellation-policy/" target="_blank" class="colored">Waiver</a> and agree to its terms.
-                            </p>
-                            <p>
-                                <input type="checkbox">
-                                I have read the {Teachers Name}'s <a href="http://www.saltspringcentre.com/legal/cancellation-policy/" target="_blank" class="colored">Waiver</a> and agree to its terms.
-                            </p>
+                        <div class="waiver">
+                        <p><strong>Yoga Instruction and Liability Waiver and Release</strong></p>
+
+<p>I understand that yoga is an ancient Indian system designed to make the body strong and flexible. I realise that it is important never to do any practice to the point of pain or discomfort. I am aware that there is some risk involved in all physical exercise and that I am responsible for recognising my own physical limits.</p>
+
+<p>I understand that yoga is not a substitute for medical attention, examination, diagnosis or treatment, and that practising yoga is not recommended and is not safe under certain medical conditions. If I have any concerns about whether yoga is suitable for me or if I have a particular injury or medical condition, I will consult my physician before participating in a yoga class.</p>
+
+<p>I hereby agree to irrevocably waive, release and discharge any and all claims and liabilities against the Salt Spring Centre of Yoga, its individual instructors or staff, and/or Dharma Sara Satsang Society for any personal injury, death or damage to the person or property.</p>
                         </div>
-                    <?php } ?>
+
+                        <p>
+                            <input type="checkbox" id="waiver_checkbox" />
+                            <label style="font-weight: normal;">By checking this box and entering your name you agree to all of the terms and conditions listed above. Please read the terms carefully.</label>
+                        </p>
+                        </div>
+                    <?php } else { ?>
+                    <!-- Display a hidden checkbox to validate since they have already "signed" the waiver -->
+                        <div style="display: none;">
+                            <input type="checkbox" id="waiver_checkbox" checked /><label style="font-weight: normal;">By checking this box and entering your name you agree to all of the terms and conditions listed above. Please read the terms carefully.</label>
+                        </div>
+                    <?php }?>
                 </div>
                 <div class="modal__footer">
                     <a class="modal__footer-link modal__cancel" href="#">cancel</a>

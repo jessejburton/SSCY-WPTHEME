@@ -179,6 +179,27 @@ function toggleMenu(index) {
       class_date: $("#class_date").val()
     };
 
+    /* ERROR TRAPPING */
+    if(!document.getElementById("waiver_checkbox").checked){
+      alert("Please make sure to read the terms and check the waiver checkbox.");
+      return false;
+    }
+
+    if(registrant.name_first.length == 0){
+      alert("Please make sure to enter your first name. This information is required to validate signing the waiver.");
+      return false;
+    }
+
+    if(registrant.name_last.length == 0){
+      alert("Please make sure to enter your last name. This information is required to validate signing the waiver.");
+      return false;
+    }
+
+    if(registrant.email.length == 0){
+      alert("Please make sure to enter your email address. This information is required to validate signing the waiver.");
+      return false;
+    }
+
     $.ajax({
       url: "/register.php",
       data: registrant,
