@@ -9,7 +9,7 @@
     $qry_classes = $sscy_database->get_results( "
             SELECT 
                 c.class_id AS class_id, c.name, c.description, cs.room_id, c.teacher_id, 
-                cs.days_of_week, cs.start_time, cs.end_time, cs.date_until,
+                cs.days_of_week, cs.start_time, cs.end_time, cs.date_until, cs.date_from,
                 t.teacher_id, t.account_id, t.default_price, t.waiver, t.bio, t.photo,
                 a.name_first, a.name_last, 
                 r.name AS room_name, r.photo AS room_photo, r.description AS room_description
@@ -18,7 +18,8 @@
             LEFT JOIN teacher_tbl t ON c.teacher_id = t.teacher_id 
             LEFT JOIN account_tbl a ON t.account_id = a.account_id 
             LEFT JOIN room_tbl r ON r.room_id = cs.room_id
-            WHERE cs.date_until IS NULL OR cs.date_until >= CURDATE()
+            WHERE (cs.date_until IS NULL OR cs.date_until >= CURDATE())
+            AND c.is_active = 1
             ORDER BY cs.start_time
     " );
 
@@ -140,12 +141,24 @@
                         $start_time = date_create('2000-01-01 ' . $class->start_time)->format('g:iA'); 
                         $end_time = date_create('2000-01-01 ' . $class->end_time)->format('g:iA'); 
 
-                        // Find out if the weekly schedule is over and hide it if it is
+                        
                         $show_class = true;
-
+                        /* Find out if the weekly schedule is over and hide it if it is */
+                        
                         if(strlen($class->date_until) > 0){ 
                             $date_until = strtotime($class->date_until);
                             $dif = round(($date_until - $current_date) / 86400);
+
+                            if($dif < 0){
+                                // Hide the class
+                                $show_class = false;
+                            }
+                        }
+
+                        // Find out if the weekly schedule has started yet
+                        if(strlen($class->date_from) > 0){ 
+                            $date_from = strtotime($class->date_from);
+                            $dif = round(($current_date - $date_from) / 86400);
 
                             if($dif < 0){
                                 // Hide the class
