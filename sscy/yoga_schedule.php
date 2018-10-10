@@ -18,8 +18,7 @@
             LEFT JOIN teacher_tbl t ON c.teacher_id = t.teacher_id 
             LEFT JOIN account_tbl a ON t.account_id = a.account_id 
             LEFT JOIN room_tbl r ON r.room_id = cs.room_id
-            WHERE (cs.date_until IS NULL OR cs.date_until >= CURDATE())
-            AND c.is_active = 1
+            WHERE cs.date_until IS NULL OR cs.date_until >= CURDATE()
             ORDER BY cs.start_time
     " );
 
