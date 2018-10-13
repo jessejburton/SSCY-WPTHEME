@@ -58,7 +58,7 @@ body {
       &.open {
         height: 100%;
       }
-      @media only screen and (min-width: 1160px) {
+      @media only screen and (min-width: 960px) {
         a.home-link {
           width: 36px;
         }
@@ -66,13 +66,13 @@ body {
           display: none;
         }
         ul {
-          font-size: 80%;
-          margin-left: 10px;
+          font-size: 65%;
+          margin-left: 35px;
           clear: none;
           display: inline-block;
           li {
             display: inline-block;
-            margin-left: 1.38em;
+            margin-left: 0.38em;
             padding: 5px;
             a {
               height: 2.2em;
@@ -80,15 +80,22 @@ body {
           }
         }
       }
-      @media only screen and (min-width: 1420px) {
+      @media only screen and (min-width: 1100px) {
         ul {
-          font-size: 100%;
+          font-size: 78%;
+          margin-left: 10px;
           li {
             padding: 0;
+            margin-left: 1.38em;
             a {
               height: 2em;
             }
           }
+        }
+      }
+      @media only screen and (min-width: 1420px) {
+        ul {
+          font-size: 100%;
         }
       }
     }
