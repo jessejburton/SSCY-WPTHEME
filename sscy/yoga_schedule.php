@@ -218,7 +218,7 @@
                                     <?php } ?>
                                     <strong><?php echo $class->name; ?></strong>
                                     <p><?php echo $class->description; ?></p>
-                                    <?php if(!isset($class->default_price) || is_null($class->default_price)) { ?>
+                                    <?php if(isset($class->default_price) || !is_null($class->default_price) || strlen($class->default_price > 1)) { ?>
                                         <p><strong>Price:</strong> <?php echo $class->default_price; ?></p>
                                     <?php } ?>
                                     <?php if( $class->room_id != 0 ){ ?>
