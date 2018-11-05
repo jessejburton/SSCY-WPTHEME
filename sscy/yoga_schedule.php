@@ -105,7 +105,6 @@
 
     <div class="clearfix">
         <div style="float: left; font-size: .8em;">
-            <strong>Prices</strong>
             <table class="table table--class">
                 <tr><th>Teacher</th><th>Price</th></tr>
                 <?php foreach($qry_prices as $price){ ?>
