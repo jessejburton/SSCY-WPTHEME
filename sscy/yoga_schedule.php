@@ -79,14 +79,46 @@
 
     ?>
 
+    <!-- PRICING - Setting up the pricing display -->
+    <?php  
+    $qry_prices = $sscy_database->get_results( "
+        SELECT default_price, CONCAT(a.name_first, ' ', a.name_last) AS Name
+        FROM teacher_tbl t 
+        INNER JOIN account_tbl a ON a.account_id = t.account_id
+        WHERE default_price != ''
+        ORDER BY a.name_first
+    " );   
+    ?> 
+
     <p style="text-align: center;"><strong>*** Online Registration now available ***</strong><br /> Please consider pre-registering for your classes online. It is as simple as clicking register and entering your name and e-mail. Once you have registered once your information will be saved for next time on this device! This will save you from having to write your name out when you get to class and it also helps us save paper.</p>
 
     <p style="text-align: center;">Please click on the name of a class in the schedule to view a class description and location and the name of the teacher to view their bio.</p>
 
-    <div style="padding: 10px 0; font-size: .8em; text-align: right;">
-        Class cancelled <span class="cancelled u-box"></span><br />
-        Room or Teacher change <span class="room_teacher_change u-box"></span><br />
-        Information notice <span class="notice u-box"></span><br />
+    <!-- MOVE THIS TO SASS -->
+    <style>
+        .clearfix:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+
+    <div class="clearfix">
+        <div style="float: left;">
+            <strong>Prices</strong>
+            <table class="table table--class">
+                <tr><th>Teacher</th><th>Price</th></tr>
+                <?php 
+
+                ?>
+            </table>
+        </div>
+
+        <div style="float: right; padding: 10px 0; font-size: .8em; text-align: right;">
+            Class cancelled <span class="cancelled u-box"></span><br />
+            Room or Teacher change <span class="room_teacher_change u-box"></span><br />
+            Information notice <span class="notice u-box"></span><br />
+        </div>
     </div>
 
         <p style="text-align: center;">
@@ -191,7 +223,6 @@
                             }
 
                         } 
-
 
                     ?> 
 
