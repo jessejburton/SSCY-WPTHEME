@@ -197,7 +197,7 @@
 
                         <tr class="class class-<?php echo $class->class_id; ?> <?= sizeof($qry_results) === 1 ? $qry_results[0]->type : ''?>">
                             <td>
-                                <a class="class__description_link" href="javascript:void(0);" title="<?php echo $class->name; ?>"><?php echo excerpt($class->name, 30); ?></a><br /><?php echo $class->default_price; ?>
+                                <a class="class__description_link" href="javascript:void(0);" title="<?php echo $class->name; ?>"><?php echo excerpt($class->name, 30); ?></a>
                             </td>        
                             <td><a class="class__teacher_link" href="javascript:void(0);"><?php echo $class->name_first . ' ' . $class->name_last; ?></a></td>
                             <td style="width: 150px;"><?php echo $start_time . ' - ' . $end_time; ?></td>
@@ -218,6 +218,9 @@
                                     <?php } ?>
                                     <strong><?php echo $class->name; ?></strong>
                                     <p><?php echo $class->description; ?></p>
+                                    <?php if(!isset($class->default_price) || is_null($class->default_price)) { ?>
+                                        <p><strong>Price:</strong> <?php echo $class->default_price; ?></p>
+                                    <?php } ?>
                                     <?php if( $class->room_id != 0 ){ ?>
                                         <hr>
                                         <div class="class__details-room">
