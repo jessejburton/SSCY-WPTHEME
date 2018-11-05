@@ -82,7 +82,7 @@
     <!-- PRICING - Setting up the pricing display -->
     <?php  
     $qry_prices = $sscy_database->get_results( "
-        SELECT default_price, CONCAT(a.name_first, ' ', a.name_last) AS Name
+        SELECT default_price AS price, CONCAT(a.name_first, ' ', a.name_last) AS name
         FROM teacher_tbl t 
         INNER JOIN account_tbl a ON a.account_id = t.account_id
         WHERE default_price != ''
@@ -104,13 +104,13 @@
     </style>
 
     <div class="clearfix">
-        <div style="float: left;">
+        <div style="float: left; font-size: .8em;">
             <strong>Prices</strong>
             <table class="table table--class">
                 <tr><th>Teacher</th><th>Price</th></tr>
-                <?php 
-
-                ?>
+                <?php foreach($qry_prices as $price){ ?>
+                    <tr><td><?php echo $price->name ?></td><td><?php echo $price->price; ?></td></tr>
+                <?php } ?>
             </table>
         </div>
 
