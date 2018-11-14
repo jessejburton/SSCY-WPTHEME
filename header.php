@@ -88,7 +88,7 @@
 					?>
 						<div class="branding">
 							<h1 class="branding__title"><?php echo get_the_title(); ?></h1>
-							<p class="branding__text"><?php echo get_the_content(); ?></p>
+							<div class="branding__text"><?php echo get_the_content(); ?></div>
 							<?php if( isset($url) ){
 								?>
 									<a href="<?php echo esc_url( $url ); ?>" class="branding__button"><?php echo _e( $url_text ); ?></a>
