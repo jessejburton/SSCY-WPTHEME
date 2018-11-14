@@ -88,7 +88,7 @@
 					?>
 						<div class="branding">
 							<h1 class="branding__title"><?php echo the_title(); ?></h1>
-							<div class="branding__text"><?php echo the_content(); ?></div>
+							<div class="branding__text"><?php echo wpautop(get_the_content(), true); ?></div>
 							<?php if( isset($url) ){
 								?>
 									<a href="<?php echo esc_url( $url ); ?>" class="branding__button"><?php echo _e( $url_text ); ?></a>
