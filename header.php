@@ -87,8 +87,8 @@
 					$url_text = get_post_meta($post->ID, 'banner_url_text', true);
 					?>
 						<div class="branding">
-							<h1 class="branding__title"><?php echo get_the_title(); ?></h1>
-							<div class="branding__text"><?php echo get_the_content(); ?></div>
+							<h1 class="branding__title"><?php echo the_title(); ?></h1>
+							<div class="branding__text"><?php echo the_content(); ?></div>
 							<?php if( isset($url) ){
 								?>
 									<a href="<?php echo esc_url( $url ); ?>" class="branding__button"><?php echo _e( $url_text ); ?></a>
