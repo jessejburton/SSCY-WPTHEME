@@ -473,6 +473,11 @@ body {
     color: $accent-color;
     z-index: 100;
 
+    &__text a {
+      color: $white;
+      border-color: $white;
+    }
+
     &__logo {
       height: 200px;
     }
