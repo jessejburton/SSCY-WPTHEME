@@ -1,0 +1,170 @@
+.banner {
+  color: $color-white;
+  display: grid;
+  grid-template-columns: 5rem auto 5rem;
+  height: 80vh;
+  position: relative;
+  width: 100%;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(#121212, 0.6), rgba(#121212, 0.6)),
+      url('../images/header-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    opacity: 0.8;
+  }
+
+  &::after {
+    background-color: rgba($color-primary, 0.6);
+    bottom: 0;
+    content: '';
+    height: 3.5rem;
+    position: absolute;
+    width: 100%;
+  }
+}
+
+.banner__arrow {
+  cursor: pointer;
+  position: relative;
+  transition: all 0.4s ease;
+
+  &:hover::after {
+    opacity: 0.4;
+  }
+
+  &--prev::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include caret($color-white, 2.5rem, left);
+    transform: translate(-50%, -50%);
+    transition: all 0.4s ease;
+    opacity: 0.2;
+  }
+
+  &--next::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include caret($color-white, 2.5rem, right);
+    transform: translate(-50%, -50%);
+    transition: all 0.4s ease;
+    opacity: 0.2;
+  }
+}
+
+.banner__button {
+  font-weight: 400;
+  text-shadow: 2px 2px 0px $color-black;
+
+  &:hover {
+    text-shadow: none;
+  }
+}
+
+.banner__center {
+  display: grid;
+  grid-template-rows: auto 9rem;
+  padding: 0 7rem;
+}
+
+.banner__content {
+  position: relative;
+  text-align: center;
+}
+
+.banner__container {
+  left: 50%;
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  top: 55%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  transition: all 3s ease;
+  width: 80rem;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.banner__heading {
+  font-family: $font-crimson;
+  font-size: 4rem;
+  text-shadow: 2px 2px 0px $color-black;
+  font-weight: 300;
+}
+
+.banner__logo {
+  margin: 0 auto;
+  width: 500px;
+}
+
+.banner_lotus {
+  margin: 0 auto;
+  width: 150px;
+  display: block;
+
+  &::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: red;
+  }
+}
+
+.banner__navigation {
+  text-align: center;
+
+  a,
+  a.link {
+    background-image: url('../images/sscy_lotus_green.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 2rem;
+    margin: 0 0.5rem;
+    transition: all 0.3s ease;
+    width: 2.5rem;
+
+    &:hover,
+    &.active {
+      background-image: url('../images/sscy_lotus_white.svg');
+    }
+  }
+}
+
+.banner__text {
+  font-size: 1.8rem;
+  font-weight: 300;
+  letter-spacing: 0.2rem;
+  line-height: 2.5rem;
+  max-width: 80rem;
+  padding: 3rem 0;
+  text-shadow: 2px 2px 0px $color-black;
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  a,
+  a:link {
+    color: $color-white;
+  }
+}

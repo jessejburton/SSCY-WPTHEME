@@ -1,0 +1,22 @@
+blockquote {
+  border-left: solid 3px $color-primary;
+  margin-left: 1em;
+  padding-left: 1.6em;
+  position: relative;
+  font-style: italic;
+
+  &:before {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-color: $color-white;
+    background-image: url(images/quote.svg);
+    content: '';
+    display: block;
+    height: 1.8em;
+    left: -1em;
+    position: absolute;
+    top: 0;
+    width: 1.6em;
+  }
+}

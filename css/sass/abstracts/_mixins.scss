@@ -1,0 +1,50 @@
+@mixin arrow($color, $bordersize, $padding) {
+  border: solid $color;
+  border-width: 0 $bordersize $bordersize 0;
+  display: inline-block;
+  padding: $padding;
+}
+
+@mixin caret($color, $size, $direction) {
+  @if $direction == up {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+  }
+  @elseif $direction == down {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-right: $size solid $color;
+  }
+  @elseif $direction == left {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-right: $size solid $color;
+  } @else {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+  }
+}
+
+/* Switched this to be above and below to add more flexibility */
+@mixin above($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin below($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+/*
+    Could use an @if for this instead of variables
+    but I like the variable approach better.
+
+    @if $breakpoint == phone {
+        @media (max-width: 600px) { @content; }
+    }
+*/

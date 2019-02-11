@@ -1,0 +1,270 @@
+// Yoga Schedule
+.yoga-schedule {
+
+  .button--register {
+    font-size: 1.4rem!important;
+  }
+
+  .class {
+    align-items: center;
+    background-color: darken($color-white, 1%);
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    padding: 0 3rem;
+    transition: all .3s ease;
+
+    &:hover {
+      background-color: darken($color-white, 3%);
+    }
+
+    border-bottom: 1px solid $color-primary;
+
+    & > div {
+      padding: 2rem 1.5rem;
+    }
+  }
+
+  .class__register {
+    text-align: right;
+  }
+
+  .class__details {
+    background-color: $color-primary;
+    color: $color-white;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 1s ease-in-out;
+
+    h2 {
+      font-size: 2.4rem;
+    }
+
+    h4 {
+      font-family: $font-crimson;
+      font-size: 2.2rem;
+      font-style: italic;
+      font-weight: 500;
+      margin-bottom: $default-content-margin;
+
+      small {
+        font-weight: 300;
+      }
+    }
+
+    hr {
+      margin: 0 3rem;
+      height: 1px;
+      background-color: lighten($color-primary, 10%);
+    }
+
+    &.show {
+      max-height: 100rem;
+    }
+  }
+
+  .class__details > div {
+    padding: $default-content-margin;
+  }
+
+  .class__price span {
+    font-weight: 500;
+  }
+
+  .legend {
+    display: grid;
+    font-size: 1.2rem;
+    grid-template-columns: 70% 30%;
+    line-height: 1.8rem;
+    margin-top: 3rem;
+  }
+
+  .legend__prices {
+    margin-right: 3rem;
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+
+      th {
+        font-weight: 500;
+        text-align: left;
+      }
+
+      tr {
+        border-bottom: 1px solid darken($color-white, 10%);
+      }
+
+      th,
+      td {
+        padding: 0.5rem 3rem;
+      }
+    }
+  }
+
+  .legend__colors {
+    line-height: 3rem;
+    padding-right: 2rem;
+    position: relative;
+    text-align: right;
+
+    .box {
+      border: 1px solid;
+      height: 2rem;
+      margin-left: .5rem;
+      position: absolute;
+      transform: translateY(.5rem);
+      width: 2rem;
+    }
+  }
+
+  .location__content {
+    padding: 3rem;
+  }
+
+  .location__details, .teacher__details {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+  }
+
+  .location__photo-container, .teacher__photo-container {
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 150px;
+    width: 150px;
+    transition: all .4s ease;
+
+    &:hover {
+      box-shadow: 0 0 3rem rgba($color-white, .6);
+    }
+  }
+
+  .modal {
+    align-items: center;
+    background-color: $color-white;
+    display: flex;
+    height: 100vh;
+    justify-content: space-around;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+
+    display: none;
+  }
+
+  .modal__content {
+    max-width: 80rem;
+  }
+
+  .modal__waiver {
+    height: 10rem;
+    width: 100%;
+  }
+
+  .message {
+    text-align: center;
+    padding-top: $default-content-margin-small;
+
+    span {
+      font-weight: 500;
+    }
+  }
+
+  .schedule {
+    font-size: 1.4rem;
+    margin-top: $default-content-margin;
+    width: 100%;
+  }
+
+  .schedule__date {
+    background-color: #e9e6e3;
+    border-bottom: 1px solid $color-primary;
+    padding: 1.5rem;
+    width: 100%;
+
+    strong {
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+  }
+
+  .schedule__navigation {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: $default-content-margin-small;
+    border-bottom: 1px solid $color-primary;
+  }
+
+  .teachers {
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(100px, 1fr) );
+    margin-bottom: $default-content-margin;
+  }
+
+  .teacher__heading {
+    padding-bottom: 0!important;
+
+    h4 {
+      margin-bottom: 0;
+    }
+  }
+
+  .teachers__heading {
+    padding-top: $default-content-margin;
+  }
+
+  .teacher__image {
+    background-size: cover;
+    color: $color-white;
+    cursor: pointer;
+    height: 100px;
+    overflow: hidden;
+  }
+
+  .teacher__name-container {
+    background: rgba($color-black, .8);
+    box-shadow: 0px 0px 30px rgba($color-black, .8);
+    height: 100%;
+    opacity: 0;
+    position: relative;
+    transition: all .3s ease;
+    width: 100%;
+  }
+
+  .teacher__image:hover .teacher__name-container {
+    opacity: 1;
+  }
+
+  .teacher__name {
+    font-size: 1.4rem;
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+  .cancelled {
+    color: #721c24;
+    background-color: #f8d7da !important;
+    border-color: #f5c6cb !important;
+
+    .button--register {
+      display: none;
+    }
+  }
+  .room_teacher_change {
+    color: #856404;
+    background-color: #fff3cd !important;
+    border-color: #ffeeba !important;
+  }
+  .notice {
+    color: #0c5460;
+    background-color: #d1ecf1 !important;
+    border-color: #bee5eb !important;
+  }
+
+}

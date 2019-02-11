@@ -1,0 +1,95 @@
+.main {
+  a,
+  a:link {
+    color: $color-primary;
+    cursor: pointer;
+    position: relative;
+    text-decoration: none;
+
+    &:not(.no-link)::after {
+      background-color: $color-primary;
+      bottom: 0;
+      content: '';
+      height: 1px;
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+
+    &.no-link {
+      color: inherit;
+      cursor: default;
+    }
+  }
+
+  h1 {
+    color: $color-primary;
+    font-size: 4rem;
+    font-weight: 300;
+    margin-bottom: $default-content-margin;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    font-family: $font-crimson;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 3.4rem;
+    margin-bottom: $default-content-margin-small;
+  }
+
+  h3 {
+    color: $color-primary;
+    font-size: 2.4rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  hr {
+    height: 2px;
+    border: none;
+    margin: 5rem 3rem;
+    background-color: darken($color-white, 5%);
+  }
+
+  p {
+    line-height: $default-font-line-height;
+    margin-bottom: $default-content-margin;
+  }
+
+  table {
+    margin-bottom: $default-content-margin;
+  }
+
+  ul {
+    padding-left: 4rem;
+    list-style: none;
+    margin-bottom: $default-content-margin;
+
+    li {
+      position: relative;
+      padding: 0.2rem 0;
+
+      &::before {
+        background-image: url('images/sscy_lotus_green.svg');
+        background-size: cover;
+        content: '';
+        display: block;
+        left: 0;
+        top: 0;
+        transform: translate(-160%, 50%);
+        transition: all 0.3s ease;
+        width: 15px;
+        height: 12px;
+        position: absolute;
+      }
+    }
+  }
+}

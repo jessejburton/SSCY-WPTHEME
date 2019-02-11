@@ -1,0 +1,55 @@
+.post {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.post__content {
+  margin-left: 3rem;
+}
+
+.post__date {
+  font-size: 1.2rem;
+  margin-bottom: 0 !important;
+  text-transform: uppercase;
+
+  span {
+    font-weight: 400;
+    font-style: italic;
+  }
+}
+
+.post__title {
+  margin-bottom: $default-content-margin-small !important;
+}
+
+.post__thumbnail {
+  float: left;
+  width: 100%;
+}
+
+.post__thumbnil-container {
+  width: 100%;
+  max-height: 200px;
+  overflow: hidden;
+}
+
+.post__thumbnail-link {
+  display: block;
+  overflow: hidden;
+
+  &:hover .thumbnail {
+    transform: scale(1.2);
+  }
+
+  &::after {
+    background-color: lighten($color-primary, 10%) !important;
+    //bottom: 5px !important;
+    height: 2.5rem !important;
+    opacity: 0.7 !important;
+  }
+}
+
+.thumbnail {
+  transition: all 3s ease;
+  width: 100%;
+}

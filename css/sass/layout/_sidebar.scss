@@ -1,0 +1,27 @@
+.sidebar {
+}
+
+.sidebar__navigation {
+  padding-right: 4rem;
+
+  ul {
+    padding-left: 0;
+
+    li {
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+      transform-origin: center;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      a,
+      a:link {
+        &:hover::after {
+          opacity: 0; // Hide the underline
+        }
+      }
+    }
+  }
+}
