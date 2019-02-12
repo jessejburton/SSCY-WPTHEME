@@ -174,19 +174,17 @@ function indexOfClass(nodeList, className) {
 (function($) {
   // Teacher Details
   $(document).on('click', '.class__teacher-link', function() {
-    $(this)
-      .parents('.class')
-      .next()
-      .next()
-      .toggleClass('show');
+    var selector = ".teacher-" + $(this).data('id');
+
+    openModal(selector);
+
   });
 
   // Class Details
   $(document).on('click', '.class__name-link', function() {
-    $(this)
-      .parents('.class')
-      .next()
-      .toggleClass('show');
+    var selector = ".class-" + $(this).data('id');
+    openModal(selector);
+
   });
 
   // Modal
@@ -316,6 +314,7 @@ function closeDialog() {
   document.getElementsByClassName('modal__window')[0].style.left = '100%';
 }
 
+/* Mobile Menu */
 var menuOpen = false;
 function toggleMenu() {
   if (!menuOpen) {
@@ -341,7 +340,61 @@ document
     toggleMenu();
   });
 
+/* Responsive Videos */
 // Add a class to any paragraph that contains an iframe (embeded video)
 var videos = document.querySelectorAll('iframe').forEach(function(elm) {
   elm.parentElement.classList.add('iframe-container');
 });
+
+// Modal
+var modalOpen = false;
+
+function openModal(selector) {
+  // Copy the content
+  var modalContent = document.querySelector('.modal__content-html');
+  var content = document.querySelector(selector);
+
+  modalContent.innerHTML = content.innerHTML;
+
+  showModal();
+}
+
+function showModal() {
+  showBlur();
+
+  document.querySelector('.modal').classList.add('open');
+}
+
+function closeModal() {
+  document.querySelector('.modal').classList.remove('open');
+
+  setTimeout(hideBlur, 500);
+}
+
+function toggleBlur() {
+  // Find out if the page is blurred
+  var isBlur = document.querySelectorAll('.blur').length > 0;
+
+  if (!isBlur) {
+    showBlur();
+  } else {
+    hideBlur();
+  }
+}
+
+function showBlur() {
+  document.querySelector('.main').classList.add('blur');
+  document.querySelector('.header').classList.add('blur');
+  document.querySelector('.footer').classList.add('blur');
+  document.querySelector('body').classList.add('no-scroll');
+}
+
+function hideBlur() {
+  document.querySelector('.main').classList.remove('blur');
+  document.querySelector('.header').classList.remove('blur');
+  document.querySelector('.footer').classList.remove('blur');
+  document.querySelector('body').classList.remove('no-scroll');
+}
+
+// Close click handler
+document.querySelector('.modal__close').addEventListener('click', closeModal);

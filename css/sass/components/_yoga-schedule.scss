@@ -1,5 +1,5 @@
 // Yoga Schedule
-.yoga-schedule {
+.yoga-schedule, .modal {
 
   .button--register {
     font-size: 1.4rem!important;
@@ -200,6 +200,7 @@
 
   .teachers {
     display: grid;
+    flex-flow: wrap;
     grid-template-columns: repeat( auto-fit, minmax(100px, 1fr) );
     margin-bottom: $default-content-margin;
   }

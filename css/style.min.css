@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Switched this to be above and below to add more flexibility */
 /*
     Could use an @if for this instead of variables
@@ -107,6 +108,7 @@ html {
 
 body {
   background-color: #f7f4f0;
+  background-image: url("images/concrete_seamless.png");
   box-sizing: border-box;
   color: #000;
   font-family: "Roboto", sans-serif;
@@ -239,6 +241,10 @@ body.open {
 
 .opacity-9 {
   opacity: 0.9;
+}
+
+.centered-text {
+  text-align: center;
 }
 
 .banner {
@@ -629,6 +635,7 @@ textarea#comment {
   font-size: 1.7rem;
   font-weight: 300;
   padding: 12rem 0;
+  transition: all 0.5s ease;
 }
 
 .mobile__menu {
@@ -936,10 +943,10 @@ textarea#comment {
   height: 100%;
 }
 
-.yoga-schedule .button--register {
+.yoga-schedule .button--register, .modal .button--register {
   font-size: 1.4rem !important;
 }
-.yoga-schedule .class {
+.yoga-schedule .class, .modal .class {
   align-items: center;
   background-color: #f5f2ed;
   display: grid;
@@ -948,81 +955,82 @@ textarea#comment {
   transition: all 0.3s ease;
   border-bottom: 1px solid #65989e;
 }
-.yoga-schedule .class:hover {
+.yoga-schedule .class:hover, .modal .class:hover {
   background-color: #f2ede6;
 }
-.yoga-schedule .class > div {
+.yoga-schedule .class > div, .modal .class > div {
   padding: 2rem 1.5rem;
 }
-.yoga-schedule .class__register {
+.yoga-schedule .class__register, .modal .class__register {
   text-align: right;
 }
-.yoga-schedule .class__details {
+.yoga-schedule .class__details, .modal .class__details {
   background-color: #65989e;
   color: #f7f4f0;
   max-height: 0;
   overflow: hidden;
   transition: all 1s ease-in-out;
 }
-.yoga-schedule .class__details h2 {
+.yoga-schedule .class__details h2, .modal .class__details h2 {
   font-size: 2.4rem;
 }
-.yoga-schedule .class__details h4 {
+.yoga-schedule .class__details h4, .modal .class__details h4 {
   font-family: "Crimson Text", serif;
   font-size: 2.2rem;
   font-style: italic;
   font-weight: 500;
   margin-bottom: 3rem;
 }
-.yoga-schedule .class__details h4 small {
+.yoga-schedule .class__details h4 small, .modal .class__details h4 small {
   font-weight: 300;
 }
-.yoga-schedule .class__details hr {
+.yoga-schedule .class__details hr, .modal .class__details hr {
   margin: 0 3rem;
   height: 1px;
   background-color: #84adb2;
 }
-.yoga-schedule .class__details.show {
+.yoga-schedule .class__details.show, .modal .class__details.show {
   max-height: 100rem;
 }
-.yoga-schedule .class__details > div {
+.yoga-schedule .class__details > div, .modal .class__details > div {
   padding: 3rem;
 }
-.yoga-schedule .class__price span {
+.yoga-schedule .class__price span, .modal .class__price span {
   font-weight: 500;
 }
-.yoga-schedule .legend {
+.yoga-schedule .legend, .modal .legend {
   display: grid;
   font-size: 1.2rem;
   grid-template-columns: 70% 30%;
   line-height: 1.8rem;
   margin-top: 3rem;
 }
-.yoga-schedule .legend__prices {
+.yoga-schedule .legend__prices, .modal .legend__prices {
   margin-right: 3rem;
 }
-.yoga-schedule .legend__prices table {
+.yoga-schedule .legend__prices table, .modal .legend__prices table {
   border-collapse: collapse;
   width: 100%;
 }
-.yoga-schedule .legend__prices table th {
+.yoga-schedule .legend__prices table th, .modal .legend__prices table th {
   font-weight: 500;
   text-align: left;
 }
-.yoga-schedule .legend__prices table tr {
+.yoga-schedule .legend__prices table tr, .modal .legend__prices table tr {
   border-bottom: 1px solid #e5dccf;
 }
 .yoga-schedule .legend__prices table th,
-.yoga-schedule .legend__prices table td {
+.yoga-schedule .legend__prices table td, .modal .legend__prices table th,
+.modal .legend__prices table td {
   padding: 0.5rem 3rem;
 }
-.yoga-schedule .legend__colors {
+.yoga-schedule .legend__colors, .modal .legend__colors {
   line-height: 3rem;
   padding-right: 2rem;
   position: relative;
   text-align: right;
 }
-.yoga-schedule .legend__colors .box {
+.yoga-schedule .legend__colors .box, .modal .legend__colors .box {
   border: 1px solid;
   height: 2rem;
   margin-left: 0.5rem;
@@ -1030,14 +1038,14 @@ textarea#comment {
   transform: translateY(0.5rem);
   width: 2rem;
 }
-.yoga-schedule .location__content {
+.yoga-schedule .location__content, .modal .location__content {
   padding: 3rem;
 }
-.yoga-schedule .location__details, .yoga-schedule .teacher__details {
+.yoga-schedule .location__details, .yoga-schedule .teacher__details, .modal .location__details, .modal .teacher__details {
   display: grid;
   grid-template-columns: 1fr 3fr;
 }
-.yoga-schedule .location__photo-container, .yoga-schedule .teacher__photo-container {
+.yoga-schedule .location__photo-container, .yoga-schedule .teacher__photo-container, .modal .location__photo-container, .modal .teacher__photo-container {
   background-size: cover;
   background-position: center;
   border-radius: 50%;
@@ -1046,10 +1054,10 @@ textarea#comment {
   width: 150px;
   transition: all 0.4s ease;
 }
-.yoga-schedule .location__photo-container:hover, .yoga-schedule .teacher__photo-container:hover {
+.yoga-schedule .location__photo-container:hover, .yoga-schedule .teacher__photo-container:hover, .modal .location__photo-container:hover, .modal .teacher__photo-container:hover {
   box-shadow: 0 0 3rem rgba(247, 244, 240, 0.6);
 }
-.yoga-schedule .modal {
+.yoga-schedule .modal, .modal .modal {
   align-items: center;
   background-color: #f7f4f0;
   display: flex;
@@ -1062,63 +1070,64 @@ textarea#comment {
   z-index: 1000;
   display: none;
 }
-.yoga-schedule .modal__content {
+.yoga-schedule .modal__content, .modal .modal__content {
   max-width: 80rem;
 }
-.yoga-schedule .modal__waiver {
+.yoga-schedule .modal__waiver, .modal .modal__waiver {
   height: 10rem;
   width: 100%;
 }
-.yoga-schedule .message {
+.yoga-schedule .message, .modal .message {
   text-align: center;
   padding-top: 1.5rem;
 }
-.yoga-schedule .message span {
+.yoga-schedule .message span, .modal .message span {
   font-weight: 500;
 }
-.yoga-schedule .schedule {
+.yoga-schedule .schedule, .modal .schedule {
   font-size: 1.4rem;
   margin-top: 3rem;
   width: 100%;
 }
-.yoga-schedule .schedule__date {
+.yoga-schedule .schedule__date, .modal .schedule__date {
   background-color: #e9e6e3;
   border-bottom: 1px solid #65989e;
   padding: 1.5rem;
   width: 100%;
 }
-.yoga-schedule .schedule__date strong {
+.yoga-schedule .schedule__date strong, .modal .schedule__date strong {
   font-weight: 400;
   text-transform: uppercase;
 }
-.yoga-schedule .schedule__navigation {
+.yoga-schedule .schedule__navigation, .modal .schedule__navigation {
   display: flex;
   justify-content: space-between;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid #65989e;
 }
-.yoga-schedule .teachers {
+.yoga-schedule .teachers, .modal .teachers {
   display: grid;
+  flex-flow: wrap;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   margin-bottom: 3rem;
 }
-.yoga-schedule .teacher__heading {
+.yoga-schedule .teacher__heading, .modal .teacher__heading {
   padding-bottom: 0 !important;
 }
-.yoga-schedule .teacher__heading h4 {
+.yoga-schedule .teacher__heading h4, .modal .teacher__heading h4 {
   margin-bottom: 0;
 }
-.yoga-schedule .teachers__heading {
+.yoga-schedule .teachers__heading, .modal .teachers__heading {
   padding-top: 3rem;
 }
-.yoga-schedule .teacher__image {
+.yoga-schedule .teacher__image, .modal .teacher__image {
   background-size: cover;
   color: #f7f4f0;
   cursor: pointer;
   height: 100px;
   overflow: hidden;
 }
-.yoga-schedule .teacher__name-container {
+.yoga-schedule .teacher__name-container, .modal .teacher__name-container {
   background: rgba(24, 24, 24, 0.8);
   box-shadow: 0px 0px 30px rgba(24, 24, 24, 0.8);
   height: 100%;
@@ -1127,10 +1136,10 @@ textarea#comment {
   transition: all 0.3s ease;
   width: 100%;
 }
-.yoga-schedule .teacher__image:hover .teacher__name-container {
+.yoga-schedule .teacher__image:hover .teacher__name-container, .modal .teacher__image:hover .teacher__name-container {
   opacity: 1;
 }
-.yoga-schedule .teacher__name {
+.yoga-schedule .teacher__name, .modal .teacher__name {
   font-size: 1.4rem;
   left: 50%;
   position: absolute;
@@ -1138,20 +1147,20 @@ textarea#comment {
   top: 50%;
   transform: translate(-50%, -50%);
 }
-.yoga-schedule .cancelled {
+.yoga-schedule .cancelled, .modal .cancelled {
   color: #721c24;
   background-color: #f8d7da !important;
   border-color: #f5c6cb !important;
 }
-.yoga-schedule .cancelled .button--register {
+.yoga-schedule .cancelled .button--register, .modal .cancelled .button--register {
   display: none;
 }
-.yoga-schedule .room_teacher_change {
+.yoga-schedule .room_teacher_change, .modal .room_teacher_change {
   color: #856404;
   background-color: #fff3cd !important;
   border-color: #ffeeba !important;
 }
-.yoga-schedule .notice {
+.yoga-schedule .notice, .modal .notice {
   color: #0c5460;
   background-color: #d1ecf1 !important;
   border-color: #bee5eb !important;
@@ -1160,6 +1169,7 @@ textarea#comment {
 .footer {
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1)), url("images/dark_embroidery.png");
   color: #f7f4f0;
+  transition: all 0.5s ease;
 }
 
 .footer__widgets {
@@ -1232,6 +1242,7 @@ textarea#comment {
 .header {
   background-color: #65989e;
   height: 6rem;
+  transition: all 0.5s ease;
   width: 100%;
   z-index: 100;
 }
@@ -1277,6 +1288,154 @@ textarea#comment {
 .sidebar__navigation ul li a:hover::after,
 .sidebar__navigation ul li a:link:hover::after {
   opacity: 0;
+}
+
+.modal {
+  opacity: 0;
+  transition: all 0.5s ease;
+  visibility: hidden;
+}
+.modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+.modal.open .modal__overlay {
+  opacity: 1;
+}
+.modal.open .modal__content-container {
+  opacity: 1;
+}
+
+.modal__overlay {
+  background: rgba(43, 46, 56, 0.9);
+  bottom: -5000px;
+  filter: blur(20px);
+  left: -5000px;
+  opacity: 0;
+  position: fixed;
+  right: -5000px;
+  top: -5000px;
+  transition: all 0.5s ease;
+  z-index: 9999;
+}
+
+.modal__content-container {
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  overflow: auto;
+  padding: 10px 10px 0;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 0;
+  transition: all 0.3s ease;
+  transition-delay: 0.5s;
+  -webkit-overflow-scrolling: touch;
+  z-index: 10000;
+}
+.modal__content-container::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  margin-left: -0.05em;
+  vertical-align: middle;
+}
+@media (max-width: 700px) {
+  .modal__content-container {
+    padding: 0;
+  }
+}
+
+.modal__content {
+  background: #f7f4f0;
+  display: inline-block;
+  margin-bottom: 10px;
+  max-width: 80rem;
+  outline: 0;
+  padding: 5rem;
+  position: relative;
+  transition: all 0.3s ease;
+  vertical-align: middle;
+}
+.modal__content h1, .modal__content h2, .modal__content h3, .modal__content h4 {
+  margin-bottom: 3rem;
+}
+.modal__content h2 {
+  color: #65989e;
+  font-family: "Crimson Text", serif;
+  font-style: italic;
+}
+.modal__content h4 {
+  font-size: 1.8rem;
+}
+.modal__content hr {
+  margin: 3rem;
+}
+.modal__content p {
+  margin-bottom: 3rem;
+}
+.modal__content::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  margin-left: -0.05em;
+  vertical-align: middle;
+}
+@media (max-width: 700px) {
+  .modal__content {
+    height: 100%;
+    left: 0;
+    margin-bottom: 0;
+    overflow-y: auto;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.modal__close {
+  color: #95979c;
+  cursor: pointer;
+  height: 3rem;
+  padding: 0;
+  position: absolute;
+  right: 1.5rem;
+  top: 1.5rem;
+  transition: all 0.2s ease;
+  width: 3rem;
+}
+.modal__close:hover {
+  animation: pulse 1.5s ease 0s infinite;
+}
+.modal__close::before {
+  content: "×";
+  font-size: 2.8rem;
+}
+
+.blur {
+  filter: blur(3px);
+}
+
+.no-scroll {
+  overflow-y: hidden;
+}
+
+/* Specific Modal Styles */
+.modal .class__price {
+  font-size: 1.8rem;
+}
+.modal .location__content {
+  padding-top: 0;
+}
+@media (max-width: 500px) {
+  .modal .location__details {
+    grid-row-gap: 3rem;
+    grid-template-columns: 100%;
+  }
+  .modal .location__details .location__photo {
+    margin: 0 auto;
+  }
 }
 
 .header__secondary-navigation, .header__primary-navigation {

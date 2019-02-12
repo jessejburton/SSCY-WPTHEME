@@ -1,0 +1,168 @@
+.modal {
+  opacity: 0;
+  transition: all 0.5s ease;
+  visibility: hidden;
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+
+    .modal__overlay {
+      opacity: 1;
+    }
+
+    .modal__content-container {
+      opacity: 1;
+    }
+  }
+}
+
+.modal__overlay {
+  background: rgba(43, 46, 56, 0.9);
+  bottom: -5000px;
+  filter: blur(20px);
+  left: -5000px;
+  opacity: 0;
+  position: fixed;
+  right: -5000px;
+  top: -5000px;
+  transition: all 0.5s ease;
+  z-index: 9999;
+}
+
+.modal__content-container {
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  overflow: auto;
+  padding: 10px 10px 0;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 0;
+  transition: all 0.3s ease;
+  transition-delay: 0.5s;
+  -webkit-overflow-scrolling: touch;
+  z-index: 10000;
+
+  &::after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    margin-left: -0.05em;
+    vertical-align: middle;
+  }
+
+  @include below(700px){
+    padding: 0;
+  }
+}
+
+.modal__content {
+  background: $color-white;
+  display: inline-block;
+  margin-bottom: 10px;
+  max-width: 80rem;
+  outline: 0;
+  padding: $default-content-margin-large;
+  position: relative;
+  transition: all 0.3s ease;
+  vertical-align: middle;
+
+  h1,h2,h3,h4 {
+    margin-bottom: $default-content-margin;
+  }
+
+  h2 {
+    color: $color-primary;
+    font-family: $font-crimson;
+    font-style: italic;
+  }
+
+  h4 {
+    font-size: 1.8rem;
+  }
+
+  hr {
+    margin: $default-content-margin;
+  }
+
+  p {
+    margin-bottom: $default-content-margin;
+  }
+
+  &::after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    margin-left: -0.05em;
+    vertical-align: middle;
+  }
+
+  @include below(700px){
+    height: 100%;
+    left: 0;
+    margin-bottom: 0;
+    overflow-y: auto;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+}
+
+.modal__close {
+  color: #95979c;
+  cursor: pointer;
+  height: 3rem;
+  padding: 0;
+  position: absolute;
+  right: 1.5rem;
+  top: 1.5rem;
+  transition: all 0.2s ease;
+  width: 3rem;
+
+  &:hover {
+    animation: pulse 1.5s ease 0s infinite;
+  }
+
+  &::before {
+    content: '\00d7';
+    font-size: 2.8rem;
+  }
+}
+
+.blur {
+  filter: blur(3px);
+}
+
+.no-scroll {
+  overflow-y: hidden;
+}
+
+/* Specific Modal Styles */
+
+.modal {
+
+  .class__price {
+    font-size: 1.8rem;
+  }
+
+  .location__content {
+    padding-top: 0;
+  }
+
+  .location__details {
+    @include below(500px){
+
+      grid-row-gap: $default-content-margin;
+      grid-template-columns: 100%;
+
+      .location__photo {
+        margin: 0 auto;
+      }
+
+    }
+  }
+
+}

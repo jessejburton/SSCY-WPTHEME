@@ -1,3 +1,4 @@
+
 <footer class="footer">
   <div class="footer__widgets">
 		<?php
@@ -16,10 +17,11 @@
     ?>
   </div>
   <div class="footer__brand">
-  <a href="portal/"><img class="footer__brand-image" src="<?php echo get_template_directory_uri() . '/images/sscy_text_white.svg'; ?>" /></a>
+    <a href="portal/"><img class="footer__brand-image" src="<?php echo get_template_directory_uri() . '/images/sscy_text_white.svg'; ?>" /></a>
   </div>
 </footer>
 
+<?php require_once('templates/modal.php'); ?>
 
 <?php wp_footer(); ?>
 

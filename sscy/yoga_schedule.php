@@ -104,7 +104,7 @@
     <h2 class="teachers__heading">Meet Our Teachers</h2>
     <div class="teachers">
       <?php foreach( $arr_teachers as $teacher ){ ?>
-        <div class="teacher" onclick="window.location='our-teachers/#teacher-<?php echo $teacher[0]["id"]; ?>'">
+        <div class="teacher class__teacher-link" data-id="<?php echo $teacher[0]["id"]; ?>">
           <div
             class="teacher__image"
             style="background-image: url('<?php echo $teacher[0]["photo"]; ?>');">
@@ -117,10 +117,7 @@
         </div>
       <?php } ?>
     </div>
-
-    <p style="text-align: center;"><strong>*** Online Registration now available ***</strong><br /> Please consider pre-registering for your classes online. It is as simple as clicking register and entering your name and e-mail. Once you have registered once your information will be saved for next time on this device! This will save you from having to write your name out when you get to class and it also helps us save paper.</p>
-
-    <p style="text-align: center;">Please click on the name of a class in the schedule to view a class description and location and the name of the teacher to view their bio.</p>
+    <p class="centered-text"><a href="our-teachers" class="button">teacher profiles <i class="fa fa-caret-right"></i><i class="fa fa-caret-right"></i><i class="fa fa-caret-right"></i></a></p>
 
     <div class="legend">
       <div class="legend__prices">
@@ -248,12 +245,12 @@
 
                   <div class="class class--<?php echo $class->class_id; ?> <?php echo $qry_results[0]->type; ?>">
                     <div class="class__name">
-                      <a class="class__name-link" title="<?php echo $class->name; ?>">
+                      <a class="class__name-link" data-id="<?php echo $class->class_id; ?>" title="<?php echo $class->name; ?>">
                         <?php echo excerpt($class->name, 30); ?>
                       </a>
                     </div>
                     <div class="class__teacher">
-                      <a class="class__teacher-link" title="<?php echo $class->name_first . ' ' . $class->name_last; ?>">
+                      <a class="class__teacher-link" data-id="<?php echo $class->teacher_id; ?>" title="<?php echo $class->name_first . ' ' . $class->name_last; ?>">
                         <?php echo $class->name_first . ' ' . $class->name_last; ?>
                       </a>
                     </div>
@@ -283,7 +280,7 @@
                   </div><!-- Class End -->
 
                   <!-- Class Details -->
-                  <div class="class__details <?php echo $qry_results[0]->type; ?>">
+                  <div class="class__details class-<?php echo $class->class_id; ?> <?php echo $qry_results[0]->type; ?>">
                     <div class="class__details-content">
 
                       <!-- Display Class Details -->
@@ -315,8 +312,8 @@
                   </div>
 
                   <!-- Teacher Details -->
-                  <div class="class__details class__details--teacher">
-                    <div class="teacher__heading"><h4><small>with</small> <?php echo $class->name_first . ' ' . $class->name_last; ?></h4></div>
+                  <div class="class__details class__details--teacher teacher-<?php echo $class->teacher_id; ?>">
+                    <div class="teacher__heading"><h4><?php echo $class->name_first . ' ' . $class->name_last; ?></h4></div>
                     <div class="teacher__details">
                       <div class="teacher__photo" onclick="window.location='our-teachers/#teacher-<?php echo $class->teacher_id; ?>'">
                         <div class="teacher__photo-container" style="background-image: url('<?php echo $class->photo; ?>');"></div>
@@ -343,3 +340,4 @@
               $current_date = date(strtotime('+1 days', $current_date));
             } ?>
       </div>
+    </div>
