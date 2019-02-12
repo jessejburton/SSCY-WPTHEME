@@ -99,6 +99,16 @@
     opacity: 1;
     visibility: visible;
   }
+
+  @include below(775px) {
+    font-size: 1.4rem;
+    width: 50rem;
+  }
+
+  @include below(775px) {
+    font-size: 1.2rem;
+    width: 30rem;
+  }
 }
 
 .banner__heading {
@@ -106,26 +116,40 @@
   font-size: 4rem;
   text-shadow: 2px 2px 0px $color-black;
   font-weight: 300;
+
+  @include below(775px) {
+    font-size: 3rem;
+  }
 }
 
 .banner__logo {
   margin: 0 auto;
-  width: 500px;
+  width: 50rem;
+
+  @include below(775px) {
+    width: 45rem;
+  }
+
+  @include below(575px) {
+    width: 35rem;
+  }
+
+  @include below(430px) {
+    width: 25rem;
+  }
 }
 
 .banner_lotus {
   margin: 0 auto;
-  width: 150px;
+  width: 15rem;
   display: block;
 
-  &::before {
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: red;
+  @include below(775px) {
+    width: 14rem;
+  }
+
+  @include below(575px) {
+    width: 10rem;
   }
 }
 

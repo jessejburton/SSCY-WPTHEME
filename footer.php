@@ -1,4 +1,5 @@
 <footer class="footer">
+  <div class="footer__widgets">
 		<?php
 			if(is_active_sidebar('footer-sidebar-1')){
 				dynamic_sidebar('footer-sidebar-1');
@@ -13,11 +14,12 @@
 				dynamic_sidebar('footer-sidebar-4');
 			}
     ?>
-
-    <div class="footer__brand">
-      <a href="portal/"><img class="footer__brand-image" src="<?php echo get_template_directory_uri() . '/images/sscy_text_white.svg'; ?>" /></a>
-    </div>
+  </div>
+  <div class="footer__brand">
+  <a href="portal/"><img class="footer__brand-image" src="<?php echo get_template_directory_uri() . '/images/sscy_text_white.svg'; ?>" /></a>
+  </div>
 </footer>
+
 
 <?php wp_footer(); ?>
 

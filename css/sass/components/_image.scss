@@ -10,4 +10,11 @@
     margin-right: 3rem;
     margin-bottom: 3rem;
   }
+
+  @include below(900px) {
+    float: none;
+    width: 100%;
+    height: auto;
+    margin: $default-content-margin 0;
+  }
 }

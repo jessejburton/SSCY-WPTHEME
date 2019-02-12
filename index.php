@@ -2,8 +2,8 @@
 <div class="main">
   <div class="content-container content-container--sidebar" data-aos="fade-in" data-aos-duration="1000">
     <div class="sidebar">
-      <h2>Categories</h2>
       <div class="sidebar__navigation">
+        <h2>Categories</h2>
         <ul>
           <?php
             $args = array(

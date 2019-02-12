@@ -31,6 +31,13 @@
     </div>
   </header>
 
+  <div class="mobile__button"></div>
+  <div class="mobile__menu-background"></div>
+  <div class="mobile__menu">
+    <?php wp_nav_menu( array( 'theme_location' => 'primary-menu' ) ); ?>
+    <?php wp_nav_menu( array( 'theme_location' => 'secondary-menu' ) ); ?>
+  </div>
+
   <?php if ( is_front_page() ) { ?>
     <div class="banner">
       <div class="banner__arrow banner__arrow--prev"></div>

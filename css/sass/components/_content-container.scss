@@ -1,9 +1,42 @@
 .content-container {
   margin: 0 auto;
   max-width: 80rem;
+
+  @include below(975px) {
+    max-width: 100%;
+    padding: 0 $default-content-margin-large;
+  }
 }
 
 .content-container--sidebar {
   display: grid;
   grid-template-columns: 1fr 3fr;
+  max-width: 110rem;
+
+  .sidebar {
+    @include below(1275px) {
+      font-size: 1.6rem;
+      padding-left: $default-content-margin-large;
+    }
+
+    @include below(975px) {
+      padding-left: $default-content-margin;
+    }
+
+    @include below(900px) {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-bottom: $default-content-margin-large;
+    }
+  }
+
+  @include below(1275px) {
+    max-width: 100%;
+    padding: 0 $default-content-margin-large;
+  }
+
+  @include below(900px) {
+    grid-template-columns: 100%;
+  }
 }

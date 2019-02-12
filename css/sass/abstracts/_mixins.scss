@@ -10,13 +10,11 @@
     border-top: $size solid transparent;
     border-bottom: $size solid transparent;
     border-left: $size solid $color;
-  }
-  @elseif $direction == down {
+  } @else if $direction == down {
     border-top: $size solid transparent;
     border-bottom: $size solid transparent;
     border-right: $size solid $color;
-  }
-  @elseif $direction == left {
+  } @else if $direction == left {
     border-top: $size solid transparent;
     border-bottom: $size solid transparent;
     border-right: $size solid $color;

@@ -13,6 +13,10 @@ html {
   @include below(1100px) {
     font-size: 56.25%;
   }
+
+  @include below(975px) {
+    font-size: 50%;
+  }
   /*
   @include respond($phone) {
     font-size: 50%;
@@ -32,4 +36,9 @@ body {
   font-weight: $default-font-weight;
   font-size: $default-font-size;
   line-height: $default-font-line-height;
+  overflow-x: hidden;
+
+  &.open {
+    overflow-y: hidden;
+  }
 }

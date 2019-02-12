@@ -16,6 +16,15 @@ if (banner) {
     });
   });
 
+  document
+    .querySelector('.banner__arrow--prev')
+    .addEventListener('click', showPrevBanner);
+  document
+    .querySelector('.banner__arrow--next')
+    .addEventListener('click', showNextBanner);
+
+  var bannerInterval = setInterval(showNextBanner, 6500);
+
   setInterval(handleScroll, 10);
 }
 
@@ -58,15 +67,6 @@ if (target) {
 }
 
 /* BANNER SCROLLING */
-
-document
-  .querySelector('.banner__arrow--prev')
-  .addEventListener('click', showPrevBanner);
-document
-  .querySelector('.banner__arrow--next')
-  .addEventListener('click', showNextBanner);
-
-var bannerInterval = setInterval(showNextBanner, 6500);
 
 function showBannerByIndex(index) {
   clearInterval(bannerInterval);
@@ -315,3 +315,33 @@ function closeDialog() {
   document.getElementsByClassName('modal')[0].style.height = '0vh';
   document.getElementsByClassName('modal__window')[0].style.left = '100%';
 }
+
+var menuOpen = false;
+function toggleMenu() {
+  if (!menuOpen) {
+    //document.querySelector('body').classList.add('open');
+    document.querySelector('.mobile__button').classList.add('open');
+    document.querySelector('.mobile__menu-background').classList.add('open');
+    document.querySelector('.mobile__menu').classList.add('open');
+
+    menuOpen = true;
+  } else {
+    //document.querySelector('body').classList.remove('open');
+    document.querySelector('.mobile__button').classList.remove('open');
+    document.querySelector('.mobile__menu-background').classList.remove('open');
+    document.querySelector('.mobile__menu').classList.remove('open');
+
+    menuOpen = false;
+  }
+}
+
+document
+  .querySelector('.mobile__button')
+  .addEventListener('click', function(e) {
+    toggleMenu();
+  });
+
+// Add a class to any paragraph that contains an iframe (embeded video)
+var videos = document.querySelectorAll('iframe').forEach(function(elm) {
+  elm.parentElement.classList.add('iframe-container');
+});
