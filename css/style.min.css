@@ -122,14 +122,16 @@ body.open {
 }
 
 .main a,
-.main a:link {
+.main a:link, .modal a,
+.modal a:link {
   color: #65989e;
   cursor: pointer;
   position: relative;
   text-decoration: none;
 }
 .main a:not(.no-link)::after,
-.main a:link:not(.no-link)::after {
+.main a:link:not(.no-link)::after, .modal a:not(.no-link)::after,
+.modal a:link:not(.no-link)::after {
   background-color: #65989e;
   bottom: 0;
   content: "";
@@ -141,15 +143,17 @@ body.open {
   width: 100%;
 }
 .main a:hover::after,
-.main a:link:hover::after {
+.main a:link:hover::after, .modal a:hover::after,
+.modal a:link:hover::after {
   opacity: 1;
 }
 .main a.no-link,
-.main a:link.no-link {
+.main a:link.no-link, .modal a.no-link,
+.modal a:link.no-link {
   color: inherit;
   cursor: default;
 }
-.main h1 {
+.main h1, .modal h1 {
   color: #65989e;
   font-size: 4rem;
   font-weight: 300;
@@ -157,43 +161,43 @@ body.open {
   margin-bottom: 3rem;
   text-transform: uppercase;
 }
-.main h2 {
+.main h2, .modal h2 {
   font-family: "Crimson Text", serif;
   font-style: italic;
   font-weight: 400;
   font-size: 3.4rem;
   margin-bottom: 1.5rem;
 }
-.main h3 {
+.main h3, .modal h3 {
   color: #65989e;
   font-size: 2.4rem;
   font-weight: 300;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
 }
-.main hr {
+.main hr, .modal hr {
   height: 2px;
   border: none;
   margin: 5rem 3rem;
   background-color: #eee8df;
 }
-.main p {
+.main p, .modal p {
   line-height: 2.4rem;
   margin-bottom: 3rem;
 }
-.main table {
+.main table, .modal table {
   margin-bottom: 3rem;
 }
-.main ul {
+.main ul, .modal ul {
   padding-left: 4rem;
   list-style: none;
   margin-bottom: 3rem;
 }
-.main ul li {
+.main ul li, .modal ul li {
   position: relative;
   padding: 0.2rem 0;
 }
-.main ul li::before {
+.main ul li::before, .modal ul li::before {
   background-image: url("images/sscy_lotus_green.svg");
   background-size: cover;
   content: "";
@@ -1392,6 +1396,14 @@ textarea#comment {
     top: 0;
     width: 100%;
   }
+}
+
+.modal__buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.5rem;
 }
 
 .modal__close {

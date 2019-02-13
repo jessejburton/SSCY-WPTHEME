@@ -111,6 +111,14 @@
 
 }
 
+.modal__buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: $default-content-margin-small;
+}
+
 .modal__close {
   color: #95979c;
   cursor: pointer;

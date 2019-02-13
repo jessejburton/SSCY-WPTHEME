@@ -266,7 +266,6 @@ function indexOfClass(nodeList, className) {
           elm.removeClass('.active');
           elm.html('unregister');
           elm.data('registration-id', response.registration_id);
-          closeDialog();
           alert('You have been registered for this class');
         }
       }
@@ -299,20 +298,8 @@ function indexOfClass(nodeList, className) {
     });
   });
 
-  $(document).on('click', '.modal__cancel', closeDialog);
 })(jQuery);
 
-function openDialog() {
-  // Open the modal dialog
-  document.getElementsByClassName('modal')[0].style.height = '100vh';
-  document.getElementsByClassName('modal__window')[0].style.left = '15vw';
-}
-
-function closeDialog() {
-  // Close the modal dialog
-  document.getElementsByClassName('modal')[0].style.height = '0vh';
-  document.getElementsByClassName('modal__window')[0].style.left = '100%';
-}
 
 /* Mobile Menu */
 var menuOpen = false;
@@ -334,6 +321,7 @@ function toggleMenu() {
   }
 }
 
+// Click handler for Mobile Menu Button
 document
   .querySelector('.mobile__button')
   .addEventListener('click', function(e) {
@@ -348,8 +336,20 @@ var videos = document.querySelectorAll('iframe').forEach(function(elm) {
 
 // Modal
 var modalOpen = false;
+function openModal({selector, cancel, action}) {
+  if (cancel === undefined){
+    cancel = closeModal;
+  }
+  if (action === undefined){
+    action = function(){
+      alert('hello');
+    }
+  }
 
-function openModal(selector) {
+  // Add the button handlers
+  document.querySelector('.modal__cancel').addEventListener('click', cancel);
+  document.querySelector('.modal__action').addEventListener('click', action);
+
   // Copy the content
   var modalContent = document.querySelector('.modal__content-html');
   var content = document.querySelector(selector);
