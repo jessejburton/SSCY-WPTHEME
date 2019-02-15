@@ -8,6 +8,8 @@
 .footer__widgets {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+  margin: 0 auto;
+  max-width: 1000px;
 
   @include below(820px) {
     grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
