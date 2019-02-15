@@ -1,4 +1,5 @@
-.main, .modal {
+.main,
+.modal {
   a,
   a:link {
     color: $color-primary;
@@ -79,7 +80,7 @@
       padding: 0.2rem 0;
 
       &::before {
-        background-image: url('images/sscy_lotus_green.svg');
+        background-image: url('../images/sscy_lotus_green.svg');
         background-size: cover;
         content: '';
         display: block;

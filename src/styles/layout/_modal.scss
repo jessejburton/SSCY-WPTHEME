@@ -53,7 +53,7 @@
     vertical-align: middle;
   }
 
-  @include below(700px){
+  @include below(700px) {
     padding: 0;
   }
 }
@@ -66,10 +66,14 @@
   outline: 0;
   padding: $default-content-margin-large;
   position: relative;
+  text-align: left;
   transition: all 0.3s ease;
   vertical-align: middle;
 
-  h1,h2,h3,h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     margin-bottom: $default-content-margin;
   }
 
@@ -99,7 +103,7 @@
     vertical-align: middle;
   }
 
-  @include below(700px){
+  @include below(700px) {
     height: 100%;
     left: 0;
     margin-bottom: 0;
@@ -108,7 +112,6 @@
     top: 0;
     width: 100%;
   }
-
 }
 
 .modal__buttons {
@@ -151,7 +154,6 @@
 /* Specific Modal Styles */
 
 .modal {
-
   .class__price {
     font-size: 1.8rem;
   }
@@ -161,16 +163,26 @@
   }
 
   .location__details {
-    @include below(500px){
-
+    @include below(500px) {
       grid-row-gap: $default-content-margin;
       grid-template-columns: 100%;
 
       .location__photo {
         margin: 0 auto;
       }
-
     }
   }
 
+  .teacher__content {
+    padding-left: $default-content-margin;
+  }
+}
+
+.modal__input {
+  width: 100%;
+  padding: $default-content-margin-small;
+}
+
+.modal__label {
+  font-size: 1.2rem;
 }

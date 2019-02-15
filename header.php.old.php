@@ -44,30 +44,43 @@
       <div class="banner__arrow banner__arrow--prev"></div>
       <div class="banner__center">
         <div class="banner__content">
-          <div class="banner__container" data-bgimage="wp-content/themes/saltspringcentre/dist/images/ytt-header-background.jpg">
+          <div class="banner__container" data-bgimage="wp-content/themes/saltspringcentre/dist/images/header-background.jpg">
             <div class="banner__logo">
               <img class="banner_lotus" src="<?php echo get_template_directory_uri() . '/dist/images/sscy_lotus_white.svg'; ?>" />
               <img class="banner_logo-text" src="<?php echo get_template_directory_uri() . '/dist/images/sscy_text_white.svg'; ?>" />
             </div>
           </div>
-          <div class="banner__container" data-bgimage="wp-content/themes/saltspringcentre/dist/images/ytt-header-background.jpg">
-            <div class="banner__logo">
-              <img class="banner_lotus" src="<?php echo get_template_directory_uri() . '/dist/images/sscy_lotus_white.svg'; ?>" />
-              <div class="banner__heading">Yoga Teacher Training</div>
-              <div class="banner__text">
-                <p>The Salt Spring Centre is offering a 200 hour Yoga Teacher Training in 2019.
-* NEW IN 2019 - Teach to Learn Scholarship *</p>
-              </div>
-              <a
-                class="button button--white banner__button"
-                href="yoga-teacher-training">
-                  Learn More
-                  <i class="fas fa-caret-right"></i>
-                  <i class="fas fa-caret-right"></i>
-                  <i class="fas fa-caret-right"></i>
-              </a>
-            </div>
-          </div>
+
+          <?php
+            $args = array( 'post_type' => 'banner', 'orderby' => 'menu_order', 'order' => 'ASC' );
+            $the_query = new WP_Query( $args );
+            $num_banners = $the_query->post_count;
+
+            if ($the_query->have_posts()) :
+              while ($the_query->have_posts()) : $the_query->the_post();
+
+                $url = get_post_meta($post->ID, 'banner_url', true);
+                $url_text = get_post_meta($post->ID, 'banner_url_text', true);
+                ?>
+                  <div class="banner__container" data-bgimage="<?php echo get_the_post_thumbnail_url(); ?>">
+                    <div class="banner__heading"><?php echo the_title(); ?></div>
+                    <div class="banner__text">
+                      <?php echo wpautop(get_the_content(), true); ?>
+                    </div>
+                    <a
+                      class="button button--white banner__button"
+                      href="<?php echo esc_url( $url ); ?>">
+                        <?php echo _e( $url_text ); ?>
+                        <i class="fas fa-caret-right"></i>
+                        <i class="fas fa-caret-right"></i>
+                        <i class="fas fa-caret-right"></i>
+                    </a>
+                  </div>
+                <?php
+              endwhile;
+            endif;
+            wp_reset_postdata();
+          ?>
         </div>
         <div class="banner__navigation">
           <a href="#" class="banner__icon active" data-banner="0"></a>

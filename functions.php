@@ -99,7 +99,7 @@ add_action( 'after_setup_theme', 'sscy_theme_setup' );
 // Javascript
 function sscy_register_js() {
   // Register
-  wp_register_script('sscy_javascript', get_template_directory_uri() . '/js/common.js', array( 'jquery' ), '1.0', true);
+  wp_register_script('sscy_javascript', get_template_directory_uri() . '/dist/bundle.js', array( 'jquery' ), '1.0', true);
   wp_register_script('fontawesome', get_template_directory_uri() . '/js/vendor/font-awesome/fontawesome-all.min.js');
   wp_register_script('aos', 'https://unpkg.com/aos@2.3.1/dist/aos.js', '', '2.3.1', true);
 
@@ -116,7 +116,7 @@ add_action( 'init', 'sscy_register_js' );
 function sscy_register_css() {
     // Register
     wp_register_style( 'google_fonts', 'https://fonts.googleapis.com/css?family=Crimson+Text:300,300i,400,400i,500,500i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i' );
-    wp_register_style( 'sscy_styles', get_template_directory_uri() . '/css/style.min.css' );
+    wp_register_style( 'sscy_styles', get_template_directory_uri() . '/dist/css/style.css' );
     wp_register_style( 'aos', 'https://unpkg.com/aos@2.3.1/dist/aos.css');
 
     // Enqueue
@@ -352,7 +352,7 @@ require_once( 'inc/gravity-forms.php' );
 ********************************************************************************************/
 function sscyDB(){
   global $sscy_database;
-  $sscy_database = new wpdb('root','','sscy_internal','localhost');
+  $sscy_database = new wpdb('root','','saltspri_internal','localhost');
 }
 add_action('init','sscyDB');
 

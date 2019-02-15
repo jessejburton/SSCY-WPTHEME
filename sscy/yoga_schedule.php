@@ -65,29 +65,6 @@
 
     ?>
 
-    <!-- Set some variables if a cookie exists and add a heading -->
-    <?php
-
-        if(!isset($_COOKIE["name_first"])) {
-            $name_first = "";
-            $name_last = "";
-            $email = "";
-        } else {
-            $name_first = $_COOKIE["name_first"];
-            $name_last = $_COOKIE["name_last"];
-            $email = $_COOKIE["email"];
-
-            ?>
-                <h4 class="heading__schedule">
-                    Hi
-                    <span class="heading__schedule-name"><?php echo $name_first; ?></span>!
-                    | <a href="javascript:void(0);" class="heading__schedule-link logout">logout</a>
-                </h4>
-            <?php
-        }
-
-    ?>
-
 <div class="yoga-schedule">
 
     <!-- PRICING - Setting up the pricing display -->
@@ -115,6 +92,17 @@
             </div>
           </div>
         </div>
+        <div class="hidden teacher-<?php echo $teacher[0]["id"]; ?>">
+          <div class="teacher__heading"><h4><?php echo $teacher[0]["name"] ?></h4></div>
+          <div class="teacher__details">
+            <div class="teacher__photo">
+              <div class="teacher__photo-container" style="background-image: url('<?php echo $teacher[0]["photo"] ?>');"></div>
+            </div>
+            <div class="teacher__content">
+              <p><?php echo $teacher[0]["bio"] ?></p>
+            </div>
+          </div>
+        </div>
       <?php } ?>
     </div>
     <p class="centered-text"><a href="our-teachers" class="button">teacher profiles <i class="fa fa-caret-right"></i><i class="fa fa-caret-right"></i><i class="fa fa-caret-right"></i></a></p>
@@ -134,6 +122,31 @@
           Information notice <span class="notice box"></span><br />
       </div>
     </div>
+
+    <!-- Set some variables if a cookie exists and add a heading -->
+    <?php
+
+        if(!isset($_COOKIE["name_first"])) {
+            $name_first = "";
+            $name_last = "";
+            $email = "";
+            $waiver = false;
+        } else {
+            $name_first = $_COOKIE["name_first"];
+            $name_last = $_COOKIE["name_last"];
+            $email = $_COOKIE["email"];
+            $waiver = true;
+
+            ?>
+                <h4 class="heading__schedule">
+                    Hi
+                    <span class="heading__schedule-name"><?php echo $name_first; ?></span>!
+                    | <a href="javascript:void(0);" class="heading__schedule-link logout">logout</a>
+                </h4>
+            <?php
+        }
+
+    ?>
 
     <div class="schedule">
       <div class="schedule__navigation">
@@ -234,6 +247,7 @@
                       $registrationID = $qry_reg_results[0]->registration_id;
                   }
                 }
+
                 ?>
 
                   <!-- Add the exception message if needed -->
@@ -268,7 +282,7 @@
                           </a>
                       <?php } else { ?>
                           <a
-                            class="button button--register"
+                            class="button button--unregister"
                             data-registration-id="<?php echo $registrationID; ?>"
                             data-class-name="<?php echo $class->name; ?>"
                             data-class-id="<?php echo $class->class_id; ?>"
@@ -311,19 +325,6 @@
                     </div>
                   </div>
 
-                  <!-- Teacher Details -->
-                  <div class="class__details class__details--teacher teacher-<?php echo $class->teacher_id; ?>">
-                    <div class="teacher__heading"><h4><?php echo $class->name_first . ' ' . $class->name_last; ?></h4></div>
-                    <div class="teacher__details">
-                      <div class="teacher__photo" onclick="window.location='our-teachers/#teacher-<?php echo $class->teacher_id; ?>'">
-                        <div class="teacher__photo-container" style="background-image: url('<?php echo $class->photo; ?>');"></div>
-                      </div>
-                      <div class="teacher__content">
-                        <p><?php echo $class->bio; ?></p>
-                      </div>
-                    </div>
-                  </div>
-
                 <?php } ?>
               <?php }
 
@@ -341,3 +342,5 @@
             } ?>
       </div>
     </div>
+
+<?php require_once('register_form.php'); ?>

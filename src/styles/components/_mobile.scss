@@ -84,7 +84,7 @@
     top: 0.9rem;
     left: 0.9rem;
     background-size: cover;
-    background-image: url('images/sscy_lotus_green.svg');
+    background-image: url('../images/sscy_lotus_green.svg');
     border-radius: 50%;
     z-index: 6200;
   }
@@ -105,7 +105,7 @@
   }
 
   &.open::after {
-    background-image: url('images/sscy_lotus_white.svg');
+    background-image: url('../images/sscy_lotus_white.svg');
   }
 
   &.open::before {

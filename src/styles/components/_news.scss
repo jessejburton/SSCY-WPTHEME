@@ -1,0 +1,86 @@
+.news {
+  position: relative;
+  height: 33rem;
+  border-radius: 2px;
+  border: 1px solid darken($color-white, 10%);
+  background-color: #efefef;
+  margin-bottom: 2 * $default-content-margin-large;
+  box-shadow: 5px 5px 15px rgba($color-black, 0.5);
+  overflow: hidden;
+
+  @include below(400px) {
+    height: 50rem;
+
+    .news__container {
+      padding: 1.5rem;
+    }
+  }
+}
+
+.news__container {
+  position: absolute;
+  top: 6rem;
+  left: 20px;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.8s ease-out;
+  text-align: center;
+
+  &.active {
+    opacity: 1;
+    left: 0;
+    visibility: visible;
+  }
+}
+
+.news__heading {
+  font-weight: 500;
+  font-family: $font-crimson;
+  font-size: 2.4rem;
+  margin-bottom: $default-content-margin;
+}
+
+.news__image-container {
+  width: 100%;
+}
+
+.news__image {
+  overflow: hidden;
+  width: 100%;
+
+  img {
+    width: 100%;
+  }
+}
+
+.news__navigation {
+  text-align: center;
+  margin: 2rem 0;
+
+  a,
+  a.link {
+    background-image: url('../images/sscy_lotus_green.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 2rem;
+    margin: 0 0.5rem;
+    transition: all 0.3s ease;
+    width: 2.5rem;
+
+    &:hover,
+    &.active {
+      transform: scale(1.2);
+
+      &::after {
+        opacity: 0 !important;
+      }
+    }
+  }
+}
+
+.news__content {
+  margin-left: $default-content-margin;
+  text-align: center;
+}

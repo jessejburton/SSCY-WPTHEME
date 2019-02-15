@@ -37,7 +37,8 @@ function banner_custom_post_type(){
     'supports'           => array (
       'title',
       'editor',
-      'page-attributes'
+      'page-attributes',
+      'thumbnail'
     ),
     'menu_position'     => 6,
     'exlude_from_search'=> false

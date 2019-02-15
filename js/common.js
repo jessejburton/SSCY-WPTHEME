@@ -8,11 +8,19 @@ AOS.init({
 // Make sure the header and navigation show up correctly
 if (banner) {
   document.querySelectorAll('.banner__container')[0].classList.add('active');
+  document.querySelectorAll('.news__container')[0].classList.add('active');
 
   var icons = document.querySelectorAll('.banner__icon');
   icons.forEach(function(elm) {
     elm.addEventListener('click', function(e) {
       showBannerByIndex(e.target.dataset.banner);
+    });
+  });
+
+  var newsIcons = document.querySelectorAll('.news__icon');
+  newsIcons.forEach(function(elm) {
+    elm.addEventListener('click', function(e) {
+      showNewsByIndex(e.target.dataset.news);
     });
   });
 
@@ -23,7 +31,9 @@ if (banner) {
     .querySelector('.banner__arrow--next')
     .addEventListener('click', showNextBanner);
 
-  var bannerInterval = setInterval(showNextBanner, 6500);
+  //var bannerInterval = setInterval(showNextBanner, 6500);
+  setTimeout(showNextBanner, 3000);
+  var newsInterval = setInterval(showNextNews, 5000);
 
   setInterval(handleScroll, 10);
 }
@@ -153,6 +163,8 @@ function showLastBanner() {
     [banners.length - 1].classList.add('active');
 }
 
+/* END BANNER SCROLLING */
+
 function indexOfClass(nodeList, className) {
   var counter = 0;
   var index = -1;
@@ -174,36 +186,36 @@ function indexOfClass(nodeList, className) {
 (function($) {
   // Teacher Details
   $(document).on('click', '.class__teacher-link', function() {
-    var selector = ".teacher-" + $(this).data('id');
+    var selector = '.teacher-' + $(this).data('id');
 
     openModal(selector);
-
   });
 
   // Class Details
   $(document).on('click', '.class__name-link', function() {
-    var selector = ".class-" + $(this).data('id');
+    var selector = '.class-' + $(this).data('id');
     openModal(selector);
-
   });
 
-  // Modal
-  $(document).on('click', '.register-button', function(e) {
+  // Register
+  $(document).on('click', '.button--register', function(e) {
     // So that it can be updated later when the person finished registration
     $(this).addClass('active');
 
-    $('.modal .class__name').html($(this).data('class-name'));
-    $('.modal .class__date').html($(this).data('class-date-styled'));
-    $('#class_date').val($(this).data('class-date'));
-    $('#class_id').val($(this).data('class-id'));
+    $('.registration-form .class__name').html($(this).data('class-name'));
+    $('.registration-form .class__date').html(
+      $(this).data('class-date-styled')
+    );
+    $('.registration-form #class_date').val($(this).data('class-date'));
+    $('.registration-form #class_id').val($(this).data('class-id'));
 
-    openDialog();
+    openModal('.registration-form', closeModal, register);
   });
 
   // Logout
   $(document).on('click', '.logout', function(e) {
     $.ajax({
-      url: '/logout.php',
+      url: '/saltspringcentre/logout.php',
       method: 'POST',
       success: function(response) {
         // refresh the page
@@ -213,20 +225,21 @@ function indexOfClass(nodeList, className) {
   });
 
   // Register
-  $(document).on('click', '.class-register', function(e) {
-    var elm = $('.register-button.active');
+  function register() {
+    var elm = $('.button--register.active');
 
     // Prepare the data
     var registrant = {
-      name_first: $('#name_first').val(),
-      name_last: $('#name_last').val(),
-      email: $('#email').val(),
-      class_id: $('#class_id').val(),
-      class_date: $('#class_date').val()
+      name_first: $('.modal #name_first').val(),
+      name_last: $('.modal #name_last').val(),
+      email: $('.modal #email').val(),
+      class_id: $('.modal #class_id').val(),
+      class_date: $('.modal #class_date').val(),
+      waiver: $('.modal #waiver_checkbox').is(':checked')
     };
 
     /* ERROR TRAPPING */
-    if (!document.getElementById('waiver_checkbox').checked) {
+    if (!registrant.waiver) {
       alert(
         'Please make sure to read the terms and check the waiver checkbox.'
       );
@@ -255,25 +268,30 @@ function indexOfClass(nodeList, className) {
     }
 
     $.ajax({
-      url: '/register.php',
+      url: '/saltspringcentre/register.php',
       data: registrant,
       method: 'POST',
       success: function(response) {
         response = JSON.parse(response);
         if (response.success) {
-          elm.addClass('un-register-button');
-          elm.removeClass('register-button');
+          elm.addClass('button--unregister');
+          elm.removeClass('button--register');
           elm.removeClass('.active');
           elm.html('unregister');
           elm.data('registration-id', response.registration_id);
           alert('You have been registered for this class');
+          closeModal();
+        } else {
+          alert(
+            'Somthing went wrong. Sorry for the invonvenience. Please try again later.'
+          );
         }
       }
     });
-  });
+  }
 
   // Register
-  $(document).on('click', '.un-register-button', function(e) {
+  $(document).on('click', '.button--unregister', function(e) {
     var elm = $(this);
     var registrationID = elm.data('registration-id');
 
@@ -283,23 +301,21 @@ function indexOfClass(nodeList, className) {
     };
 
     $.ajax({
-      url: '/unregister.php',
+      url: '/saltspringcentre/unregister.php',
       data: data,
       method: 'POST',
       success: function(response) {
         response = JSON.parse(response);
         if (response.success) {
-          elm.removeClass('un-register-button');
-          elm.addClass('register-button');
+          elm.removeClass('button--unregister');
+          elm.addClass('button--register');
           elm.html('register');
           alert('You have been unregistered for this class');
         }
       }
     });
   });
-
 })(jQuery);
-
 
 /* Mobile Menu */
 var menuOpen = false;
@@ -336,25 +352,32 @@ var videos = document.querySelectorAll('iframe').forEach(function(elm) {
 
 // Modal
 var modalOpen = false;
-function openModal({selector, cancel, action}) {
-  if (cancel === undefined){
+function openModal(selector, cancel, action) {
+  if (cancel === undefined) {
     cancel = closeModal;
   }
-  if (action === undefined){
-    action = function(){
+  if (action === undefined) {
+    action = function() {
       alert('hello');
-    }
+    };
   }
-
-  // Add the button handlers
-  document.querySelector('.modal__cancel').addEventListener('click', cancel);
-  document.querySelector('.modal__action').addEventListener('click', action);
 
   // Copy the content
   var modalContent = document.querySelector('.modal__content-html');
   var content = document.querySelector(selector);
 
   modalContent.innerHTML = content.innerHTML;
+
+  // Add the button handlers if the buttons exist
+  var cancelButton = document.querySelector('.modal .modal__cancel');
+  var actionButton = document.querySelector('.modal .modal__action');
+
+  if (cancelButton) {
+    cancelButton.addEventListener('click', cancel);
+  }
+  if (actionButton) {
+    actionButton.addEventListener('click', action);
+  }
 
   showModal();
 }
@@ -398,3 +421,84 @@ function hideBlur() {
 
 // Close click handler
 document.querySelector('.modal__close').addEventListener('click', closeModal);
+
+// Psuedo Styling
+var UID = {
+  _current: 0,
+  getNew: function() {
+    this._current++;
+    return this._current;
+  }
+};
+
+/* NEWS SCROLLING */
+
+function showNewsByIndex(index) {
+  clearInterval(newsInterval);
+
+  var news = document.querySelectorAll('.news__container');
+  var icons = document.querySelectorAll('.news__icon');
+  var activeIndex = indexOfClass(news, 'active');
+
+  news[activeIndex].classList.remove('active');
+  icons[activeIndex].classList.remove('active');
+
+  news[index].classList.add('active');
+  icons[index].classList.add('active');
+}
+
+function showNextNews() {
+  var news = document.querySelectorAll('.news__container');
+  var icons = document.querySelectorAll('.news__icon');
+  var index = indexOfClass(news, 'active');
+
+  news[index].classList.remove('active');
+  icons[index].classList.remove('active');
+
+  var nextNews = news[index + 1];
+
+  if (nextNews !== undefined) {
+    nextNews.classList.add('active');
+    icons[index + 1].classList.add('active');
+  } else {
+    showFirstNews();
+  }
+}
+
+function showPrevBanner() {
+  var banners = document.querySelectorAll('.news__container');
+  var icons = document.querySelectorAll('.news__icon');
+  var index = indexOfClass(banners, 'active');
+
+  news[index].classList.remove('active');
+  icons[index].classList.remove('active');
+
+  var prevNews = news[index - 1];
+
+  if (prevNews !== undefined) {
+    prevNews.classList.add('active');
+    icons[index - 1].classList.add('active');
+  } else {
+    showLastNews();
+  }
+}
+
+function showFirstNews() {
+  var news = document.querySelectorAll('.news__container');
+  var firstNews = news[0];
+
+  firstNews.classList.add('active');
+  document.querySelectorAll('.news__icon')[0].classList.add('active');
+}
+
+function showLastNews() {
+  var banners = document.querySelectorAll('.news__container');
+  var lastNews = news[news.length - 1];
+
+  lastNews.classList.add('active');
+  document
+    .querySelectorAll('.news__icon')
+    [news.length - 1].classList.add('active');
+}
+
+/* END BANNER SCROLLING */
