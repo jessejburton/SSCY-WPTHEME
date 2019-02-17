@@ -43,3 +43,13 @@ body {
     overflow-y: hidden;
   }
 }
+
+.sociable ul li::before {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.sociable img {
+  width: auto !important;
+  height: auto !important;
+}

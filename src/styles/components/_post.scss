@@ -42,7 +42,7 @@
   overflow: hidden;
 
   &:hover .thumbnail {
-    transform: scale(1.2);
+    animation: pulse 6s ease-in-out 0s infinite;
   }
 
   &::after {
@@ -54,6 +54,5 @@
 }
 
 .thumbnail {
-  transition: all 3s ease;
   width: 100%;
 }

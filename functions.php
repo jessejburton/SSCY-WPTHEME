@@ -359,3 +359,25 @@ add_action('init','sscyDB');
 function displayDate($date){
   return date('l, F j, Y', $date);
 }
+
+
+
+  /* CUSTOM VARIABLES */
+
+  // Add custom variables {*** I think this is for Gravity Forms, need to check ***}
+
+  function add_query_vars_filter( $vars ){
+
+    $vars[] = "fid";
+
+    return $vars;
+
+  }
+
+  add_filter( 'query_vars', 'add_query_vars_filter' );
+
+
+
+// This file will log gravity form errors if uncommented
+
+require_once( 'inc/gravity-forms.php' );

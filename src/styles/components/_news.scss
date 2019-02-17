@@ -5,7 +5,7 @@
   border: 1px solid darken($color-white, 10%);
   background-color: #efefef;
   margin-bottom: 2 * $default-content-margin-large;
-  box-shadow: 5px 5px 15px rgba($color-black, 0.5);
+  box-shadow: 0 0 10px rgba(00, 55, 96, 0.3);
   overflow: hidden;
 
   @include below(400px) {
@@ -23,6 +23,7 @@
   left: 20px;
   width: 100%;
   opacity: 0;
+  padding: $default-content-margin-small;
   visibility: hidden;
   transition: all 0.8s ease-out;
   text-align: center;
